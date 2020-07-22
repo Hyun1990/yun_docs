@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>yolo_v3 &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="hyun_docs 1.0 文档" href="../index.html"/>
+        <link rel="up" title="Models" href="index.html"/>
+        <link rel="next" title="one-stage detector" href="one-stage_detector.html"/>
+        <link rel="prev" title="yolo_v2" href="yolov2.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="yolov1.html">yolo_v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolov2.html">yolo_v2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">yolo_v3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">网络结构图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backbone">Backbone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="one-stage_detector.html">one-stage detector</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Models</a> &raquo;</li>
+        
+      <li>yolo_v3</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/models/yolov3.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="yolo-v3">
+<h1>yolo_v3<a class="headerlink" href="#yolo-v3" title="永久链接至标题">¶</a></h1>
+<p>论文地址 <a class="reference external" href="https://pjreddie.com/media/files/papers/YOLOv3.pdf">YOLOv3: An Incremental Improvement</a></p>
+<div class="section" id="id1">
+<h2>网络结构图<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><img alt="../_images/net.jpeg" src="../_images/net.jpeg" />
+<img alt="../_images/v3_net.jpg" src="../_images/v3_net.jpg" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><ol class="arabic simple">
+<li>整个YOLOv3结构中是没有池化层和全连接层的。前向传播中，张量尺寸变换是通过改变卷积核的步长来实现的。YOLOv2和YOLOv3一样，backbone都会将输出特征图缩小到输入的1/32，所以，通常要求输入图片是32的倍数。</li>
+<li>YOLOv3借鉴了金字塔特征(FPN)思想，小尺寸特征图用于检测大尺寸物体，大尺寸特征图检测小尺寸物体。</li>
+<li>YOLOv3总共输出3个特征图，第一个特征图下采样32倍，第二个特征图下采样16倍，第三个下采样8倍。输入图像经过DarkNet-53(无全连接层)，再经过Yoloblock生成的特征图被当作两用，第一用为经过3*3卷积层、1*1卷积之后生成特征图一，第二用为经过1*1卷积层加上采样层，与DarkNet-53网络的中间层输出结果进行拼接，产生特征图二。同样的循环之后产生特征图三。</li>
+<li>concat操作：源于DenseNet网络的设计思路，将特征图按照通道维度直接进行拼接，例如8*8*16的特征图与8*8*16的特征图拼接后生成8*8*32的特征图。</li>
+<li>上采样层(upsample)：作用是将小尺寸特征图通过插值等方法，生成大尺寸图像。例如使用最邻近插值算法，将8*8的图像变换为16*16。上采样层不改变特征图的通道数。</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="backbone">
+<h2>Backbone<a class="headerlink" href="#backbone" title="永久链接至标题">¶</a></h2>
+<p>YOLOv3 采用 Darknet-53 来进行特征提取。</p>
+<blockquote>
+<div><img alt="../_images/darknet-53.png" class="align-center" src="../_images/darknet-53.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>参考文档<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="https://blog.csdn.net/leviopku/article/details/82660381">YOLOv3 深度解析</a></td></tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="one-stage_detector.html" class="btn btn-neutral float-right" title="one-stage detector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="yolov2.html" class="btn btn-neutral" title="yolo_v2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, hyun.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

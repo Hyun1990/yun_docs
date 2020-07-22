@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>yolo_v1 &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="hyun_docs 1.0 文档" href="../index.html"/>
+        <link rel="up" title="Models" href="index.html"/>
+        <link rel="next" title="yolo_v2" href="yolov2.html"/>
+        <link rel="prev" title="Models" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Models</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">yolo_v1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">算法优点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">检测系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">网络设计</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">训练过程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">推理过程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">局限性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="yolov2.html">yolo_v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolov3.html">yolo_v3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="one-stage_detector.html">one-stage detector</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Models</a> &raquo;</li>
+        
+      <li>yolo_v1</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/models/yolov1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="yolo-v1">
+<h1>yolo_v1<a class="headerlink" href="#yolo-v1" title="永久链接至标题">¶</a></h1>
+<p>论文地址：<a class="reference external" href="https://arxiv.org/pdf/1506.02640.pdf">《You Only Look Once: Unified, Real-Time Object Detection》</a></p>
+<p>YOLO把目标检测作为一个回归问题，直接从输入的图片中预测出边界框和类别概率。</p>
+<div class="section" id="id1">
+<h2>算法优点<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>速度快。在Titan X GPU上的速度为45fps，加速版的yolo可达150fps。</li>
+<li>基于图像的全局信息进行预测。这点和基于sliding window,region proposal等检测算法不同。与Fast R-CNN相比，yolo在误检测（将背景检测为物体）方面的错误率能降低一半多。</li>
+<li>可以学习物体的泛化表示。</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>检测系统<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>YOLO检测系统如下图：</p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><img alt="../_images/yolo.png" class="align-center" src="../_images/yolo.png" />
+</div></blockquote>
+<img alt="../_images/yolo_model.png" class="align-center" src="../_images/yolo_model.png" />
+</div></blockquote>
+<p>1. 将图片resize成
+<span class="math">\(448 \times 448\)</span> 大小</p>
+<p>2. 将图片分成
+<span class="math">\(S \times S\)</span> 个 grid cell。如果一个物体的中心落在这个网格单元中，那么这个网格将负责检测这个物体</p>
+<p>3. 每个 grid cell 预测
+<span class="math">\(B\)</span> 个 bounding boxes 和对应的 confidence scores</p>
+<dl class="docutils">
+<dt>confidence</dt>
+<dd><div class="first last math">
+\[Pr(Object) * IOU_{pred}^{truth}\]</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">若预测 cell 中存在 object ，则
+<span class="math">\(Pr(Object)\)</span> 为 cell
+中存在 object 的概率，
+<span class="math">\(IOU_{pred}^{truth}\)</span> 为预测框与真实框的交并比，confidence 为两者乘积；
+若预测 cell 中不存在 object ，则
+<span class="math">\(Pr(Object)\)</span> 为0，confidence 为0</p>
+</div>
+<p>4. 每个 bounding box 有5个预测值
+<span class="math">\(x\)</span>,
+<span class="math">\(y\)</span>,
+<span class="math">\(w\)</span>,
+<span class="math">\(h\)</span> , and confidence</p>
+<dl class="docutils">
+<dt><span class="math">\((x,y)\)</span></dt>
+<dd>bounding box 的中心点相对于 grid cell 左上角的偏移</dd>
+<dt><span class="math">\((w,h)\)</span></dt>
+<dd>bounding box 的相对于整个 image 的宽，高</dd>
+</dl>
+<p>examples:</p>
+<img alt="../_images/xy.jpg" src="../_images/xy.jpg" />
+<img alt="../_images/yolov1_xy.png" src="../_images/yolov1_xy.png" />
+<p>5. 每个 grid cell 同时预测
+<span class="math">\(C\)</span> 个条件类别概率
+<span class="math">\(Pr(Class_{i}|Object)\)</span></p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">这一系列条件类别概率与 bounding boxes 的数量
+<span class="math">\(B\)</span> 无关</p>
+</div>
+<p><strong>class-specific confidence scores for each box</strong></p>
+<div class="math">
+\[Pr(Class_{i}|Object) * Pr(Object) * IOU_{pred}^{truth}\]</div>
+<p>在测试阶段，我们使用 class-specific confidence score 来反应该 bounding box 中出现的类别概率及预测框与目标框的匹配度</p>
+<p>根据上述过程可知，整个图像的预测最终将构成一个
+<span class="math">\(S \times S \times (B * 5 + C)\)</span> 的张量。我们使用PASCAL VOC来评估YOLO，
+<span class="math">\(S = 7, B = 2, C = 20\)</span> 。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">&quot;5&quot;代表每个 bounding box 有5个预测值</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>网络设计<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>YOLO网络由24个卷积层和2个全连接层构成。完整网络如下图，初始卷积层从图像中提取特征，而全连接层输出概率和坐标，最终输出是 7*7*30 张量的预测。</p>
+<img alt="../_images/yolo_network.png" src="../_images/yolo_network.png" />
+<p><strong>网络每层输入输出</strong></p>
+<img alt="../_images/net.png" src="../_images/net.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>为什么448*448*3经过第一层卷积后输出的是244*244*64？</p>
+<p>根据 <a class="reference external" href="https://github.com/AlexeyAB/darknet/blob/master/cfg/yolov1/yolo.cfg">yolo.cfg</a>，第一个卷积层的pad=1，表明卷积时需要进行zero padding，padding的个数与卷积核尺寸有关，为size/2向下取整，如3/2=1</p>
+<p><strong>输入和输出的映射关系</strong></p>
+<img alt="../_images/yolo_in_out.png" src="../_images/yolo_in_out.png" />
+<p><strong>30维向量</strong></p>
+<img alt="../_images/yolo_30.png" src="../_images/yolo_30.png" />
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>训练过程<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p><strong>预训练</strong></p>
+<blockquote>
+<div>在ImageNet上使用上图中前20个卷积网络加上一个平均池化层和全连接层进行训练</div></blockquote>
+<p><strong>训练</strong></p>
+<blockquote>
+<div>用预训练得到的前20个卷积网络参数来初始化YOLO模型前20个卷积层的网络参数，加上随机初始化的4个卷积层和2个全连接层，同时输入分辨率从224*224变为448*448。最后一层激活函数为线性激活函数，其他层的激活函数为leaky，然后用PASCAL VOC 标注数据进行YOLO模型训练。训练中采用了 drop out 和数据增强来防止过拟合。</div></blockquote>
+<p><strong>损失函数</strong></p>
+<blockquote>
+<div><p>YOLO是 end to end 训练，对于预测框的位置，size，种类，置信度(confidence score)等信息都通过一个损失函数来训练。损失就是网络实际输出与样本标签之间的偏差 <a class="footnote-reference" href="#id10" id="id5">[1]</a>。</p>
+<img alt="../_images/pre_truth.png" src="../_images/pre_truth.png" />
+</div></blockquote>
+<ul>
+<li><p class="first">采用了 sum-squared error loss，8维的 localization error 和 20维的 classification error 同等重要显然是不合理的，因此赋予了更大的 loss weight
+<span class="math">\(\lambda_{coord} = 5\)</span></p>
+</li>
+<li><p class="first">对于没有 object 的 box 的 confidence loss, 赋予小的 loss weight
+<span class="math">\(\lambda_{noobj} = 0.5\)</span></p>
+<blockquote>
+<div><div class="math">
+\[\begin{split}\lambda_{coord}\sum_{i=0}^{S^2}\sum_{j=0}^B\mathbb{1}_{ij}^{obj}[(x_{i} - \hat{x}_{i})^2 + (y_{i} - \hat{y}_{i})^2]\\
++ \lambda_{coord}\sum_{i=0}^{S^2}\sum_{j=0}^B\mathbb{1}_{ij}^{obj}[( \sqrt{w_{i}} - \sqrt{\hat{w}_{i}} )^2 + ( \sqrt{h_{i}} - \sqrt{\hat{h}_{i}} )^2]\\
++ \sum_{i=0}^{S^2}\sum_{j=0}^B\mathbb{1}_{ij}^{obj} (C_{i} - \hat{C}_{i})^2\\
++ \lambda_{noobj} \sum_{i=0}^{S^2}\sum_{j=0}^B\mathbb{1}_{ij}^{noobj} (C_{i} - \hat{C}_{i})^2\\
++ \sum_{i=0}^{S^2} \mathbb{1}_{i}^{obj} \sum_{c \in classes} (p_{i}(c) - \hat{p}_{i}(c))^2\end{split}\]</div>
+</div></blockquote>
+</li>
+</ul>
+<blockquote>
+<div><ol class="arabic simple">
+<li><dl class="first docutils">
+<dt>对象分类的误差</dt>
+<dd>公式第5行，只有存在对象的 grid cell 才计入误差</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>bounding box 位置误差</dt>
+<dd>公式第1行和第2行，只有“负责”(IOU较大)预测的那个 bounding box 的数据才会计入误差。第2行宽度和高度先取了平方根，因为如果直接取差值的话，大的对象对差值的敏感度较低，小的对象对差值的敏感度较高，所以取平方根可以降低这种敏感度的差异，使得较大的对象和较小的对象在尺寸误差上有相似的权重。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>bounding box 置信度误差</dt>
+<dd>公式第3行和第4行，第3行是存在对象的 bounding box的置信度误差。只有“负责”预测的那个 bounding box 的置信度才会计入误差。第4行是不存在对象的bounding box的置信度误差。因为不存在对象的bounding box应该老老实实的说&quot;我这里没有对象&quot;，也就是输出尽量低的置信度。如果它不恰当的输出较高的置信度，会与真正&quot;负责&quot;该对象预测的那个 bounding box产生混淆。其实就像对象分类一样，正确的对象概率最好是1，所有其它对象的概率最好是0。</dd>
+</dl>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last"><span class="math">\(\mathbb{1}_{i}^{obj}\)</span> 表示 cell
+<span class="math">\(i\)</span> 中是否有 object，
+<span class="math">\(\mathbb{1}_{ij}^{obj}\)</span> 表示在 cell
+<span class="math">\(i\)</span> 中的第
+<span class="math">\(j\)</span> 个 bounding box 负责预测该 object,
+只有当某个 grid cell 中有 object 的时候才对 classification error 进行惩罚。只有当某个 box predictor 对某个ground truth box 负责的时候，才会对 box 的 coordinate error 进行惩罚。</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h2>推理过程<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>在 PASCAL VOC 数据集上，YOLO网络对于每张图片共预测98个 bounding box及20个类别 for each box。</p>
+<img alt="../_images/yolo_inference.png" class="align-center" src="../_images/yolo_inference.png" />
+<p>每个 grid cell 有30个预测值，前5个为 bounding box 1 (bb1)的预测值，后5个为bb2的预测值，20为class score。按照如图所示的方法可得到 class scores for each bounding box <a class="footnote-reference" href="#id11" id="id7">[2]</a>。</p>
+<p>以 Dog class 为例，每个bounding box 都有一个针对该类别的 score ，当 score 小于 cofidence 时，该 bounding box 的值更新为0，按照 score 的 大小对 bb 排序，应用NMS，选取每个 bounding box 最大的 score (if &gt; 0)类别，最终获得整个图像所有的预测框。</p>
+<img alt="../_images/yolo_detect.png" class="align-center" src="../_images/yolo_detect.png" />
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">总体思路：对每一个类别的98个 bounding box，根据置信度和NMS，筛选出一个或多个预测框，最终预测框中得分最高的score 为预测类别。NMS主要解决的是一个目标被多次检测的问题。</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h2>局限性<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>针对集中出现的小目标和邻近的目标检测精确度不高</li>
+<li>很难在新的或不寻常的宽高比或配置中的对象中进行泛化</li>
+<li>由于损失函数的原因，定位误差是影响检测效果的主要原因</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h2>参考文档<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td><a class="reference external" href="https://www.jianshu.com/p/cad68ca85e27">YOLO 深入理解</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[2]</a></td><td><a class="reference external" href="https://docs.google.com/presentation/d/1aeRvtKG21KHdD5lg6Hgyhx5rPq_ZOsGjG5rJ1HP7BbA/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.p">YOLO 图解</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><a class="reference external" href="https://www.youtube.com/watch?v=4eIBisqx9_g">YOLO HOW IT WORKS</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[4]</td><td><a class="reference external" href="https://zhuanlan.zhihu.com/p/61485202">One-shot object detection</a></td></tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="yolov2.html" class="btn btn-neutral float-right" title="yolo_v2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, hyun.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>opencv install &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="hyun_docs 1.0 文档" href="../index.html"/>
+        <link rel="up" title="OpenCV" href="index.html"/>
+        <link rel="next" title="opencv_dnn" href="opencv_dnn.html"/>
+        <link rel="prev" title="OpenCV" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">OpenCV</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">opencv install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opencv-opencv-contrib">源码安装 opencv 和 opencv_contrib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">安装依赖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">编译</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_dnn.html">opencv_dnn</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Models</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">OpenCV</a> &raquo;</li>
+        
+      <li>opencv install</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/opencv/opencv_install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="opencv-install">
+<h1>opencv install<a class="headerlink" href="#opencv-install" title="永久链接至标题">¶</a></h1>
+<p>该文档实现在 ubuntu18.04 上安装opencv3</p>
+<div class="section" id="opencv-opencv-contrib">
+<h2>源码安装 opencv 和 opencv_contrib<a class="headerlink" href="#opencv-opencv-contrib" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/opencv/opencv/archive/3.4.7.tar.gz">https://github.com/opencv/opencv/archive/3.4.7.tar.gz</a></div>
+<div class="line"><a class="reference external" href="https://github.com/opencv/opencv_contrib/archive/3.4.7.tar.gz">https://github.com/opencv/opencv_contrib/archive/3.4.7.tar.gz</a></div>
+<div class="line"><br /></div>
+<div class="line">可参考 <a class="reference external" href="https://docs.opencv.org/3.4.7/d7/d9f/tutorial_linux_install.html">官方安装教程</a></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>安装依赖<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line">编译器</div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">build-essential</span></code></div>
+<div class="line"><br /></div>
+<div class="line">编译环境</div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">cmake</span> <span class="pre">git</span> <span class="pre">libgtk2.0-dev</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">pkg-config</span> <span class="pre">libavcodec-dev</span> <span class="pre">libavformat-dev</span> <span class="pre">libswscale-dev</span></code></div>
+<div class="line"><br /></div>
+<div class="line">可选库</div>
+</div>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">python</span><span class="o">-</span><span class="n">numpy</span>
+<span class="n">libtbb2</span>
+<span class="n">libtbb</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">libjpeg</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">libpng</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">libtiff</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">libjasper</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">libdc1394</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">其中安装了</div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libtbb2</span> <span class="pre">libtbb-dev</span> <span class="pre">libjpeg-dev</span> <span class="pre">libpng-dev</span> <span class="pre">libtiff-dev</span></code></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>编译<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">tar</span> <span class="pre">-zx</span> <span class="pre">-f</span> <span class="pre">opencv-3.4.7.tar.gz</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">tar</span> <span class="pre">-zx</span> <span class="pre">-f</span> <span class="pre">opencv_contrib-3.4.7.tar.gz</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">opencv-3.4.7/.cache</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">3.4.7-download/cache/*</span> <span class="pre">opencv-3.4.7/.cache</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">opencv-3.4.7</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">build</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">build</span></code></div>
+<div class="line">将 C++ 库安装在 /home/hyun/libraries/opencv-3.4.7</div>
+<div class="line">将 python3 cv2 安装在系统目录</div>
+</div>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span>$ cmake \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D OPENCV_ENABLE_NONFREE=ON \
+        -D OPENCV_EXTRA_MODULES_PATH=/home/hyun/soft/opencv/opencv_contrib-3.4.7/modules \
+        -D PYTHON3_EXECUTABLE=/usr/bin/python3 \
+        -D PYTHON3_INCLUDE_DIR=/usr/include/python3.6m \
+        -D PYTHON3_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so \
+        -D PYTHON3_PACKAGES_PATH=/usr/lib/python3.6/dist-packages \
+        -D CMAKE_INSTALL_PREFIX=/home/hyun/libraries/opencv-3.4.7 \
+        -D ENABLE_PRECOMPILED_HEADERS=OFF \
+        -D BUILD_JASPER=ON \
+        -D BUILD_EXAMPLES=OFF \
+        -D BUILD_TESTS=OFF \
+        -D BUILD_opencv_java=OFF \
+        -D BUILD_opencv_python2=OFF \
+        -D BUILD_opencv_python3=ON \
+        -D INSTALL_C_EXAMPLES=OFF \
+        -D INSTALL_PYTHON_EXAMPLES=OFF \
+        -D INSTALL_TESTS=OFF \
+        -D WITH_OPENMP=ON \
+        ../
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">-j4</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">make</span> <span class="pre">install</span></code></div>
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">注解</p>
+<div class="last line-block">
+<div class="line">配置OpenCV</div>
+<div class="line">-D ENABLE_PRECOMPILED_HEADERS=OFF 是解决编译时找不到 Eigen/Core 文件的问题(eigen3已正确安装)</div>
+<div class="line">-D WITH_OPENMP=ON 是打开 OpenMP</div>
+<div class="line">-D WITH_OPENCL=ON 是打开 OpenCL</div>
+<div class="line">-D OPENCV_ENABLE_NONFREE=ON 是打开非自由算法的编译</div>
+<div class="line">-D WITH_OPENCL=ON 是打开 OpenCL 支持，需要提前安装好对应的显卡驱动，比较麻烦，先不开了。</div>
+<div class="line">编译 python-opencv 需要设置以下选项</div>
+<div class="line">(如果仅编译python2版本的或仅编译python3版本的，都设置成 PYTHON_xxxx 应该也可以加，建议单独设置)</div>
+<div class="line">PYTHON2(3)_EXECUTABLE = &lt;path to python&gt;</div>
+<div class="line">PYTHON_INCLUDE_DIR = /usr/include/python&lt;version&gt;</div>
+<div class="line">PYTHON_INCLUDE_DIR2 = /usr/include/x86_64-linux-gnu/python&lt;version&gt;</div>
+<div class="line">PYTHON_LIBRARY = /usr/lib/x86_64-linux-gnu/libpython&lt;version&gt;.so</div>
+<div class="line">PYTHON2(3)_NUMPY_INCLUDE_DIRS = /usr/lib/python&lt;version&gt;/dist-packages/numpy/core/include/</div>
+<div class="line">PYTHON2(3)_PACKAGES_PATH = /usr/lib/python&lt;version&gt;/dist-packages</div>
+<div class="line">python2 和 python3 可以单独设置 INCLUDE_DIR 和 LIBRARY</div>
+<div class="line">实测在仅设置 PYTHON3_EXECUTABLE 时，能找到 PYTHON3_INCLUDE_DIR 和 PYTHON3_LIBRARY</div>
+<div class="line">python 的 cv2 模块的默认安装路径 CMAKE_INSTALL_PREFIX/lib/python3.6/dist-packages</div>
+<div class="line">PYTHON_EXECUTABLE 指定 python 路径</div>
+<div class="line">可以使用以下命令获取</div>
+<div class="line">$ python3 -c &quot;import sys; print(sys.executable)&quot;</div>
+<div class="line">/usr/bin/python3</div>
+<div class="line">首先 C++ 的 opencv 动态连接库需要编译出来，安装在某个目录 (只使用 python 版本，应该有不用安装 C++ 动态库的方法，未研究)</div>
+</div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="opencv_dnn.html" class="btn btn-neutral float-right" title="opencv_dnn" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="OpenCV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, hyun.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
