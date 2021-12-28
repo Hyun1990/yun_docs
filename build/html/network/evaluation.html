@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Evaluation &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Machine Learning" href="../machine_learning/index.html" />
+    <link rel="prev" title="one-stage detector" href="YOLO/one-stage_detector.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Network</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="CV方向综述.html">CV方向综述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lenet.html">LeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="googlenet.html">GoogLeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fpn.html">FPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="res.html">ResNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YOLO/index.html">YOLO</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Evaluation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tp-fp-tn-fn">TP, FP, TN, FN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nni/index.html">NNI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nvidia/index.html">Nvidia</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Network</a> &raquo;</li>
+        
+      <li>Evaluation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/network/evaluation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="evaluation">
+<h1>Evaluation<a class="headerlink" href="#evaluation" title="永久链接至标题">¶</a></h1>
+<div class="section" id="tp-fp-tn-fn">
+<h2>TP, FP, TN, FN<a class="headerlink" href="#tp-fp-tn-fn" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/tp.png"><img alt="../_images/tp.png" class="align-center" src="../_images/tp.png" style="width: 500px;" /></a>
+</div></blockquote>
+<p>假设上图是一个二分类的模型训练结果及Ground True显示图，共1000张图片：</p>
+<p>绿色椭圆形
+<span class="math notranslate nohighlight">\((TP+FN)\)</span> 表示Ground Truth为马，300张</p>
+<p>黄色椭圆形
+<span class="math notranslate nohighlight">\((TP+FP)\)</span> 表示模型识别出的马，400张</p>
+<p>两个椭圆形交叉部分
+<span class="math notranslate nohighlight">\(TP\)</span> 表示模型识别出的马且Ground Truth也为马，250张</p>
+<p>椭圆形外区域
+<span class="math notranslate nohighlight">\(TN\)</span> 表示未识别出马且Ground True也不为马，550张</p>
+<p><strong>Presion(准确率)</strong> :
+<span class="math notranslate nohighlight">\(\frac{TP}{TP + FP} = 250/400 = 62.5\%\)</span></p>
+<p><strong>Recall(查全率)</strong> :
+<span class="math notranslate nohighlight">\(\frac{TP}{TP+FP} = 250/300 = 83.3\%\)</span></p>
+<p><strong>漏检率</strong> = 1 - 查全率</p>
+<p><strong>误检率</strong> = 1 - 准确率</p>
+</div>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://www.pianshen.com/article/8141305867/">目标检测、图像分类中的模型效果指标precision与recall的本质探索</a></p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../machine_learning/index.html" class="btn btn-neutral float-right" title="Machine Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="YOLO/one-stage_detector.html" class="btn btn-neutral float-left" title="one-stage detector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

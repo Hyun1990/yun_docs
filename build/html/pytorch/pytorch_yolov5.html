@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="zh" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pytorch_yolov5 &mdash; hyun_docs 1.0 文档</title>
+  <title>Pytorch_yolov5 &mdash; hyun_docs 1.0 文档</title>
   
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
 
   
   
@@ -17,47 +20,39 @@
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="索引"
-              href="../genindex.html"/>
-        <link rel="search" title="搜索" href="../search.html"/>
-    <link rel="top" title="hyun_docs 1.0 文档" href="../index.html"/>
-        <link rel="up" title="Pytorch" href="index.html"/>
-        <link rel="next" title="OpenCV" href="../opencv/index.html"/>
-        <link rel="prev" title="Pytorch" href="index.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Data Loader" href="data_loader.html" />
+    <link rel="prev" title="Training a Classifier" href="training_a_classifier.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="../index.html" class="icon icon-home"> hyun_docs
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
           
 
           
@@ -84,6 +79,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -92,32 +88,60 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Pytorch</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">pytorch_yolov5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what_is_pytorch.html">What is Pytorch?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_differentiation.html">Autogard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neural_network.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training_a_classifier.html">Training a Classifier</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pytorch_yolov5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">环境部署</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">准备数据集</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">训练</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">推理</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pytorch-onnx">Pytorch --&gt; ONNX</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">参考文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">代码解析</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#yaml">yaml</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">参考文档</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="data_loader.html">Data Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Programming_Pytorch_for_DL.html">Programming Pytorch for DL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorboard.html">Tensorboard可视化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build.html">NX源码编译Pytorch</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nni/index.html">NNI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nvidia/index.html">Nvidia</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">hyun_docs</a>
@@ -125,9 +149,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -148,11 +173,11 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">Pytorch</a> &raquo;</li>
         
-      <li>pytorch_yolov5</li>
+      <li>Pytorch_yolov5</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -172,20 +197,20 @@
            <div itemprop="articleBody">
             
   <div class="section" id="pytorch-yolov5">
-<h1>pytorch_yolov5<a class="headerlink" href="#pytorch-yolov5" title="永久链接至标题">¶</a></h1>
+<h1>Pytorch_yolov5<a class="headerlink" href="#pytorch-yolov5" title="永久链接至标题">¶</a></h1>
 <p><strong>Created</strong> : 2020/07/09</p>
 <div class="section" id="id1">
 <h2>环境部署<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="line-block">
 <div class="line">1. 创建anaconda独立环境</div>
-<div class="line"><code class="docutils literal"><span class="pre">$conda</span> <span class="pre">create</span> <span class="pre">-name</span> <span class="pre">pytorch_env_36</span> <span class="pre">python=3.6</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-name</span> <span class="pre">pytorch_env_38</span> <span class="pre">python=3.8</span></code></div>
 <div class="line">2. 激活环境</div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">pytorch_env_36</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">pytorch_env_38</span></code></div>
 <div class="line">3. 下载yolov5版本库</div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/ultralytics/yolov5</span> <span class="pre">#</span> <span class="pre">clone</span> <span class="pre">repo</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/ultralytics/yolov5</span> <span class="pre">#</span> <span class="pre">clone</span> <span class="pre">repo</span></code></div>
 </div>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span>yolov5
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>yolov5
  ├── data
  │   ├── coco128.yaml
  │   ├── coco.yaml
@@ -246,21 +271,31 @@
 </div>
 </div></blockquote>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">yolov5</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">yolov5</span></code></div>
 <div class="line">4. 根据yolov5/requirements.txt安装必要的库</div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">update</span> <span class="pre">-yn</span> <span class="pre">base</span> <span class="pre">-c</span> <span class="pre">defaults</span> <span class="pre">conda</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">anaconda</span> <span class="pre">numpy</span> <span class="pre">opencv</span> <span class="pre">matplotlib</span> <span class="pre">tqdm</span> <span class="pre">pillow</span> <span class="pre">ipython</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">conda-forge</span> <span class="pre">scikit-image</span> <span class="pre">pycocotools</span> <span class="pre">tensorboard</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">spyder-ide</span> <span class="pre">spyder-line-profiler</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">pytorch</span> <span class="pre">pytorch</span> <span class="pre">torchvision</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">conda-forge</span> <span class="pre">protobuf</span> <span class="pre">numpy</span> <span class="pre">&amp;&amp;</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">onnx==1.6.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">update</span> <span class="pre">-yn</span> <span class="pre">base</span> <span class="pre">-c</span> <span class="pre">defaults</span> <span class="pre">conda</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">anaconda</span> <span class="pre">numpy</span> <span class="pre">opencv</span> <span class="pre">matplotlib</span> <span class="pre">tqdm</span> <span class="pre">pillow</span> <span class="pre">ipython</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">conda-forge</span> <span class="pre">scikit-image</span> <span class="pre">pycocotools</span> <span class="pre">tensorboard</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">spyder-ide</span> <span class="pre">spyder-line-profiler</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">pytorch</span> <span class="pre">pytorch</span> <span class="pre">torchvision</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-yc</span> <span class="pre">conda-forge</span> <span class="pre">protobuf</span> <span class="pre">numpy</span> <span class="pre">&amp;&amp;</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">onnx==1.6.0</span></code></div>
+<div class="line"><br /></div>
+<div class="line">5.若只推理，只需安装如下库</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">opencv=4.4.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">pytorch=1.6.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">pillow</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">tqdm</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">matplotlib</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">pyyaml=5.3.1</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">scipy=1.5.2</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">torchvision=0.7.0</span></code></div>
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h2>准备数据集<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span>VOC
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VOC
 ├── *2007_test.txt*              #生成的测试集名单
 ├── *2007_train.txt*
 ├── *2007_val.txt*
@@ -299,14 +334,14 @@
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li>把原始图片及对应的xml文件分别上传到JPEGImages和Annotations下</li>
-<li>将xml文件转换成yolo格式 <code class="docutils literal"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">xml_to_txt.py</span></code></li>
-<li>生成训练集，测试集和验证集 <code class="docutils literal"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">voc_label.py</span></code></li>
-<li>将验证集和训练集合并成一个train.txt <code class="docutils literal"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">combination_train_val.py</span></code></li>
+<li><p>把原始图片及对应的xml文件分别上传到JPEGImages和Annotations下</p></li>
+<li><p>将xml文件转换成yolo格式 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">xml_to_txt.py</span></code></p></li>
+<li><p>生成训练集，测试集和验证集 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">voc_label.py</span></code></p></li>
+<li><p>将验证集和训练集合并成一个train.txt <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">combination_train_val.py</span></code></p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">注解</p>
-<p class="last">*xxx*为生成的文件</p>
+<p class="admonition-title">注解</p>
+<p>*xxx*为生成的文件</p>
 </div>
 </div></blockquote>
 </div>
@@ -316,7 +351,7 @@
 <div class="line">1. 创建data.yaml</div>
 </div>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># train and val datasets (image directory or *.txt file with image paths)</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># train and val datasets (image directory or *.txt file with image paths)</span>
 <span class="n">train</span><span class="p">:</span> <span class="o">../</span><span class="n">darknet</span><span class="o">/</span><span class="n">light_train</span><span class="o">.</span><span class="n">txt</span> <span class="c1">#对应数据集中的train.txt(注意路径)</span>
 <span class="n">val</span><span class="p">:</span> <span class="o">../</span><span class="n">darknet</span><span class="o">/</span><span class="n">light_test</span><span class="o">.</span><span class="n">txt</span>    <span class="c1">#对应数据集中的2007_test.txt</span>
 
@@ -329,10 +364,10 @@
 </div></blockquote>
 <div class="line-block">
 <div class="line">2. 选择模型</div>
-<div class="line">以yolov5/models下yolov5s.yaml为模板，更新 <code class="docutils literal"><span class="pre">nu:1</span></code>，生成custom_yolov5s.yaml</div>
+<div class="line">以yolov5/models下yolov5s.yaml为模板，更新 <code class="docutils literal notranslate"><span class="pre">nu:1</span></code>，生成custom_yolov5s.yaml</div>
 </div>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
 <span class="n">nc</span><span class="p">:</span> <span class="mi">1</span>  <span class="c1"># number of classes   &lt;------------------  UPDATE to match your dataset</span>
 <span class="n">depth_multiple</span><span class="p">:</span> <span class="mf">0.33</span>  <span class="c1"># model depth multiple</span>
 <span class="n">width_multiple</span><span class="p">:</span> <span class="mf">0.50</span>  <span class="c1"># layer channel multiple</span>
@@ -382,23 +417,23 @@
 <div class="line-block">
 <div class="line">3. 训练</div>
 <div class="line">将data.yaml和custom_yolov5s.yaml上传到与yolov5同级目录</div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">train.py</span> <span class="pre">--img</span> <span class="pre">640</span> <span class="pre">--batch</span> <span class="pre">16</span> <span class="pre">--epochs</span> <span class="pre">200</span> <span class="pre">--data</span> <span class="pre">./data.yaml</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">--cfg</span> <span class="pre">./custom_yolov5s.yaml</span> <span class="pre">--weights</span> <span class="pre">'</span> <span class="pre">'</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">train.py</span> <span class="pre">--img</span> <span class="pre">640</span> <span class="pre">--batch</span> <span class="pre">16</span> <span class="pre">--epochs</span> <span class="pre">200</span> <span class="pre">--data</span> <span class="pre">./data.yaml</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">--cfg</span> <span class="pre">./custom_yolov5s.yaml</span> <span class="pre">--weights</span> <span class="pre">'</span> <span class="pre">'</span></code></div>
 <div class="line"><br /></div>
 <div class="line">4. 训练完生成的权重在weights目录下best.pt和last.pt</div>
 <div class="line"><br /></div>
 </div>
 <blockquote>
 <div><div class="admonition tip">
-<p class="first admonition-title">小技巧</p>
-<p class="last">使用GoogleColab训练，参考 <a class="reference external" href="https://github.com/ultralytics/yolov5/">该文档</a> 的Tutorials-&gt;Colab部分</p>
+<p class="admonition-title">小技巧</p>
+<p>使用GoogleColab训练，参考 <a class="reference external" href="https://github.com/ultralytics/yolov5/">该文档</a> 的Tutorials-&gt;Colab部分</p>
 </div>
 </div></blockquote>
 </div>
 <div class="section" id="id5">
 <h2>推理<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$python3</span> <span class="pre">detect.py</span> <span class="pre">--weights</span> <span class="pre">weights/best.pt</span> <span class="pre">--img</span> <span class="pre">640</span> <span class="pre">--conf</span> <span class="pre">0.4</span> <span class="pre">--source</span> <span class="pre">xxx.jpg</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$python</span> <span class="pre">detect.py</span> <span class="pre">--weights</span> <span class="pre">weights/best.pt</span> <span class="pre">--img</span> <span class="pre">640</span> <span class="pre">--conf</span> <span class="pre">0.4</span> <span class="pre">--source</span> <span class="pre">xxx.jpg</span></code></div>
 <div class="line">测试输出的图片在inference/output/下</div>
 <div class="line"><br /></div>
 </div>
@@ -406,18 +441,26 @@
 <div class="section" id="pytorch-onnx">
 <h2>Pytorch --&gt; ONNX<a class="headerlink" href="#pytorch-onnx" title="永久链接至标题">¶</a></h2>
 <blockquote>
-<div>将训练好的Pytorch YOLOV5 模型转换成 ONNX 格式</div></blockquote>
+<div><p>将训练好的Pytorch YOLOV5 模型转换成 ONNX 格式</p>
+</div></blockquote>
 <div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">onnx</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">yolov5</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">PYTHONPATH=&quot;$PWD&quot;</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">models/export.py</span> <span class="pre">--weights</span> <span class="pre">weights/best.pt</span> <span class="pre">--img</span> <span class="pre">640</span> <span class="pre">--batch</span> <span class="pre">1</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">onnx</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">yolov5</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">PYTHONPATH=&quot;$PWD&quot;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">models/export.py</span> <span class="pre">--weights</span> <span class="pre">weights/best.pt</span> <span class="pre">--img</span> <span class="pre">640</span> <span class="pre">--batch</span> <span class="pre">1</span></code></div>
 </div>
 <blockquote>
-<div>转换后的模型为weights/best.onnx</div></blockquote>
+<div><p>转换后的模型为weights/best.onnx</p>
+</div></blockquote>
 </div>
 <div class="section" id="id6">
-<h2>参考文档<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<h2>代码解析<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="yaml">
+<h3>yaml<a class="headerlink" href="#yaml" title="永久链接至标题">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>参考文档<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="line-block">
 <div class="line"><a class="reference external" href="https://github.com/ultralytics/yolov5">https://github.com/ultralytics/yolov5</a></div>
 <div class="line"><a class="reference external" href="https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data">https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data</a></div>
@@ -427,18 +470,16 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../opencv/index.html" class="btn btn-neutral float-right" title="OpenCV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data_loader.html" class="btn btn-neutral float-right" title="Data Loader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Pytorch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="training_a_classifier.html" class="btn btn-neutral float-left" title="Training a Classifier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -447,11 +488,19 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, hyun.
+        
+        &copy; 版权所有 2020, hyun
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -463,38 +512,15 @@
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

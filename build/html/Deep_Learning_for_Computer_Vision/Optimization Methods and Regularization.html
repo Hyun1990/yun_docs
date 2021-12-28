@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>优化方法与正则化 &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="神经网络基础" href="Neural Network Fundamentals.html" />
+    <link rel="prev" title="参数化学习" href="Parameterized_learning.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Deep Learning for Computer Vision</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Image_Fundamentals.html">图像基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Image_classification.html">图像分类基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your_first_image_classifier.html">Your First Image Classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Parameterized_learning.html">参数化学习</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">优化方法与正则化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">梯度下降</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sgd">随机梯度下降(SGD)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">SGD的扩展</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">正则化</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Neural Network Fundamentals.html">神经网络基础</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Deep Learning for Computer Vision</a> &raquo;</li>
+        
+      <li>优化方法与正则化</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Deep_Learning_for_Computer_Vision/Optimization Methods and Regularization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>优化方法与正则化<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>梯度下降<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>通过迭代的过程逐步优化参数降低loss，以获取高分类精度。</p>
+<p>2维空间和3维空间的loss函数可用下图示意，实际情况下loss函数是多维的。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/loss.png"><img alt="../_images/loss.png" class="align-center" src="../_images/loss.png" style="width: 450px;" /></a>
+</div></blockquote>
+<p>如何找到loss最小的点？答案是使用梯度下降，计算各维度的梯度</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\frac{df(x)}{dx} = lim_{h \rightarrow 0} \frac{f(x + h) - f(x)}{h}\]</div>
+</div></blockquote>
+<p>当维度大于1的时候，梯度为偏导数向量。实际上，我们使用解析梯度来代替数值梯度。</p>
+<p><strong>伪代码</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">Wgradient</span> <span class="o">=</span> <span class="n">evaluate_gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+                <span class="n">W</span> <span class="o">+=</span> <span class="o">-</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">Wgradient</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>结束循环的条件：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>训练到指定的迭代次数</p></li>
+<li><p>loss降到足够低并且训练的准确率高</p></li>
+<li><p>loss在M个epoches后不再降低</p></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="sgd">
+<h2>随机梯度下降(SGD)<a class="headerlink" href="#sgd" title="永久链接至标题">¶</a></h2>
+<p>SGD通过学习小批量数据后更新权重，而不是经过一个epoch再更新权重。</p>
+<p><strong>Mini-batch SGD</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">batch</span> <span class="o">=</span> <span class="n">next_training_batch</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="n">Wgradient</span> <span class="n">evaluate_gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+        <span class="n">W</span> <span class="o">+=</span> <span class="o">-</span><span class="n">alpha</span> <span class="o">+</span> <span class="n">Wgradient</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>典型的 batch sizes 有32，64，128，256。</p>
+</div>
+<div class="section" id="id3">
+<h2>SGD的扩展<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p><strong>Momentum</strong></p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}W = W - \alpha \nabla_{W}f(W)\\
+W = W + V\end{split}\]</div>
+</div></blockquote>
+<p><strong>Nesterov's Acceleration</strong></p>
+</div>
+<div class="section" id="id4">
+<h2>正则化<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p><strong>目的</strong></p>
+<p>减小求出错误解的可能性，减小过拟合，提高泛化能力。</p>
+<p>在loss function 中加入正则项</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[L = \frac{1}{N} \sum_{i=1}^{N} L_{i} + \lambda R(W)\]</div>
+</div></blockquote>
+<p><strong>正则化类型</strong></p>
+<p>L2:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[R(W) = \sum_{i} \sum_{j} W_{i,j}^{2}\]</div>
+</div></blockquote>
+<p>L1:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[R(W) = \sum_{i} \sum_{j} \vert W_{i,j} \vert\]</div>
+</div></blockquote>
+<p>Elastic Net regularization:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[R(W) = \sum_{i} \sum_{j} \beta W_{i,j}^{2} + \vert W_{i,j} \vert\]</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Neural Network Fundamentals.html" class="btn btn-neutral float-right" title="神经网络基础" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Parameterized_learning.html" class="btn btn-neutral float-left" title="参数化学习" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

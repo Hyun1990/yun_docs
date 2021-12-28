@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>参数化学习 &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="优化方法与正则化" href="Optimization Methods and Regularization.html" />
+    <link rel="prev" title="Your First Image Classifier" href="Your_first_image_classifier.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Deep Learning for Computer Vision</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Image_Fundamentals.html">图像基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Image_classification.html">图像分类基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your_first_image_classifier.html">Your First Image Classifier</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">参数化学习</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">线性分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">损失函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">参数化学习和线性分类的优点</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Optimization Methods and Regularization.html">优化方法与正则化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Neural Network Fundamentals.html">神经网络基础</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Deep Learning for Computer Vision</a> &raquo;</li>
+        
+      <li>参数化学习</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Deep_Learning_for_Computer_Vision/Parameterized_learning.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>参数化学习<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>参数化简单来说就是对给定模型定义必要参数的过程。</p>
+<p>在机器学习中，参数化在定义问题的过程中主要涉及四个部分：data, a scoring function, a loss function, weights and bias。</p>
+<dl class="simple">
+<dt>Data</dt><dd><p>Data包含数据点及其对应的labels。通常我们使用多维矩阵来表示数据。其中矩阵的每一行代表一个 data point，每一列代表一个 different feature。</p>
+</dd>
+<dt>Scoring Function</dt><dd><p>f(scoring function)接受输入的数据并返回预测的类别标签。</p>
+</dd>
+<dt>Loss Function</dt><dd><p>损失函数评估预测标签和真实标签在多大程度上接近真实标签(ground-truth labels)。我们训练一个机器学习模型的目标是使损失函数最小化。</p>
+</dd>
+<dt>Weights and Biases</dt><dd><p>基于scoring function 和 loss function，调整权重和偏差的值，以提高分类精度。</p>
+</dd>
+</dl>
+<div class="section" id="id2">
+<h2>线性分类<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>以 Animals dataset 为例，由
+<span class="math notranslate nohighlight">\(K = 3\)</span> 个类别共
+<span class="math notranslate nohighlight">\(N = 3000\)</span> 张
+<span class="math notranslate nohighlight">\(32 \times 32\)</span> (3 通道)的图片组成，每张图片可表示为
+<span class="math notranslate nohighlight">\(D = 32 \times 32 \times 3 = 3072\)</span> 个不同的值，定义scoring function f:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[f(x_{i},W,b) = Wx_{i} + b\]</div>
+</div></blockquote>
+<p>其中，
+<span class="math notranslate nohighlight">\(x_{i}\)</span> 表示
+<span class="math notranslate nohighlight">\([D \times 1]\)</span> 的列向量(我们将展开成包含3072个整数的列表)，权重 W 为
+<span class="math notranslate nohighlight">\([K \times D]\)</span> 的矩阵，偏执 b 的大小为
+<span class="math notranslate nohighlight">\([K \times 1]\)</span> 。</p>
+<blockquote>
+<div><img alt="../_images/animals.png" class="align-center" src="../_images/animals.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;panda&quot;</span><span class="p">]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3072</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">orig</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;beagle.png&quot;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">orig</span><span class="p">,</span> <span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[INFO] {}: {:.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">score</span><span class="p">))</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">orig</span><span class="p">,</span> <span class="s2">&quot;Label: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">scores</span><span class="p">)]),(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="n">orig</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>损失函数<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>损失函数对输入数据分类的好坏进行量化。</p>
+<p><strong>hinge loss function</strong></p>
+<p>错误标签的平均差</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}s = f(x_{i}, W)\\
+s_{j} = f(x_{i}, W)_{j}\\
+L_{i} = \sum_{j \neq y_{i}}max(0, s_{j} - s_{y_{i}} + 1)\\
+L = \frac{1}{N}\sum_{i=1}^{N} L_{i}\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p><span class="math notranslate nohighlight">\(s_{j}\)</span> 代表第
+<span class="math notranslate nohighlight">\(i\)</span> 个输入数据的第
+<span class="math notranslate nohighlight">\(j\)</span> 个类别，
+<span class="math notranslate nohighlight">\(y_{i}\)</span> 代表正确的标签，当给定
+<span class="math notranslate nohighlight">\(x_{i}\)</span> 的分类结果
+<span class="math notranslate nohighlight">\(L_{i} = 0\)</span> 时，分类正确</p>
+</div>
+</div></blockquote>
+<p><strong>squared hinge loss</strong></p>
+<p>错误标签的均方差</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[L_{i} = \sum_{j \neq y_{i}}max(0, s_{j} - s_{y_{i}} + 1)^2\]</div>
+</div></blockquote>
+<p><strong>cross-entropy loss</strong></p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}f(x_{i}, W) = Wx_{i}\\
+L_{i} = -log(e^{s_{y_{i}}} / \sum_{j} e^{s_{j}})\\
+L = \frac{1}{N}\sum_{i=1}^{N} L_{i}\end{split}\]</div>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>参数化学习和线性分类的优点<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>训练完模型后，我们只需保留权重和偏置而无需考虑输入</p></li>
+<li><p>分类新的测试数据速度快</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Optimization Methods and Regularization.html" class="btn btn-neutral float-right" title="优化方法与正则化" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Your_first_image_classifier.html" class="btn btn-neutral float-left" title="Your First Image Classifier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

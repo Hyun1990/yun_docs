@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>NX源码编译Pytorch &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="PaddlePaddle" href="../paddlepaddle/index.html" />
+    <link rel="prev" title="Tensorboard可视化" href="tensorboard.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Pytorch</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what_is_pytorch.html">What is Pytorch?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_differentiation.html">Autogard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neural_network.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training_a_classifier.html">Training a Classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_yolov5.html">Pytorch_yolov5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_loader.html">Data Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Programming_Pytorch_for_DL.html">Programming Pytorch for DL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorboard.html">Tensorboard可视化</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NX源码编译Pytorch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nx">NX设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyenv">安装pyenv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pytorch">编译pytorch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#torchvision">编译torchvision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#yolov5">安装yolov5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">yolov5测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">问题汇总</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nni/index.html">NNI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nvidia/index.html">Nvidia</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Pytorch</a> &raquo;</li>
+        
+      <li>NX源码编译Pytorch</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/pytorch/build.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nxpytorch">
+<h1>NX源码编译Pytorch<a class="headerlink" href="#nxpytorch" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-8-0-now-available/72048">pytorch build form source</a></div>
+<div class="line"><a class="reference external" href="https://github.com/pytorch/pytorch">github pytorch</a></div>
+</div>
+</div>
+<div class="section" id="nx">
+<h2>NX设置<a class="headerlink" href="#nx" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">nvpmodel</span> <span class="pre">-m</span> <span class="pre">2</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">jetson_clocks</span></code></div>
+</div>
+</div>
+<div class="section" id="pyenv">
+<h2>安装pyenv<a class="headerlink" href="#pyenv" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">~/hyun/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/yyuu/pyenv.git</span> <span class="pre">~/.pyenv</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">echo</span> <span class="pre">'export</span> <span class="pre">PATH=~/.pyenv/bin:$PATH'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.bashrc</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">echo</span> <span class="pre">'export</span> <span class="pre">PYENV_ROOT=~/.pyenv'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.bashrc</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">echo</span> <span class="pre">'eval</span> <span class="pre">&quot;$(pyenv</span> <span class="pre">init</span> <span class="pre">-)&quot;'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.bashrc</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">~/.bashrc</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pyenv</span> <span class="pre">versions</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">/home/robot/.pyenv/cache</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">/home/robot/.pyenv/cache</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">wget</span> <span class="pre">https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tar.xz</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">libssl-dev</span> <span class="pre">libbz2-dev</span> <span class="pre">libreadline-dev</span> <span class="pre">libsqlite3-dev</span> <span class="pre">libffi-dev</span> <span class="pre">liblzma-dev</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pyenv</span> <span class="pre">install</span> <span class="pre">3.8.5</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">/home/robot/hyun/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3-pip</span> <span class="pre">libopenblas-base</span> <span class="pre">libopenmpi-dev</span> <span class="pre">libopenblas-dev</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">echo</span> <span class="pre">'export</span> <span class="pre">PYENV_ROOT=&quot;$HOME/.pyenv&quot;'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.profile</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">echo</span> <span class="pre">'export</span> <span class="pre">PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.profile</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">echo</span> <span class="pre">'eval</span> <span class="pre">&quot;$(pyenv</span> <span class="pre">init</span> <span class="pre">--path)&quot;'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.profile</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">~/.profile</span></code></div>
+</div>
+</div>
+<div class="section" id="pytorch">
+<h2>编译pytorch<a class="headerlink" href="#pytorch" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">~/hyun/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recursive</span> <span class="pre">-b</span> <span class="pre">v1.7.0</span> <span class="pre">https://github.com/pytorch/pytorch.git</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">pytorch</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">sync</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span> <span class="pre">--recursive</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pyenv</span> <span class="pre">shell</span> <span class="pre">3.8.5</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">patch</span> <span class="pre">-p1</span> <span class="pre">&lt;</span> <span class="pre">~/hyun/pytorch-1.7-jetpack-4.4.1.patch</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">USE_NCCL=0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">USE_DISTRIBUTED=0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">USE_QNNPACK=0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">USE_PYTORCH_QNNPACK=0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">TORCH_CUDA_ARCH_LIST=&quot;5.3;6.2;7.2&quot;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">PYTORCH_BUILD_VERSION=1.7.0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">PYTORCH_BUILD_NUMBER=1</span></code></div>
+<div class="line">(remember to re-export these environment variables if you change terminal)</div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3-pip</span> <span class="pre">cmake</span> <span class="pre">libopenblas-dev</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span> <span class="pre">-i</span> <span class="pre">https://pypi.tuna.tsinghua.edu.cn/simple</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">scikit-build</span> <span class="pre">-i</span> <span class="pre">https://pypi.tuna.tsinghua.edu.cn/simple</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">ninja</span> <span class="pre">-i</span> <span class="pre">https://pypi.tuna.tsinghua.edu.cn/simple</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code></div>
+<div class="line">编译时间较久，可能需要7个小时,编译生成的 whl 在 dist 目录下</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ls</span> <span class="pre">dist/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">torch-1.7.0-cp38-cp38-linux_aarch64.whl</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">dist/torch-1.7.0-cp38-cp38-linux_aarch64.whl</span></code></div>
+</div>
+</div>
+<div class="section" id="torchvision">
+<h2>编译torchvision<a class="headerlink" href="#torchvision" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line">版本需要与 torch 匹配，<a class="reference external" href="https://github.com/pytorch/vision">https://github.com/pytorch/vision</a> 有版本匹配列表</div>
+<div class="line">torch1.7.0 对应的 torchvision是0.8.1</div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">-b</span> <span class="pre">v0.8.1</span> <span class="pre">https://github.com/pytorch/vision.git</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">vision</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pyenv</span> <span class="pre">shell</span> <span class="pre">3.8.5</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">pillow</span> <span class="pre">-i</span> <span class="pre">https://pypi.tuna.tsinghua.edu.cn/simple</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">FORCE_CUDA=1</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">BUILD_VERSION=0.8.1</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code></div>
+<div class="line">编译会报错，参考文档 <a class="reference external" href="https://blog.csdn.net/weixin_41010198/article/details/109862917">https://blog.csdn.net/weixin_41010198/article/details/109862917</a></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ls</span> <span class="pre">dist/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">torchvision-0.8.1-cp38-cp38-linux_aarch64.whl</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">dist/torchvision-0.8.1-cp38-cp38-linux_aarch64.whl</span></code></div>
+<div class="line">（如果要卸载：pip3 uninstall torchvision)</div>
+</div>
+</div>
+<div class="section" id="yolov5">
+<h2>安装yolov5<a class="headerlink" href="#yolov5" title="永久链接至标题">¶</a></h2>
+<p><a class="reference external" href="https://github.com/ultralytics/yolov5/blob/master/requirements.txt">install requirements</a></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">~/hyun/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/ultralytics/yolov5.git</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pyenv</span> <span class="pre">shell</span> <span class="pre">3.8.5</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">matplotlib</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">opencv-python</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scipy</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tqdm</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyyaml</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tensorboard</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">seaborn</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">thop</span></code></div>
+<div class="line">(有部分库没装)</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>yolov5测试<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">yolov5</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">detect.py</span> <span class="pre">--source</span> <span class="pre">data/images</span> <span class="pre">--img-size</span> <span class="pre">1280</span> <span class="pre">--weights</span> <span class="pre">weights/last.pt</span> <span class="pre">--conf-thres</span> <span class="pre">0.1</span> <span class="pre">--iou-thres</span> <span class="pre">0.3</span></code></div>
+<div class="line">(注意：将detect.py中的check_requirements注释掉，否则会检查版本自动下载)</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>问题汇总<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><p>torch 的第三方模块下载不下来</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cloning</span> <span class="n">into</span> <span class="s1">&#39;/home/robot/hyun/pytorch/third_party/FXdiv&#39;</span><span class="o">...</span>
+<span class="n">fatal</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">access</span> <span class="s1">&#39;https://github.com/Maratyszcza/FXdiv.git/&#39;</span><span class="p">:</span> <span class="n">gnutls_handshake</span><span class="p">()</span> <span class="n">failed</span><span class="p">:</span> <span class="n">The</span> <span class="n">TLS</span> <span class="n">connection</span> <span class="n">was</span> <span class="n">non</span><span class="o">-</span><span class="n">properly</span> <span class="n">terminated</span><span class="o">.</span>
+<span class="n">fatal</span><span class="p">:</span> <span class="n">clone</span> <span class="n">of</span> <span class="s1">&#39;https://github.com/Maratyszcza/FXdiv.git&#39;</span> <span class="n">into</span> <span class="n">submodule</span> <span class="n">path</span> <span class="s1">&#39;/home/robot/hyun/pytorch/third_party/FXdiv&#39;</span> <span class="n">failed</span>
+<span class="n">Failed</span> <span class="n">to</span> <span class="n">clone</span> <span class="s1">&#39;third_party/FXdiv&#39;</span><span class="o">.</span> <span class="n">Retry</span> <span class="n">scheduled</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>解决</strong></div>
+<div class="line">在vpn电脑上把torch clone下来，scp到NX上</div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>模块找不到</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">NO</span> <span class="n">module</span> <span class="n">named</span> <span class="n">_lzma</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>解决</strong></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">liblzma-dev</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">backports.lzma</span></code></div>
+</div>
+<p>参考文档：<a class="reference external" href="https://github.com/ultralytics/yolov5/issues/1298">https://github.com/ultralytics/yolov5/issues/1298</a></p>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../paddlepaddle/index.html" class="btn btn-neutral float-right" title="PaddlePaddle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tensorboard.html" class="btn btn-neutral float-left" title="Tensorboard可视化" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

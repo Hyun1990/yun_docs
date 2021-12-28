@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Vim &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="Tools" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tools</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vim</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">新手指南</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">移动光标</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">退出</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">删除</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">修改</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">撤销</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">复制粘贴剪切</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">查找</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">替换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">折叠</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">执行外部命令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">字体</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">分屏</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">基本配置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">快捷键</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">界面美化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">代码分析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">代码开发</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">工程管理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">插件配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">常用插件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id24">NERDTree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gtags">Gtags</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">YouCompleteMe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">ctrlsf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">vim-multiple-cursors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">NERD Commenter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">UltiSnips</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">MiniBufExplorer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">参考文档</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tools</a> &raquo;</li>
+        
+      <li>Vim</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tools/vim.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vim">
+<h1>Vim<a class="headerlink" href="#vim" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>安装<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">vim</span> <span class="pre">//</span> <span class="pre">Ubuntu</span></code></p>
+</div>
+<div class="section" id="id2">
+<h2>新手指南<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">vimtutor</span> <span class="pre">//vim</span> <span class="pre">教程</span></code></p>
+<div class="section" id="id3">
+<h3>移动光标<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">hjkl</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">左下上右</span></code></div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">2w</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">移动到下两个单词词首</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">3e</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">移动到下3个单词的末尾</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">b</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">移动到上一个单词的词首</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ge</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">移动到上一个单词结尾</span></code></div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">0</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">移动到行首</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">移动到当前行的末尾</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">gg</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">文件第一行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">G</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">文件最后一行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">行号+G</span>&#160;&#160;&#160; <span class="pre">指定行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;ctrl&gt;+o</span>&#160; <span class="pre">跳转回之前的位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;ctrl&gt;+i</span>&#160; <span class="pre">返回跳转之前的位置</span></code></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>退出<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;esc&gt;</span>&#160;&#160;&#160;&#160; <span class="pre">进入命令行模式</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:q!</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">不保存退出</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:wq</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">保存后退出</span></code></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>删除<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">x</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除当前字符</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">dw</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除当前单词</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ndw</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除以当前单词开始的n个单词</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">d$</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除至当前行尾</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">d0</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除到行首</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">dd</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除整行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ndd</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除从当前行开始的n行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:10,20d</span>&#160;&#160; <span class="pre">删除10～20行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.,$d</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">删除当前行到末尾</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">d4</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除到第4个语句的结尾位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">db</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除到某个单词开始位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">dW</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除到以某个空格为分割符的单词结尾位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">dB</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除到以某个空格为分割符的单词开始位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">d}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除到某个段落结尾位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">d{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除到某个段落开始位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">d/text</span>&#160;&#160;&#160; <span class="pre">删除从文本中出现text中所指定字样的位置</span></code></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>修改<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">i</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">当前光标插入文本</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">I</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">在当前行开头处插入数据</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">a</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">光标后位置添加</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">A</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">当前行末尾添加</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">o</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">在当前行下面插入一行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">O</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">在当前行上面插入一行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">r+字符</span>&#160;&#160;&#160; <span class="pre">替换当前字符</span></code></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>撤销<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">u</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">撤销</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;ctrl&gt;+r</span>&#160; <span class="pre">取消撤销</span></code></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>复制粘贴剪切<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">v</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">进入可视模式</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">y</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">复制</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">p</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">粘贴</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">yy</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">复制当前行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">dd</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">剪切当前行</span></code></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>文件<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:e!</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">强制刷新该文件</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;ctrl&gt;+g</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">显示当前行及文件信息</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">vim</span> <span class="pre">f1</span> <span class="pre">f2</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">打开多个文件</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">切换到下一个文件</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:wn</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">保存再切换</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:N</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">切换到上一个文件</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:wN</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">保存再切换</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:.</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">查看当前行</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:n</span> <span class="pre">&lt;Enter&gt;</span> <span class="pre">:600,p</span> <span class="pre">到下一个文件，从600行开始粘贴</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">wq</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">保存退出</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:sp</span> <span class="pre">filename</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">在新的缓冲区打开一个文件并分割窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:nb</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">删除一个缓冲区</span></code></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>查找<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">/text</span>&#160;&#160;&#160;&#160; <span class="pre">正向查找(n:继续查找，N:向反方向继续查找)</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">?text</span>&#160;&#160;&#160;&#160; <span class="pre">逆向查找</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">%</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">查找配对的{,[,(</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:set</span> <span class="pre">ic</span>&#160;&#160; <span class="pre">忽略大小写</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:set</span> <span class="pre">noic</span> <span class="pre">取消忽略大小写</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:set</span> <span class="pre">hls</span>&#160; <span class="pre">匹配项高亮显示</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:set</span> <span class="pre">is</span>&#160;&#160; <span class="pre">显示部分匹配</span></code></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>替换<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:s/old/new</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">替换该行第一个匹配串</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:s/old/new/g</span>&#160;&#160;&#160;&#160; <span class="pre">替换全行的匹配串</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:%s/old/new/</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">替换每一行的第一个匹配串</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:%s/old/new/g</span>&#160;&#160;&#160;&#160; <span class="pre">替换整个文件的匹配串</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:n,$/old/new</span>&#160;&#160;&#160;&#160; <span class="pre">替换第n行到最后一行第一个匹配串</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:n,$/old/new/g</span>&#160;&#160; <span class="pre">替换第n行到最后一行所有匹配串</span></code></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>折叠<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">zc</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">折叠</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">zC</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">折叠所有嵌套</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">zo</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">展开折叠</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">zO</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">展开所有折叠嵌套</span></code></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>执行外部命令<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:!shell</span></code></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>字体<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;ctrl&gt;</span> <span class="pre">-</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">减小</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;ctrl&gt;</span> <span class="pre">shift</span> <span class="pre">+</span>&#160; <span class="pre">放大</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;ctrl&gt;</span> <span class="pre">0</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">还原</span></code></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>分屏<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w</span> <span class="pre">s</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">上下分割窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w</span> <span class="pre">v</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">左右分割窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w</span> <span class="pre">w</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">切换窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w</span> <span class="pre">q</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">退出窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w</span> <span class="pre">h/j/k/l</span>&#160;&#160;&#160; <span class="pre">移动光标</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w</span> <span class="pre">r</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">移动当前窗口的布局位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w</span> <span class="pre">H/J/K/L</span>&#160;&#160;&#160; <span class="pre">移动分屏</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl=w</span> <span class="pre">=/+/-</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">修改屏幕尺寸</span></code></div>
+</div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>基本配置<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<p>.vimrc 是 Vim的配置文件，分为全局配置文件和用户配置文件，建议修改只修改用户的配置文件</p>
+<p>全局配置文件在/etc/vim/vimrc
+用户配置文件在/home/hyun/.vimrc 中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot; 开启文件类型侦测
+filetype on
+&quot; 根据侦测到的不同类型加载对应的插件
+filetype plugin on
+&quot; 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+&quot; 自身命令行模式智能补全
+</pre></div>
+</div>
+<div class="section" id="id17">
+<h3>快捷键<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>把vim(非插件)常用操作设定成快捷键，提升效率</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot; 定义快捷键的前缀
+let mapleader=&quot;;&quot;
+&quot; 定义快捷键关闭当前分割窗口
+nmap &lt;leader&gt;q :q&lt;CR&gt;
+&quot; 定义快捷键保存当前窗口内容
+nmap &lt;leader&gt;w :w&lt;CR&gt;
+&quot; 定义快捷键保存所有窗口内容并退出vim
+nmap &lt;leader&gt;WQ :wa&lt;CR&gt;:q&lt;CR&gt;
+&quot; 不做任何保存，直接退出vim
+nmap &lt;leader&gt;Q :qa!&lt;CR&gt;
+&quot; 依次遍历子窗口
+nnoremap nw &lt;C-W&gt;&lt;C-W&gt;
+&quot; 跳转至右方窗口
+nnoremap &lt;leader&gt;lw &lt;C-W&gt;l
+&quot; 跳转至左方窗口
+nnoremap &lt;leader&gt;hw &lt;C-W&gt;h
+&quot; 跳转至上方的子窗口
+nnoremap &lt;leader&gt;kw &lt;C-W&gt;k
+&quot; 跳转至下方的子窗口
+nnoremap &lt;leader&gt;jw &lt;C-W&gt;j
+&quot; 定义快捷键在结对符之间跳转
+nmap &lt;leader&gt;M %
+</pre></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>界面美化<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<p><strong>主题</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:echo</span> <span class="pre">$VIMRUNTIME</span></code> 查看vim运行目录</p></li>
+<li><p>cd 到运行目录，查看colors文件夹下以.vim结尾的文件</p></li>
+<li><p>打开~/.vimrc，在其中加入 <code class="docutils literal notranslate"><span class="pre">colorscheme</span> <span class="pre">主题名</span></code>，保存更改即可</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">syntax</span> <span class="n">enable</span>
+<span class="nb">set</span> <span class="n">background</span><span class="o">=</span><span class="n">dark</span>
+<span class="n">colorscheme</span> <span class="n">solarized</span>
+</pre></div>
+</div>
+<p><em>常用命令</em></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:colorscheme</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">查看当前主题</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:colorscheme</span> <span class="pre">space</span> <span class="pre">tab</span>&#160;&#160;&#160;&#160; <span class="pre">列出所有主题</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:colorscheme</span> <span class="pre">your-theme</span>&#160;&#160;&#160; <span class="pre">切换主题</span></code></div>
+</div>
+<p><strong>添加辅助信息</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot; 总是显示状态栏</span>
+<span class="nb">set</span> <span class="n">laststatus</span><span class="o">=</span><span class="mi">2</span>
+<span class="s2">&quot; 显示当前光标位置</span>
+<span class="nb">set</span> <span class="n">ruler</span>
+<span class="s2">&quot; 开启行号显示</span>
+<span class="nb">set</span> <span class="n">number</span>
+<span class="s2">&quot; 高亮显示当前行/列</span>
+<span class="nb">set</span> <span class="n">cursorline</span>
+<span class="nb">set</span> <span class="n">cursorcolumn</span>
+<span class="s2">&quot; 高亮显示搜索结果</span>
+<span class="nb">set</span> <span class="n">hlsearch</span>
+<span class="s2">&quot; 左下角显示当前vim模式</span>
+<span class="nb">set</span> <span class="n">showmode</span>
+</pre></div>
+</div>
+<p><strong>其他</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot; 设置gvim显示字体(提前安装)</span>
+<span class="nb">set</span> <span class="n">guifont</span><span class="o">=</span><span class="n">YaHei</span>\ <span class="n">Consolas</span>\ <span class="n">Hybrid</span>\ <span class="mf">11.5</span>   <span class="c1">#&quot;\&quot;为转义</span>
+<span class="s2">&quot; 禁止折行</span>
+<span class="nb">set</span> <span class="n">nowrap</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>代码分析<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<p><strong>语法高亮</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot; 开启语法高亮功能</span>
+<span class="n">syntax</span> <span class="n">enable</span>
+<span class="s2">&quot; 允许用指定语法高亮配色方案替代默认方案</span>
+<span class="n">syntax</span> <span class="n">on</span>
+</pre></div>
+</div>
+<p><strong>代码缩进</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot; 自适应不同语言的智能缩进</span>
+<span class="n">filetype</span> <span class="n">indent</span> <span class="n">on</span>
+<span class="s2">&quot; 将制表符扩展为空格</span>
+<span class="nb">set</span> <span class="n">expandtab</span>
+<span class="s2">&quot; 设置格式化时制表符占用空格数</span>
+<span class="nb">set</span> <span class="n">shiftwidth</span><span class="o">=</span><span class="mi">4</span>
+<span class="s2">&quot; 让vim把连续数量的空格视为一个制表符</span>
+<span class="nb">set</span> <span class="n">softtabstop</span><span class="o">=</span><span class="mi">4</span>
+<span class="s2">&quot; 设置编辑时制表符占用空格数</span>
+<span class="s2">&quot; set tabstop=4</span>
+<span class="s2">&quot; 启用cindent缩进结构</span>
+<span class="nb">set</span> <span class="n">cindent</span>
+</pre></div>
+</div>
+<p><strong>代码折叠</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot; 启动vim时关闭代码折叠</span>
+<span class="nb">set</span> <span class="n">nofoldenable</span>
+<span class="s2">&quot; 基于缩进或语法进行代码折叠</span>
+<span class="nb">set</span> <span class="n">foldmethod</span><span class="o">=</span><span class="n">indent</span>
+<span class="s2">&quot; set foldmethod=syntax</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">za</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">打开或关闭当前折叠</span></code>
+<code class="docutils literal notranslate"><span class="pre">zM</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">关闭所有折叠</span></code>
+<code class="docutils literal notranslate"><span class="pre">zR</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">打开所有折叠</span></code></p>
+<p><strong>代码收藏</strong></p>
+<p>vim的书签分为两类，文件书签和全局书签。</p>
+<p>文件书签是标记文件中的不同位置，可以在文件内快速跳转到想要的位置
+全局书签是标记不同文件中的位置，可以在不同文件中快速跳转</p>
+<p>可以选用可视化书签插件 <a class="reference external" href="https://github.com/kshenoy/vim-signature">vim-signature</a>
+打开vim，<code class="docutils literal notranslate"><span class="pre">:echo</span> <span class="pre">has('signs')</span></code>，查看是否可以可视化书签</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">m(a-zA-Z)</span>&#160; <span class="pre">创建一个书签a，大写字母是全局书签</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">`a</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">跳转到书签a的精确位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">'a</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">跳转到书签a所在行的起始位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:marks</span>&#160;&#160;&#160;&#160; <span class="pre">显示所有书签</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:marks</span> <span class="pre">a</span>&#160;&#160; <span class="pre">显示名称为a书签的详细信息</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">`.</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">跳转到最后一次执行改变的精确位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">'.</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">跳转到最后一次执行改变的行起始位置</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:delm</span> <span class="pre">a</span>&#160;&#160;&#160; <span class="pre">删除标签a</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:delm!</span>&#160;&#160;&#160;&#160; <span class="pre">删除全部标签</span></code></div>
+</div>
+<p><strong>标识符列表</strong></p>
+<p>插件 <a class="reference internal" href="#gtags">Gtags</a></p>
+<p><strong>函数跳转</strong></p>
+<p>插件 <a class="reference external" href="https://github.com/ycm-core/YouCompleteMe">YouCompleteMe</a></p>
+<p><strong>内容查找</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">ic</span>
+<span class="nb">set</span> <span class="n">hls</span>
+<span class="nb">set</span> <span class="ow">is</span>
+</pre></div>
+</div>
+<p>插件 <a class="reference external" href="https://github.com/dyng/ctrlsf.vim">ctrlsf</a></p>
+<p><strong>内容替换</strong></p>
+<p>插件 <a class="reference external" href="https://github.com/terryma/vim-multiple-cursors">vim-multiple-cursors</a></p>
+<p><strong>取消备份</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">nobackup</span>
+<span class="nb">set</span> <span class="n">noswapfile</span>
+</pre></div>
+</div>
+<p><strong>文件编码</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">encoding</span><span class="o">=</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id20">
+<h3>代码开发<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<p><strong>快速开关注释</strong></p>
+<p>插件 <a class="reference external" href="https://github.com/preservim/nerdcommenter">NERD Commenter</a></p>
+<p><strong>模板补全</strong></p>
+<p>插件 <a class="reference external" href="https://github.com/SirVer/ultisnips">UltiSnips</a></p>
+<p><strong>智能补全</strong></p>
+<p>插件 <a class="reference external" href="https://github.com/ycm-core/YouCompleteMe">YouCompleteMe</a></p>
+<p><strong>由接口快速生成实现框架</strong></p>
+<p><strong>库信息参考</strong></p>
+</div>
+<div class="section" id="id21">
+<h3>工程管理<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<p><strong>工程文件浏览</strong></p>
+<p>插件 <a class="reference external" href="https://github.com/preservim/nerdtree">NERDTree</a></p>
+<p><strong>多文档编辑</strong></p>
+<p>vim 的多文档编辑涉及三个概念：buffer、window、tab，这三个事物与我们常规理解意义大相径庭。vim 把加载进内存的文件叫做 buffer，buffer 不一定可见；若要 buffer 要可见，则必须通过 window 作为载体呈现；同个看面上的多个 window 组合成一个 tab。一句话，vim 的 buffer、window、tab 你可以对应理解成视角、布局、工作区。</p>
+<p>插件 <a class="reference external" href="https://github.com/fholgado/minibufexpl.vim">MiniBufExplorer</a></p>
+<p><strong>环境恢复</strong></p>
+</div>
+</div>
+<div class="section" id="id22">
+<h2>插件配置<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
+<p><strong>使用vim-plug 管理插件</strong></p>
+<ol class="arabic simple">
+<li><p>安装vim-plug插件管理器(下载对应的plug.vim到autoload目录即可)</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/.</span><span class="n">vim</span><span class="o">/</span><span class="n">autoload</span><span class="o">/</span>
+<span class="n">cd</span> <span class="o">~/.</span><span class="n">vim</span><span class="o">/</span><span class="n">autoload</span><span class="o">/</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">junegunn</span><span class="o">/</span><span class="n">vim</span><span class="o">-</span><span class="n">plug</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">plug</span><span class="o">.</span><span class="n">vim</span>
+</pre></div>
+</div>
+<p>或者使用curl工具来简化下载过程</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">fLo</span> <span class="o">~/.</span><span class="n">vim</span><span class="o">/</span><span class="n">autoload</span><span class="o">/</span><span class="n">plug</span><span class="o">.</span><span class="n">vim</span> <span class="o">--</span><span class="n">create</span><span class="o">-</span><span class="n">dirs</span> \
+        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">junegunn</span><span class="o">/</span><span class="n">vim</span><span class="o">-</span><span class="n">plug</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">plug</span><span class="o">.</span><span class="n">vim</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>vim-plug配置</p></li>
+</ol>
+<blockquote>
+<div><p>只需在~/.vimrc增加以下配置段即可(“#”为注释，不需要写)</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 显式指定vim插件存放的位置</span>
+<span class="n">call</span> <span class="n">plug</span><span class="c1">#begin(&#39;~/.vim/plugged&#39;)</span>
+<span class="c1"># 使用缩写指定了插件在github的地址(https://github.com/junegunn/vim-easy-align)</span>
+<span class="n">Plug</span> <span class="s1">&#39;junegunn/vim-easy-align&#39;</span>
+<span class="c1"># 使用完整的URL指定插件在github的位置</span>
+<span class="n">Plug</span> <span class="s1">&#39;https://github.com/junegunn/vim-github-dashboard.git&#39;</span>
+<span class="c1"># 将两个插件写在同一行中</span>
+<span class="n">Plug</span> <span class="s1">&#39;SirVer/ultisnips&#39;</span> <span class="o">|</span> <span class="n">Plug</span> <span class="s1">&#39;honza/vim-snippets&#39;</span>
+<span class="c1"># 使用**按需加载**，表明只用在NERTreeToggle命令被调用时，对应插件才会被加载</span>
+<span class="n">Plug</span> <span class="s1">&#39;scrooloose/nerdtree&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;on&#39;</span><span class="p">:</span> <span class="s1">&#39;NERDTreeToggle&#39;</span><span class="p">}</span>
+<span class="c1"># 使用按需加载，表明只有编辑clojure类型的文件时该插件才会被打开</span>
+<span class="n">Plug</span> <span class="s1">&#39;tpope/vim-fireplace&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;for&#39;</span><span class="p">:</span> <span class="s1">&#39;clojure&#39;</span><span class="p">}</span>
+<span class="c1"># 显示指定使用YCM-Generator插件的stable分支</span>
+<span class="n">Plug</span> <span class="s1">&#39;rdnetto/YCM-Generator&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;branch&#39;</span><span class="p">:</span> <span class="s1">&#39;stable&#39;</span><span class="p">}</span>
+<span class="c1"># 指定插件所用的git标签，rtp描述了包含vim插件的子目录</span>
+<span class="n">Plug</span> <span class="s1">&#39;nsf/gocode&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;tag&#39;</span><span class="p">:</span> <span class="s1">&#39;v.20150303&#39;</span><span class="p">,</span> <span class="s1">&#39;rtp&#39;</span><span class="p">:</span> <span class="s1">&#39;vim&#39;</span><span class="p">}</span>
+<span class="c1"># 用dir单独指定该插件存放目录，do用于Post-update hook，指定在安装或更新完插件后所需要执行的额外操作</span>
+<span class="n">Plug</span> <span class="s1">&#39;junegunn/fzf&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;dir&#39;</span><span class="p">:</span> <span class="s1">&#39;~/.fzf&#39;</span><span class="p">,</span> <span class="s1">&#39;do&#39;</span><span class="p">:</span> <span class="s1">&#39;./install --all&#39;</span><span class="p">}</span>
+<span class="c1"># 表示不用github托管本地的vim插件</span>
+<span class="n">Plug</span> <span class="s1">&#39;~/my-protptype-plugin&#39;</span>
+<span class="c1"># 用于标识vim-plug配置的结束</span>
+<span class="n">call</span> <span class="n">plug</span><span class="c1">#end()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>使用vim-plug安装vim插件(需要先在.vimrc中配置才能安装)</p></li>
+</ol>
+<blockquote>
+<div><p>在 ~/.vim 目录下创建一个plugged文件夹，插件装在该目录下</p>
+<p>配置完.vimrc，重启vim，在vim命令行模式下，使用命令 <code class="docutils literal notranslate"><span class="pre">:PlugInstall</span></code>
+可安装vim配置文件中所有配置的vim插件，也可使用 <code class="docutils literal notranslate"><span class="pre">:PlugInstall</span> <span class="pre">[name</span> <span class="pre">...]</span></code>
+来指定安装某一个或某几个vim插件</p>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>查看插件帮助文档</p></li>
+</ol>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">:help</span> <span class="pre">NERDTree</span></code> 查看NERDTree插件帮助文档</p>
+</div></blockquote>
+</div>
+<div class="section" id="id23">
+<h2>常用插件<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id24">
+<h3><a class="reference external" href="https://github.com/preservim/nerdtree">NERDTree</a><a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<p><strong>.vimrc 配置</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[hyun@hyun-ThinkPad-T430s:]$vim ~/.vimrc
+
+&quot; NERDTree相关设置
+&quot; 启动vim时自动打开NERDTree
+autocmd VimEnter * NERDTree
+&quot; 启动vim时自动打开NERDTree，vim没有文件时，自动退出NERDTree
+&quot; autocmd bufenter * if (winnr(&quot;$&quot;) == 1 &amp;&amp; exists(&quot;b:NERDTreeType&quot;) &amp;&amp;b:NERDTreeType == &quot;primary&quot;) | q | endif
+&quot; 设置&lt;F5&gt;显示隐藏NERDTree
+map &lt;F5&gt; :NERDTreeMirror&lt;CR&gt;
+map &lt;F5&gt; :NERDTreeToggle&lt;CR&gt;
+&quot; 设置NERDTree放置在编辑区域，1右边，0左边
+let NERDTreeShowHidden=0
+&quot; 设置NERDTree的宽度，默认为30
+let NERDTreeWinPos=40
+&quot; 光标自动显示在编辑区
+autocmd VimEnter * wincmd w
+&quot; 显示隐藏文件
+&quot; let NERDTreeShowHidden=1
+&quot; 当打开NERDTree窗口时，自动显示Bookmarks
+&quot; let NERDTreeShowBookmarks=1
+</pre></div>
+</div>
+<p><strong>切换工作台</strong></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w+h</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">光标focus左侧树形目录</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w+l</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">光标focus右侧文件显示窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w+w</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">光标自动在窗口之间切换</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ctrl+w+r</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">移动当前窗口的布局位置</span></code></div>
+</div>
+<p><strong>切换目录</strong></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">o</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">在已有的窗口中打开文件/目录/书签，并跳到该窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">go</span>&#160;&#160;&#160;&#160; <span class="pre">在已有的窗口中打开文件/目录/书签，光标保持在树形目录</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">t</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">在新Tab中打开选中文件/书签，并跳到新Tab</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">T</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">在新Tab中打开选中文件/书签，但不跳到新Tab</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">i</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">split</span> <span class="pre">一个新窗口中打开选中文件，并跳到该窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">gi</span>&#160;&#160;&#160;&#160; <span class="pre">split</span> <span class="pre">一个新窗口中打开选中文件，但不跳到该窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">s</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">vsplit</span> <span class="pre">一个新窗口中打开选中文件，并跳到该窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">gs</span>&#160;&#160;&#160;&#160; <span class="pre">vsplit</span> <span class="pre">一个新窗口中打开选中文件，但不跳到该窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">执行当前文件</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">o</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">递归打开选中结点下的所有目录</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">O</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">递归打开选中结点下的所有目录</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">x</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">合拢选中结点的父目录</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">X</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">递归合拢选中结点下的所有目录</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">e</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">edit</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">dif</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">双击</span>&#160;&#160; <span class="pre">相当于NERDTree-o</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">中键</span>&#160;&#160; <span class="pre">对文件相当于NERDTree-i,对目录相当于NERDTree-e</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">D</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">删除当前书签</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">P</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">跳到根结点</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">p</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">跳到父结点</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">K</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">跳到当前目录下同级的第一个结点</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">J</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">跳到当前目录下同级的最后一个结点</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">k</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">跳到当前目录下同级的前一个结点</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">j</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">跳到当前目录下同级的后一个结点</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">C</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">将选中目录或选中文件的父目录设为根结点</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">u</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">将当前根结点的父目录设置为根目录，并变成合拢原根结点</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">U</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">将当前根结点的父目录设置为根目录，并保持展开原根结点</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">r</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">递归刷新选中目录</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">R</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">递归刷新根结点</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">m</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">显示文件系统菜单</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cd</span>&#160;&#160;&#160;&#160; <span class="pre">将CWD设为选中目录</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">I</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">切换是否显示隐藏文件</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">f</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">切换是否使用文件过滤器</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">F</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">切换是否显示文件</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">B</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">切换是否显示书签</span></code></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">q</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">关闭NERDTree窗口</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">?</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">切换是否显示Quick</span> <span class="pre">Help</span></code></div>
+</div>
+<p><strong>切换标签页</strong></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:tabnew</span> <span class="pre">[++option选项]</span> <span class="pre">[+cmd]</span> <span class="pre">文件</span>&#160;&#160;&#160; <span class="pre">建立对指定文件新的</span> <span class="pre">tab</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:tabc</span>&#160;&#160; <span class="pre">关闭当前</span> <span class="pre">tab</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:tabo</span>&#160;&#160; <span class="pre">关闭所有其他</span> <span class="pre">tab</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:tabs</span>&#160;&#160; <span class="pre">查看所有打开的</span> <span class="pre">tab</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:tabp</span>&#160;&#160; <span class="pre">前一个</span> <span class="pre">tab</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">:tabn</span>&#160;&#160; <span class="pre">后一个</span> <span class="pre">tab</span></code></div>
+</div>
+<p>标准模式下</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">gT</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">前一个</span> <span class="pre">tab</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">gt</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">后一个</span> <span class="pre">tab</span></code></div>
+</div>
+</div>
+<div class="section" id="gtags">
+<h3>Gtags<a class="headerlink" href="#gtags" title="永久链接至标题">¶</a></h3>
+<p><strong>安装</strong></p>
+<p><a class="reference external" href="http://mirror.hust.edu.cn/gnu/global/">http://mirror.hust.edu.cn/gnu/global/</a> 中下载最新的压缩包并解压</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">global-6.6</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">./configure</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">make</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">make</span> <span class="pre">install</span></code></div>
+</div>
+<p><a class="reference external" href="https://www.gnu.org/software/global/">使用vim-plug插件安装Gtags</a></p>
+<ol class="arabic simple">
+<li><p>在代码根目录下执行 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">gtags</span></code></p></li>
+<li><p>打开vim，查询 <code class="docutils literal notranslate"><span class="pre">:Gtags</span> <span class="pre">func</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="id25">
+<h3><a class="reference external" href="https://github.com/ycm-core/YouCompleteMe">YouCompleteMe</a><a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<p>增加以下快捷键到.vimrc</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nnoremap</span> <span class="o">&lt;</span><span class="n">leader</span><span class="o">&gt;</span><span class="n">jc</span> <span class="p">:</span><span class="n">YcmCompleter</span> <span class="n">GoToDeclaration</span><span class="o">&lt;</span><span class="n">CR</span><span class="o">&gt;</span>
+<span class="s2">&quot; 只能是 #include 或已打开的文件</span>
+<span class="n">nnoremap</span> <span class="o">&lt;</span><span class="n">leader</span><span class="o">&gt;</span><span class="n">jd</span> <span class="p">:</span><span class="n">YcmCompleter</span> <span class="n">GoToDefinition</span><span class="o">&lt;</span><span class="n">CR</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h3><a class="reference external" href="https://github.com/dyng/ctrlsf.vim">ctrlsf</a><a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<p><strong>安装</strong></p>
+<p>确保安装了ack</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">ack-grep</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$ack</span> <span class="pre">hello</span> <span class="pre">#</span> <span class="pre">查找hello</span></code></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Plug</span> <span class="s1">&#39;dyng/ctrlsf.vim&#39;</span>
+
+<span class="s2">&quot; 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键</span>
+<span class="n">nnoremap</span> <span class="o">&lt;</span><span class="n">Leader</span><span class="o">&gt;</span><span class="n">sp</span> <span class="p">:</span><span class="n">CtrlSF</span><span class="o">&lt;</span><span class="n">CR</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id27">
+<h3><a class="reference external" href="https://github.com/terryma/vim-multiple-cursors">vim-multiple-cursors</a><a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id28">
+<h3><a class="reference external" href="https://github.com/preservim/nerdcommenter">NERD Commenter</a><a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<p><strong>安装</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Plug</span> <span class="s1">&#39;preservim/nerdcommenter&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">:help</span> <span class="pre">nerdcommenter</span></code></p>
+<p><strong>配置</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot; 注释后自动加空格</span>
+<span class="n">let</span> <span class="n">g</span><span class="p">:</span><span class="n">NERDSpaceDelims</span><span class="o">=</span><span class="mi">1</span>
+<span class="s2">&quot; 使用简洁的语法来修饰多行注释</span>
+<span class="n">let</span> <span class="n">g</span><span class="p">:</span><span class="n">NERDCompactSexyComs</span><span class="o">=</span><span class="mi">1</span>
+<span class="s2">&quot; 按行注释分割符左对齐，而不是跟随代码缩进</span>
+<span class="n">let</span> <span class="n">g</span><span class="p">:</span><span class="n">NERDDefaultAlign</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span>
+<span class="s2">&quot; 添加自定义格式覆盖默认值</span>
+<span class="n">let</span> <span class="n">g</span><span class="p">:</span><span class="n">NERDCustomDelimiters</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span> <span class="s1">&#39;/**&#39;</span><span class="p">,</span><span class="s1">&#39;right&#39;</span><span class="p">:</span> <span class="s1">&#39;*/&#39;</span> <span class="p">}</span> <span class="p">}</span>
+<span class="s2">&quot; 允许注释并反转空行</span>
+<span class="n">let</span> <span class="n">g</span><span class="p">:</span><span class="n">NERDTrimTrailingWhitespace</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="s2">&quot; 启用NerdCommentToggle以检查所有选定的行是否有注释</span>
+<span class="n">let</span> <span class="n">g</span><span class="p">:</span><span class="n">NERDToggleCheckAllLines</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>默认快捷键(无需配置)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot; 注释</span>
+<span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="o">&lt;</span><span class="n">leader</span><span class="o">&gt;</span><span class="n">cc</span> <span class="o">|</span><span class="n">NERDCommenterComment</span><span class="o">|</span>
+<span class="s2">&quot; 取消注释</span>
+<span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="o">&lt;</span><span class="n">leader</span><span class="o">&gt;</span><span class="n">cu</span> <span class="o">|</span><span class="n">NERDCommenterUncomment</span><span class="o">|</span>
+<span class="s2">&quot; 切换所选行的注释状态</span>
+<span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="o">&lt;</span><span class="n">leader</span><span class="o">&gt;</span><span class="n">c</span><span class="o">&lt;</span><span class="n">space</span><span class="o">&gt;</span> <span class="o">|</span><span class="n">NERDCommenterToggle</span><span class="o">|</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id29">
+<h3><a class="reference external" href="https://github.com/SirVer/ultisnips">UltiSnips</a><a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id30">
+<h3><a class="reference external" href="https://github.com/fholgado/minibufexpl.vim">MiniBufExplorer</a><a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id31">
+<h2>参考文档<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://www.bookstack.cn/read/use_vim_as_ide/README.md">像IDE一样使用Vim</a></div>
+<div class="line"><a class="reference external" href="https://blog.csdn.net/amoscykl/article/details/80616688?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight">Vim的终极配置方案，完美的写代码界面!</a></div>
+<div class="line"><a class="reference external" href="https://segmentfault.com/a/1190000011466454">如何让 vim 成为我们的神器</a></div>
+<div class="line"><a class="reference external" href="https://vimjc.com/vim-plug.html">vim-plug介绍</a></div>
+<div class="line"><a class="reference external" href="https://xenojoshua.com/2011/04/vim-nerdtree-chinese-manual/">vim之NERDTree</a></div>
+<div class="line"><a class="reference external" href="https://slowstarter80.github.io/vim/vim_settings/">Settings for analyzing code using gnu global in vim</a></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

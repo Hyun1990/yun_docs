@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>yolo_v3 &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="yolo_v4" href="yolov4.html" />
+    <link rel="prev" title="yolo_v2" href="yolov2.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Network</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../CV方向综述.html">CV方向综述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lenet.html">LeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fpn.html">FPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../res.html">ResNet</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">YOLO</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="yolov1.html">yolo_v1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yolov2.html">yolo_v2</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">yolo_v3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">网络结构图</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">配置文件解析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backbone">Backbone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output">Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#training">Training</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="yolov4.html">yolo_v4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yolov5.html">yolo_v5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yolov3_cfg.html">yolov3.cfg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yolov5s_yaml.html">yolov5s.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="one-stage_detector.html">one-stage detector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Network</a> &raquo;</li>
+        
+          <li><a href="index.html">YOLO</a> &raquo;</li>
+        
+      <li>yolo_v3</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/network/YOLO/yolov3.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="yolo-v3">
+<h1>yolo_v3<a class="headerlink" href="#yolo-v3" title="永久链接至标题">¶</a></h1>
+<p>论文地址 <a class="reference external" href="https://pjreddie.com/media/files/papers/YOLOv3.pdf">YOLOv3: An Incremental Improvement</a></p>
+<div class="section" id="id1">
+<h2>网络结构图<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><img alt="../../_images/net.jpeg" src="../../_images/net.jpeg" />
+<img alt="../../_images/v3_net.jpg" src="../../_images/v3_net.jpg" />
+</div></blockquote>
+<p>上面三个方框内表示 <strong>yolov3的三个基本组件</strong> ：</p>
+<ul class="simple">
+<li><p>CBL：Yolov3网络结构中的最小组件，由Conv+Bn+Leaky_relu激活函数三者组成</p></li>
+<li><p>Res unit：借鉴Resnet网络中的残差结构，让网络可以构建的更深</p></li>
+<li><p>ResX：由一个CBL和X个残差组件构成，是Yolov3中的大组件。每个Res模块前面的CBL都起到下采样的作用(对照cfg文件)，
+因此经过5次Res模块后，得到的特征图是608-&gt;304-&gt;152-&gt;76-&gt;38-&gt;19大小</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>整个YOLOv3结构中是没有池化层和全连接层的。前向传播中，张量尺寸变换是通过改变卷积核的步长来实现的。YOLOv2和YOLOv3一样，backbone都会将输出特征图缩小到输入的1/32，所以，通常要求输入图片是32的倍数。</p></li>
+<li><p>YOLOv3借鉴了金字塔特征(FPN)思想，小尺寸特征图用于检测大尺寸物体，大尺寸特征图检测小尺寸物体。</p></li>
+<li><p>YOLOv3总共输出3个特征图，第一个特征图下采样32倍，第二个特征图下采样16倍，第三个下采样8倍。输入图像经过DarkNet-53(无全连接层)，再经过Yoloblock生成的特征图被当作两用，第一用为经过3*3卷积层、1*1卷积之后生成特征图一，第二用为经过1*1卷积层加上采样层，与DarkNet-53网络的中间层输出结果进行拼接，产生特征图二。同样的循环之后产生特征图三。</p></li>
+<li><p>concat操作：源于DenseNet网络的设计思路，将特征图按照通道维度直接进行拼接，例如8*8*16的特征图与8*8*16的特征图拼接后生成8*8*32的特征图。Concat和cfg文件中的route功能一样。</p></li>
+<li><p>add操作：张量相加，不会扩充维度，如104*104*128和104*104*128相加，结果还是104*104*128。add和cfg文件中的shortcut功能一样。</p></li>
+<li><p>上采样层(upsample)：作用是将小尺寸特征图通过插值等方法，生成大尺寸图像。例如使用最邻近插值算法，将8*8的图像变换为16*16。上采样层不改变特征图的通道数。</p></li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>配置文件解析<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>参考文档 <a class="reference internal" href="yolov3_cfg.html"><span class="doc">yolov3.cfg</span></a></p>
+</div>
+<div class="section" id="backbone">
+<h2>Backbone<a class="headerlink" href="#backbone" title="永久链接至标题">¶</a></h2>
+<p><strong>Backbone中卷积层的数量</strong></p>
+<p>每个ResX中包含1+2*X个卷积层，因此整个骨干网络Backbone中一共包含1+(1+2*1)+(1+2*2)+(1+2*8)+(1+2*8)+(1+2*4) = 52，
+再加上一个FC全连接层，即可以组成一个Darknet53分类网络。不过在目标检测Yolov3中，去掉了FC层，为了方便称呼，仍然把Yolov3的主干网络叫做Darknet53结构。</p>
+<p>YOLOv3 采用 Darknet-53 来进行特征提取。</p>
+<blockquote>
+<div><img alt="../../_images/darknet-53.png" class="align-center" src="../../_images/darknet-53.png" />
+</div></blockquote>
+<p>整个v3 backbone里是没有池化层和全连接层的。前向传播过程中，张量尺寸变换是通过改变卷积核的步长来实现的，比如stride=(2,2),等于将图像边长缩小2，
+yolov3和yolov2一样，backbone都会将输出特征图缩小到输入的1/32(但yoloV2是通过最大池化来进行的)，所以通常要求输入图片是32的倍数。</p>
+<blockquote>
+<div><img alt="../../_images/backbone.jpeg" class="align-center" src="../../_images/backbone.jpeg" />
+</div></blockquote>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>YOLOv3是在(13*13,26*26,52*52)三个不同尺度的特征图上进行预测的，一个特征图上每个grid cell预测3个bounding box，每个box有(x,y,w,h,confidence)和每个类别概率预测值。假设特征图的大小为N，对于COCO数据集，则每个特征图的输出张量为
+<span class="math notranslate nohighlight">\(N \times N \times [4 + 1 + 80]\)</span> 。</p>
+</div></blockquote>
+<p><strong>Anchor box (bounding box prior)</strong></p>
+<blockquote>
+<div><p>YOLOv1中，网络直接检测框的宽、高。YOLOv2中改为基于先验框的变化值，对于预测对象的尺度进行了约束，降低网络学习难度。YOLOv3为每种FPN预测特征图设定3种 anchor box，共聚类出9种尺寸的anchor box。</p>
+<p>分配上，在最小的13*13特征图上由于其感受野最大故应用最大的anchor box (116x90)，(156x198)，(373x326)，（这几个坐标是针对416*416下的，当然要除以32把尺度缩放到13*13下），适合检测较大的目标。中等的26*26特征图上由于其具有中等感受野故应用中等的anchor box (30x61)，(62x45)，(59x119)，适合检测中等大小的目标。较大的52*52特征图上由于其具有较小的感受野故应用最小的anchor box(10x13)，(16x30)，(33x23)，适合检测较小的目标。</p>
+<p>YOLOv3中取消了YOLOv2每个grid cell只负责预测一个对象的限制，v3中的3个bounding box都可以预测对象，当然他们都对应不同的ground truth。</p>
+</div></blockquote>
+<p><strong>Bounding Box Prediction</strong></p>
+<blockquote>
+<div><p>网络为每个检测框预测4个坐标，
+<span class="math notranslate nohighlight">\(t_{x},t_{y},t_{w},t_{h}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b_{x} = \sigma(t_{x})\ + \ c_{x}\\
+b_{y} = \sigma(t_{y})\ + \ c_{y}\\
+b_{w} = p_{w}e^{t_{w}}\\
+b_{h} = p_{h}e^{t_{h}}\\\end{split}\]</div>
+<p>如下图所示，
+<span class="math notranslate nohighlight">\(\sigma(t_{x}), \sigma(t_{y})\)</span> 是矩形框中心点相对于该grid cell 左上角坐标
+<span class="math notranslate nohighlight">\(c_{x},c_{y}\)</span> 的偏移量，
+<span class="math notranslate nohighlight">\(p_{w}, p_{h}\)</span> 是先验框的宽和高。通过上述公式，计算出实际预测框的宽高。</p>
+<a class="reference internal image-reference" href="../../_images/xy.png"><img alt="../../_images/xy.png" class="align-center" src="../../_images/xy.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><strong>Confidence</strong></p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[Pr(object)*IOU(b,object) = \sigma(t_{o})\]</div>
+<p>YOLOv3只会对1个prior进行操作，也就是那个最佳prior。而logistic回归用于对anchor包围的部分进行一个目标性评分，从9个anchor priors中找到objectness score(目标存在可能性得分)最高的一个。</p>
+</div></blockquote>
+<p><strong>Class Prediction</strong></p>
+<blockquote>
+<div><p>不使用YOLOv2的softmax，YOLOv3使用独立的逻辑分类器，对图像中检测到的对象执行多标签分类。使用二元交叉熵损失来进行类别预测。</p>
+</div></blockquote>
+</div>
+<div class="section" id="training">
+<h2>Training<a class="headerlink" href="#training" title="永久链接至标题">¶</a></h2>
+<p><strong>Loss</strong></p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}loss(object) = \lambda_{coord}\sum_{i=0}^{K \times K}\sum_{j=0}^{M}\mathbb{1}_{ij}^{obj}(2-w_{i} \times h_{i})[(x_{i} - \hat{x}_{i})^2 + (y_{i} - \hat{y}_{i})^2]\\
++ \ \lambda_{coord}\sum_{i=0}^{K \times K}\sum_{j=0}^{M}\mathbb{1}_{ij}^{obj}(2-w_{i} \times h_{i})[(w_{i} - \hat{w}_{i})^2 + (h_{i} - \hat{h}_{i})^2]\\
+- \sum_{i=0}^{K \times K}\sum_{j=0}^{M}\mathbb{1}_{ij}^{obj}[\hat{C}_{i}log(C_{i}) + (1 - \hat{C}_{i})log(1-C_{i})]\\
+- \ \lambda_{noobj}\sum_{i=0}^{K \times K}\sum_{j=0}^{M}\mathbb{1}_{ij}^{noobj}[\hat{C}_{i}log(C_{i}) + (1 - \hat{C}_{i})log(1-C_{i})]\\
+- \sum_{i=0}^{K \times K}\mathbb{1}_{ij}^{obj}\sum_{c \ \in \ classes}[\hat{p}_{i}(c)log(p_{i}(c)) + (1-\hat{p}_{i}(c))log(1-p_{i}(c))]\end{split}\]</div>
+</div></blockquote>
+<p><strong>Which bounding box</strong></p>
+<blockquote>
+<div><p>如何在训练中确定哪个bounding box负责某个某个ground truth呢？方法是求出每个grid cell中每个anchor box与ground truth box的IOU(交并比)，IOU最大的anchor box对应的bounding box就负责预测该ground truth。</p>
+<p>我们训练输出的是
+<span class="math notranslate nohighlight">\(t_{x},t_{y},t_{w},t_{h}\)</span> ，那么在计算误差时，也是利用真实框的
+<span class="math notranslate nohighlight">\(\hat{t}_{x},\hat{t}_{y},\hat{t}_{w},\hat{t}_{h}\)</span> 这几个值计算误差。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}g_{x} = \sigma(t_{x})\ + \ c_{x}\\
+g_{y} = \sigma(t_{y})\ + \ c_{y}\\
+g_{w} = p_{w}e^{t_{w}}\\
+g_{h} = p_{h}e^{t_{h}}\\\end{split}\]</div>
+<p>可以根据真实框的
+<span class="math notranslate nohighlight">\(g_{x}、g_{y}、g_{w}、g_{h}\)</span> 求出真实框的
+<span class="math notranslate nohighlight">\(\hat{t}_{x},\hat{t}_{y},\hat{t}_{w},\hat{t}_{h}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\sigma(\hat{t}_{x}) = g_{x} - c_{x}\\
+\sigma(\hat{t}_{y}) = g_{y} - c_{y}\\
+\hat{t}_{w} = log(g_{w}/a_{w})\\
+\hat{t}_{h} = log(g_{h}/a_{h})\end{split}\]</div>
+</div></blockquote>
+<p><strong>Confidence</strong></p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[C_{i}^{j} = Pr(object)*IOU(b,object)\]</div>
+<p>其中
+<span class="math notranslate nohighlight">\(C_{i}^{j}\)</span> 表示第 i 个grid cell 的第 j 个 bounding box 的置信度。训练中
+<span class="math notranslate nohighlight">\(\hat{C}_{i}^{j}\)</span> 表示真实值，
+<span class="math notranslate nohighlight">\(\hat{C}_{i}^{j}\)</span> 的取值是由grid cell的bounding box是否负责预测某个对象决定的。如果负责，
+<span class="math notranslate nohighlight">\(\hat{C}_{i}^{j} = 1\)</span>，否则
+<span class="math notranslate nohighlight">\(\hat{C}_{i}^{j} = 0\)</span>。</p>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>如何确定某个grid cell的bounding box是否负责预测该grid cell中的对象？该grid cell的所有anchor box 与某个 ground truth 的IOU最大的那个anchor box 对应的bounding box 负责预测该对象。</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>参考文档<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://blog.csdn.net/leviopku/article/details/82660381">YOLOv3 深度解析</a></p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">2</span></dt>
+<dd><p><a class="reference external" href="https://blog.csdn.net/qq_34199326/article/details/84109828">YOLOv3 边框预测</a></p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">3</span></dt>
+<dd><p><a class="reference external" href="https://www.jianshu.com/p/86b8208f634f">YOLOv3 的一些细节</a></p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="yolov4.html" class="btn btn-neutral float-right" title="yolo_v4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="yolov2.html" class="btn btn-neutral float-left" title="yolo_v2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

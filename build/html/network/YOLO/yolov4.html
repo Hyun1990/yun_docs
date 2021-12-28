@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>yolo_v4 &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="yolo_v5" href="yolov5.html" />
+    <link rel="prev" title="yolo_v3" href="yolov3.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Network</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../CV方向综述.html">CV方向综述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lenet.html">LeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fpn.html">FPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../res.html">ResNet</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">YOLO</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="yolov1.html">yolo_v1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yolov2.html">yolo_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yolov3.html">yolo_v3</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">yolo_v4</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">网络结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#input">Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backbone">BackBone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#neck">Neck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prediction">Prediction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="yolov5.html">yolo_v5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yolov3_cfg.html">yolov3.cfg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yolov5s_yaml.html">yolov5s.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="one-stage_detector.html">one-stage detector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Network</a> &raquo;</li>
+        
+          <li><a href="index.html">YOLO</a> &raquo;</li>
+        
+      <li>yolo_v4</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/network/YOLO/yolov4.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="yolo-v4">
+<h1>yolo_v4<a class="headerlink" href="#yolo-v4" title="永久链接至标题">¶</a></h1>
+<p>论文地址： <a class="reference external" href="https://arxiv.org/abs/2004.10934">YOLOv4: Optimal Speed and Accuracy of Object Detection</a></p>
+<div class="section" id="id1">
+<h2>网络结构<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><img alt="../../_images/v4.jpg" class="align-center" src="../../_images/v4.jpg" />
+</div></blockquote>
+<p><strong>yolov4的五个基本组件</strong></p>
+<div class="line-block">
+<div class="line"><strong>CBM</strong> ：网络结构中最小的组件，由Conv+Bn+Mish激活函数三者组成</div>
+<div class="line"><strong>CBL</strong> ：由Conv+Bn+Leaky_Relu激活函数三者组成</div>
+<div class="line"><strong>Res unit</strong> ：借鉴ResNet网络中的残差结构，让网络可以构建的更深</div>
+<div class="line"><strong>CSPX</strong> ：借鉴CSPNet网络结构，由卷积层和X个Res unit模块Concate组成</div>
+<div class="line"><strong>SSP</strong> ： 采用1*1，5*5，9*9，13*13的最大池化方式，进行多尺度融合</div>
+</div>
+</div>
+<div class="section" id="input">
+<h2>Input<a class="headerlink" href="#input" title="永久链接至标题">¶</a></h2>
+<p>Yolov4对训练的输入端进行改进，使得训练在单张GPU上也能有不错的成绩。比如数据增强Mosaic，cmBN，SAT自对抗训练。</p>
+<div class="section" id="mosaic">
+<span id="mosaic-augmentation"></span><h3>Mosaic数据增强<a class="headerlink" href="#mosaic" title="永久链接至标题">¶</a></h3>
+<p>yolov4中使用的Mosaic是根据2019年底提出的CutMix数据增强方式，但CutMix只使用了两张图片进行拼接，
+而Mosaic数据增强则采用了4张图片，随机缩放、随机裁剪、随机排布的方式进行拼接。</p>
+<blockquote>
+<div><img alt="../../_images/mosaic.jpg" class="align-center" src="../../_images/mosaic.jpg" />
+</div></blockquote>
+<p><em>优点</em></p>
+<ul class="simple">
+<li><p>丰富数据集，特别是随机缩放增加了很多小目标，让网络的鲁棒性更好</p></li>
+<li><p>减少GPU，使得Mini-batch并不需要很大，一个GPU就可以达到比较好的效果</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="backbone">
+<h2>BackBone<a class="headerlink" href="#backbone" title="永久链接至标题">¶</a></h2>
+<p><strong>CSPDarknet53</strong></p>
+<p>CSPDarknet53是在Yolov3主干网络Darknet53的基础上，借鉴2019年CSPNet <a class="footnote-reference brackets" href="#id7" id="id2">1</a> 的经验，产生的Backbone结构，其中包含了5个CSP模块。
+每个CSP模块前面的卷积核的大小都是3*3，stride=2，因此可以起到下采样的作用。</p>
+<blockquote>
+<div><img alt="../../_images/csp.jpg" class="align-center" src="../../_images/csp.jpg" />
+</div></blockquote>
+<p>CSPNet的作者认为推理计算过高的问题是由于网络优化中的梯度信息重复导致的。因此采用CSP模块先将基础层的特征映射划分为两部分，然后通过跨阶段层次结构将它们合并，在减少了计算量的同时可以保证准确率。</p>
+<p><em>优点</em></p>
+<ul class="simple">
+<li><p>增强CNN的学习能力，使得在轻量化的同时保持准确性</p></li>
+<li><p>降低计算瓶颈</p></li>
+<li><p>降低内存成本</p></li>
+</ul>
+<p><strong>Mish激活函数</strong></p>
+<p>Mish <a class="footnote-reference brackets" href="#id8" id="id3">2</a> 和Leaky_relu激活函数的图形对比如下：</p>
+<blockquote>
+<div><img alt="../../_images/mish.jpg" class="align-center" src="../../_images/mish.jpg" />
+</div></blockquote>
+<p>使用CSPDarknet53网络在ImageNet数据集上做图像分类任务，发现使用了Mish激活函数的TOP-1和TOP-5的精度比没有使用时都略高一些，因此主干网络Backbone还是使用Mish激活函数</p>
+<p><strong>Dropblock</strong></p>
+<p>Yolov4中使用的Dropblock <a class="footnote-reference brackets" href="#id9" id="id4">3</a>，其实和常见网络中的Dropout功能类似，也是缓解过拟合的一种正则化方式。传统的Dropout很简单，即随机删除减少神经元的数量，使网络变得更简单。
+Dropblock和Dropout相似，比如下图：</p>
+<blockquote>
+<div><img alt="../../_images/dropblock.jpg" class="align-center" src="../../_images/dropblock.jpg" />
+</div></blockquote>
+<p>中间Dropout的方式会随机的删减丢弃一些信息，但Dropblock的研究者认为，卷积层对于这种随机丢弃并不敏感，因为卷积层通常是三层连用：卷积+激活+池化层，
+池化层本身就是对相邻单元起作用。而且即使随机丢弃，卷积层仍然可以从相邻的激活单元学习到相同的信息。因此，在全连接层上效果很好的Dropout在卷积层上效果并不好。
+所以右图Dropblock的研究者则干脆整个局部区域进行删减丢弃。</p>
+<p>这种方式其实是借鉴2017年的cutout数据增强的方式，cutout是将输入图像的部分区域清零，而Dropblock则是将Cutout应用到每一个特征图。而且并不是用固定的归零比率，而是在训练时以一个小的比率开始，随着训练过程线性的增加这个比率。</p>
+<blockquote>
+<div><img alt="../../_images/cutout.jpg" class="align-center" src="../../_images/cutout.jpg" />
+</div></blockquote>
+<p><em>优点</em></p>
+<ul class="simple">
+<li><p>Dropblock的效果优于Cutout</p></li>
+<li><p>Cutout只能作用于输入层，而Dropblock则是将Cutout应用到网络中的每一个特征图上</p></li>
+<li><p>Dropblock可以定制各种组合，在训练的不同阶段可以修改删减的概率，从空间层面和时间层面，和Cutout相比都有更精细的改进</p></li>
+</ul>
+</div>
+<div class="section" id="neck">
+<h2>Neck<a class="headerlink" href="#neck" title="永久链接至标题">¶</a></h2>
+<p>在目标检测领域，为了更好的提取融合特征，通常在Backbone和输出层，会插入一些层，这个部分称为Neck。相当于目标检测网络的颈部，也是非常关键的。</p>
+<p>Yolov4的Neck结构主要采用了SPP模块、FPN+PAN的方式。</p>
+<p><strong>SPP</strong></p>
+<p>作者在SPP模块中，使用k={1*1,5*5,9*9,13*13}的最大池化的方式，再将不同尺度的特征图进行Concat操作</p>
+<blockquote>
+<div><img alt="../../_images/spp.jpg" class="align-center" src="../../_images/spp.jpg" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>这里最大池化采用padding操作，移动的步长为1，比如13×13的输入特征图，使用5×5大小的池化核池化，padding=2，因此池化后的特征图仍然是13×13大小。</p>
+</div>
+</div></blockquote>
+<p>采用SPP模块的方式，比单纯的使用k*k最大池化的方式，更有效的增加主干特征的接收范围，显著的分离了最重要的上下文特征。</p>
+<p>Yolov4的作者在使用608*608大小的图像进行测试时发现，在COCO目标检测任务中，以0.5%的额外计算代价将AP50增加了2.7%，因此Yolov4中也采用了SPP模块。</p>
+<p><strong>FPN+PAN</strong></p>
+<blockquote>
+<div><img alt="../../_images/fpnpan.jpg" class="align-center" src="../../_images/fpnpan.jpg" />
+</div></blockquote>
+<p>前面CSPDarknet53中讲到，每个CSP模块前面的卷积核都是3*3大小，步长为2，相当于下采样操作。
+因此可以看到三个紫色箭头处的特征图是76*76、38*38、19*19。以及最后Prediction中用于预测的三个特征图：76*76*255，38*38*255，19*19*255。</p>
+<p>Neck部分的立体图像，看下两部分是如何通过FPN+PAN结构进行融合的:</p>
+<blockquote>
+<div><img alt="../../_images/neck.jpg" class="align-center" src="../../_images/neck.jpg" />
+</div></blockquote>
+<p>Yolov3的FPN层不同，Yolov4在FPN层的后面还添加了一个自底向上的特征金字塔，其中包含两个PAN结构。
+这样结合操作，FPN层自顶向下传达强语义特征，而特征金字塔则自底向上传达强定位特征，两两联手，从不同的主干层对不同的检测层进行参数聚合。</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Yolov4的FPN层，只使用最后的一个76*76特征图h和经过两次PAN结构输出预测的特征图</p>
+<p>yolov3和yolov4 anchor和mask 的对应关系是相反的</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="prediction">
+<h2>Prediction<a class="headerlink" href="#prediction" title="永久链接至标题">¶</a></h2>
+<p><strong>CIOU_loss</strong></p>
+<p>目标检测任务的损失函数一般由Classificition Loss（分类损失函数）和Bounding Box Regeression Loss（回归损失函数）两部分构成。</p>
+<ul class="simple">
+<li><p>IOU_Loss</p></li>
+</ul>
+<blockquote>
+<div><img alt="../../_images/iou.jpg" class="align-center" src="../../_images/iou.jpg" />
+</div></blockquote>
+<p>IOU的loss其实很简单，主要是交集/并集，但其实也存在两个问题:</p>
+<blockquote>
+<div><img alt="../../_images/ioup.jpg" class="align-center" src="../../_images/ioup.jpg" />
+</div></blockquote>
+<p><strong>GIOU_Loss</strong></p>
+<p>因IOU_Loss存在的连个问题，出现了GIOU_Loss来改进</p>
+<blockquote>
+<div><img alt="../../_images/giou.jpg" class="align-center" src="../../_images/giou.jpg" />
+</div></blockquote>
+<p>还存在一种不足：</p>
+<blockquote>
+<div><img alt="../../_images/pgiou.jpg" class="align-center" src="../../_images/pgiou.jpg" />
+</div></blockquote>
+<p>问题：状态1、2、3都是预测框在目标框内部且预测框大小一致的情况，这时预测框和目标框的差集都是相同的，因此这三种状态的GIOU值也都是相同的，这时GIOU退化成了IOU，无法区分相对位置关系。
+基于这个问题，2020年的AAAI又提出了DIOU_Loss。</p>
+<p><strong>DIOU_Loss</strong></p>
+<p>好的目标框回归函数应该考虑三个重要几何因素：重叠面积、中心点距离，长宽比。针对IOU和GIOU存在的问题，作者从两个方面进行考虑：</p>
+<ol class="arabic simple">
+<li><p>如何最小化预测框和目标框之间的归一化距离？</p></li>
+<li><p>如何在预测框和目标框重叠时，回归的更准确？</p></li>
+</ol>
+<p>针对第一个问题，提出了DIOU_Loss（Distance_IOU_Loss）</p>
+<blockquote>
+<div><img alt="../../_images/diou.jpg" class="align-center" src="../../_images/diou.jpg" />
+</div></blockquote>
+<p>DIOU_Loss考虑了重叠面积和中心点距离，当目标框包裹预测框的时候，直接度量2个框的距离，因此DIOU_Loss收敛的更快。</p>
+<p>但就像前面好的目标框回归函数所说的，没有考虑到长宽比。</p>
+<blockquote>
+<div><img alt="../../_images/pdiou.jpg" class="align-center" src="../../_images/pdiou.jpg" />
+</div></blockquote>
+<p>针对这个问题，又提出了CIOU_Loss</p>
+<p><strong>CIOU_Loss</strong></p>
+<p>CIOU_Loss和DIOU_Loss前面的公式都是一样的，不过在此基础上还增加了一个影响因子，将预测框和目标框的长宽比都考虑了进去。</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[CIOU_Loss = 1 - CIOU = 1 - (IOU - \frac{Distance\_2^{2}}{Distance\_C^{2}} - \frac{\nu^{2}}{(1-IOU) + \nu})\]</div>
+</div></blockquote>
+<p>其中
+<span class="math notranslate nohighlight">\(\nu\)</span> 是衡量长宽比一致性的参数：</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\nu = \frac{4}{\pi^{2}}(arctan\frac{w^{gt}}{h^{gt}} - arctan\frac{w^{\nu}}{h^{\nu}})^{2}\]</div>
+</div></blockquote>
+<p>这样CIOU_Loss就将目标框回归函数应该考虑三个重要几何因素：重叠面积、中心点距离，长宽比全都考虑进去了。</p>
+<p>综合看下各Loss函数的不同点：</p>
+<ul class="simple">
+<li><p>IOU_Loss：主要考虑检测框和目标框重叠面积</p></li>
+<li><p>GIOU_Loss：在IOU的基础上，解决边界框不重合时的问题</p></li>
+<li><p>DIOU_Loss：在IOU和GIOU的基础上，考虑边界框中心点距离的信息</p></li>
+<li><p>CIOU_Loss：在DIOU的基础上，考虑边界框宽高比的尺度信息</p></li>
+</ul>
+<p><strong>DIOU_nms</strong></p>
+<p>Nms主要用于预测框的筛选，常用的目标检测算法中，一般采用普通的nms的方式，Yolov4则借鉴上面D/CIOU loss的论文 <a class="footnote-reference brackets" href="#id10" id="id5">4</a>，将其中计算IOU的部分替换成DIOU的方式：</p>
+<blockquote>
+<div><img alt="../../_images/diou_nms.jpg" class="align-center" src="../../_images/diou_nms.jpg" />
+</div></blockquote>
+<p>在上图重叠的摩托车检测中，中间的摩托车因为考虑边界框中心点的位置信息，也可以回归出来。因此在重叠目标的检测中，DIOU_nms的效果优于传统的nms。</p>
+<ul class="simple">
+<li><p>为什么不用CIOU_nms，而用DIOU_nms?</p></li>
+</ul>
+<p>因为前面讲到的CIOU_loss，是在DIOU_loss的基础上，添加的影响因子，包含groundtruth标注框的信息，在训练时用于回归。但在测试过程中，并没有groundtruth的信息，不用考虑影响因子，因此直接用DIOU_nms即可。</p>
+</div>
+<div class="section" id="id6">
+<h2>参考文档<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p><a class="reference external" href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1911.11929.pdf">Cross Stage Partial Network</a></p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p><a class="reference external" href="https://arxiv.org/abs/1908.08681">Mish</a></p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p><a class="reference external" href="https://arxiv.org/pdf/1810.12890.pdf">Dropblock</a></p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dd><p><a class="reference external" href="https://arxiv.org/pdf/1911.08287.pdf">C/DIOU</a></p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">5</span></dt>
+<dd><p><a class="reference external" href="https://zhuanlan.zhihu.com/p/143747206">深入浅出Yolo系列之Yolov3&amp;Yolov4</a></p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="yolov5.html" class="btn btn-neutral float-right" title="yolo_v5" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="yolov3.html" class="btn btn-neutral float-left" title="yolo_v3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

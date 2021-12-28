@@ -1,0 +1,186 @@
+GPU
+====
+
+what is a gpu?
+--------------
+
+GPU(Graphic Processing Unit) 是一种最初用于加速图形渲染的专用微处理器。
+不同于CPU的通用功能，GPU在并行处理大型数据上有着高效的性能。目前也用于
+以下领域：
+
+* 游戏领域
+
+* 人工智能
+
+* 自动驾驶
+
+GPU vs CPU
+-----------
+
+.. image:: ./images_gpu/gpu_cpu.png
+    :align: center
+
+
+GPU 参数解析
+-------------
+
+.. image:: ./images_gpu/1080ti.jpg
+    :width: 450
+
+**架构**
+
+和CPU代号类似，新架构的显卡性能更强，工艺更先进
+
+**CUDA 核心数量**
+
+相同架构下，GPU核心越多，性能越好
+
+**基本频率**
+
+GPU基本频率又称时钟频率，是指处理器晶体管打开和关闭的速率，
+单位为GHz或MHz，意思是GPU每秒跑几十亿次或几百万次，基本频率越高，
+执行的速度就越快。
+
+More Cores/Lower Clock Or Fewer Cores/Higher Clock is a common debate.
+If GPU 1 has 1500 cores operating at 1.5GHz, and GPU 2 has 2000 cores operating at 1.3GHz, GPU 2 would still perform better
+
+**加速频率**
+
+表示在环境嗯允许GPU进入超频模式时，可以达到的最高频率。当开启加速后，
+GPU会根据当前的任务量自动调整GPU频率。
+
+**显存速率**
+
+现存速度越快，单位时间内交换的数据量也越大，在同等情况下显卡的性能会得到明显的提升
+
+**标准显存配置**
+
+即显存容量，显存越大，能加载的网络也越大。
+显存类型数字越大越先进，GDDR6>GDDR5X> GDDR5
+
+**显存位宽**
+
+位宽就是显存一次能传输的数据量。位宽越大，一次性能传输的数据就越多
+
+**显存带宽(GB/秒)**
+
+数据传输速度，带宽越大越好
+
+为什么深度学习需要GPU
+----------------------
+
+相比CPU，GPU拥有更高的带宽，高效并行处理大型数据的能力大大降低了延时，寄存器易于编程。
+显然GPU更适合深度学习中的大型模型及卷积运算。
+
+和深度学习相关的GPU指标
+------------------------
+
+**内存带宽**
+
+GPU 处理大量数据的能力，是最重要的性能指标
+
+**处理能力**
+
+表示 GPU 处理数据的速度，我们将其量化为 CUDA 核心数量和每一个核心的频率的乘积
+
+**显存大小**
+
+一次性加载到显卡上的数据量。运行计算机视觉模型时，显存越大越好
+
+神经网络的显存占用
+-------------------
+
+多GPU
+------
+
+选择多GPU有两个理由：
+
+* 并行训练多个模型，考察参数对模型的影响
+
+* 对单个模型进行分布式训练
+
+Linux中管理Nivdia GPU卡
+------------------------
+
+**查看显存及GPU使用情况**
+
+``nvidia-smi``
+
+.. image:: ./images_gpu/smi.png
+    :align: center
+
+参数解释
+
+**Fan** 显示风扇转速，数值在0到100%之间，是计算机的期望转速，如果计算机不是通过风扇冷却或者风扇坏了，显示出来就是N/A
+
+**Temp** 显卡内部温度，单位为摄氏度
+
+**Perf** 表征性能状态，从P0到P12，P0表示最大性能，P12表示状态最小性能
+
+**Pwr** 能耗表示
+
+**Bus-id** 涉及GPU总线的相关信息
+
+**Disp.A** 是Display Active的意思，表示GPU的显示是否初始化
+
+**Memory Usage** 显存的使用率
+
+**Volatile GPU-Util** 浮动的GPU利用率
+
+**Compute M** 计算模式
+
+**周期性的输出显卡的使用情况**
+
+``watch -n 5 nvidia`` 每隔5s显示一次
+
+.. image:: ./images_gpu/fre.png
+    :align: center
+
+**列出所有可用的Nvidia设备**
+
+``nvidia-smi -L``
+
+.. image:: ./images_gpu/all.png
+    :align: center
+
+**列出每个GPU卡的详细信息**
+
+``nvidia-smi --query-gpu=index,name,uuid,serial --format=csv``
+
+.. image:: ./images_gpu/one.png
+    :align: center
+
+**查询某个GPU卡的详细信息**
+
+``nvidia-smi -i 0 -q`` id 为0的GPU卡
+
+.. image:: ./images_gpu/spec.png
+    :align: center
+
+**以1s的间隔更新GPU的总体使用情况**
+
+``nvidia-smi dmon``
+
+.. image:: ./images_gpu/use_all.png
+    :align: center
+
+**以1秒的更新间隔监视每个进程的GPU使用情况**
+
+``nvidia-smi pmon``
+
+.. image:: ./images_gpu/use_one.png
+    :align: center
+
+**加上-r参数可以重启某个GPU卡**
+
+``nvidia-smi -r -i 0``
+
+
+参考文档
+---------
+
+| `Linux中如何管理Nvidia GPU卡 <https://cloud.tencent.com/developer/article/1486194>`_
+| `Do we really need GPU for Deep Learning? - CPU vs GPU <https://medium.com/@shachishah.ce/do-we-really-need-gpu-for-deep-learning-47042c02efe2>`_
+| `Why Machine Learning Needs GPUs <https://www.vice.com/en/article/kznnnn/why-machine-learning-needs-gpus>`_
+| `教你如何挑选深度学习GPU <https://blog.csdn.net/qq_38906523/article/details/78730158>`_
+| `深度学习中GPU和显存分析 <https://zhuanlan.zhihu.com/p/31558973>`_

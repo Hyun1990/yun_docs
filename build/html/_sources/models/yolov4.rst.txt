@@ -1,0 +1,3 @@
+yolo_v4
+========
+论文地址： `YOLOv4: Optimal Speed and Accuracy of Object Detection <https://arxiv.org/abs/2004.10934>`_

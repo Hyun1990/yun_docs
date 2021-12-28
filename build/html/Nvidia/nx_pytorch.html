@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Jetson NX Pytorch 部署 &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Server Test" href="server_test.html" />
+    <link rel="prev" title="Nvidia Jetson" href="jetson.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nni/index.html">NNI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nvidia</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">GPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jetson.html">Nvidia Jetson</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Jetson NX Pytorch 部署</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-pyenv">Install pyenv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server_test.html">Server Test</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Nvidia</a> &raquo;</li>
+        
+      <li>Jetson NX Pytorch 部署</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Nvidia/nx_pytorch.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jetson-nx-pytorch">
+<h1>Jetson NX Pytorch 部署<a class="headerlink" href="#jetson-nx-pytorch" title="永久链接至标题">¶</a></h1>
+<div class="section" id="install-pyenv">
+<h2>Install pyenv<a class="headerlink" href="#install-pyenv" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line">克隆pyenv仓库</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/yyuu/pyenv.git</span> <span class="pre">~/.pyenv</span></code></div>
+<div class="line"><br /></div>
+<div class="line">将PYENV_ROOT和pyenv init 加入bash的~/.bashrc</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">echo</span> <span class="pre">'export</span> <span class="pre">PATH=~/.pyenv/bin:$PATH'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.bashrc</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">echo</span> <span class="pre">'export</span> <span class="pre">PYENV_ROOT=~/.pyenv'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.bashrc</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">echo</span> <span class="pre">'eval</span> <span class="pre">&quot;$(pyenv</span> <span class="pre">init</span> <span class="pre">-)&quot;'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.bashrc</span></code></div>
+<div class="line"><br /></div>
+<div class="line">激活pyenv</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">~/.bashrc</span></code></div>
+<div class="line"><br /></div>
+<div class="line">安装python环境</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pyenv</span> <span class="pre">versions</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">/home/robot/.pyenv/cache</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">/home/robot/.pyenv/cache</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">wget</span> <span class="pre">https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tar.xz</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">libssl-dev</span> <span class="pre">libbz2-dev</span> <span class="pre">libreadline-dev</span> <span class="pre">libsqlite3-dev</span> <span class="pre">libffi-dev</span> <span class="pre">liblzma-dev</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pyenv</span> <span class="pre">install</span> <span class="pre">3.6.9</span></code></div>
+<div class="line"><br /></div>
+<div class="line">配置python环境</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">/home/robot/hyun/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3-pip</span> <span class="pre">libopenblas-base</span> <span class="pre">libopenmpi-dev</span> <span class="pre">libopenblas-dev</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pyenv</span> <span class="pre">shell</span> <span class="pre">3.6.9</span></code></div>
+<div class="line"><br /></div>
+<div class="line">安装pytorch</div>
+<div class="line"><a class="reference external" href="https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-7-0-now-available/72048">下载对应的pytorch whl文件</a></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">./pytorch/torch-1.6.0-cp36-cp36m-linux_aarch64.whl</span></code></div>
+<div class="line"><br /></div>
+<div class="line">安装torchvision(版本需要与 torch 匹配，<a class="reference external" href="https://github.com/pytorch/vision">https://github.com/pytorch/vision</a> 有版本匹配列表)</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">hyun</span></code></div>
+<div class="line">下载源码</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/pytorch/vision.git</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">vision</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">e_v0.7.0</span> <span class="pre">v0.7.0</span></code></div>
+<div class="line">安装pillow</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">pillow</span> <span class="pre">--user</span> <span class="pre">-i</span> <span class="pre">https://pypi.tuna.tsinghua.edu.cn/simple</span></code></div>
+<div class="line">编译</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">FORCE_CUDA=1</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">whell</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code></div>
+<div class="line">安装</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">dist/torchvision-0.7.0a0+78ed10c-cp38-cp38-linux_aarch64.whl</span></code></div>
+</div>
+<p><strong>生成的torch和torchision的.whl文件可以保存起来，以便下次环境安装</strong></p>
+</div>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://blog.csdn.net/weixin_41010198/article/details/109862917">Jetson Xavier NX上安装torchvision编译报错</a></div>
+<div class="line"><a class="reference external" href="https://blog.51cto.com/rainbird/2480244">Python多版本环境管理之pyenv</a></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="server_test.html" class="btn btn-neutral float-right" title="Server Test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="jetson.html" class="btn btn-neutral float-left" title="Nvidia Jetson" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

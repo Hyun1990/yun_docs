@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ResNet &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="YOLO" href="YOLO/index.html" />
+    <link rel="prev" title="FPN" href="fpn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Network</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="CV方向综述.html">CV方向综述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lenet.html">LeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fpn.html">FPN</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ResNet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">残差</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">残差块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">残差网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#res">Res解决网络退化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Res解决梯度消失或爆炸</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="YOLO/index.html">YOLO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Network</a> &raquo;</li>
+        
+      <li>ResNet</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/network/res.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="resnet">
+<h1>ResNet<a class="headerlink" href="#resnet" title="永久链接至标题">¶</a></h1>
+<p>论文地址： <a class="reference external" href="https://arxiv.org/abs/1512.03385">Deep Residual Learning for Image Recognition</a></p>
+<p>深层网络训练瓶颈：梯度消失，网络退化</p>
+<p>深度卷积网络整合了低中高不同层次的特征，特征的层次可以靠加深网络的层次来丰富。所以我们一般倾向于使用更深
+层次的网络结构，以便取得更高层次的特征。但是在使用深层次的网络结构时我们会遇到两个问题，梯度消失、梯度爆炸和网络退化。</p>
+<p>残差网络是为了解决深度神经网络(DNN)隐藏层过多时网络退化问题而提出的。从信息论的角度讲，在前向传输的过程中，随着层数的加深，
+Feature Map包含的图像信息会逐渐减少，而ResNet的直接映射加入，保证了
+<span class="math notranslate nohighlight">\(l+1\)</span> 层的网络一定比
+<span class="math notranslate nohighlight">\(l\)</span> 层包含更多的图像信息。</p>
+<dl>
+<dt>网络退化</dt><dd><blockquote>
+<div><p>网络隐藏层变多时，网络的准确度达到饱和后急剧退化，并且不是由于过拟合引起的。</p>
+</div></blockquote>
+<a class="reference internal image-reference" href="../_images/net2.png"><img alt="../_images/net2.png" class="align-center" src="../_images/net2.png" style="width: 500px;" /></a>
+</dd>
+</dl>
+<div class="section" id="id1">
+<h2>残差<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>“残差在数理统计中是指实际观察值与估计值(拟合值)之间的差。如果回归模型正确的话，我们可以将残差看作误差的观测值。”</p>
+<p>更准确地，假设我们想要找一个
+<span class="math notranslate nohighlight">\(x\)</span> ，使得
+<span class="math notranslate nohighlight">\(f(x) = b\)</span> ，给定一个
+<span class="math notranslate nohighlight">\(x\)</span> 的估计值
+<span class="math notranslate nohighlight">\(x_{0}\)</span> ，残差就是
+<span class="math notranslate nohighlight">\(b - f(x_{0})\)</span> ，误差就是
+<span class="math notranslate nohighlight">\(x - x_{0}\)</span></p>
+</div>
+<div class="section" id="id2">
+<h2>残差块<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>残差网络是由一系列残差块组成的。一个残差块可以表示为：</p>
+<blockquote>
+<div><blockquote>
+<div><div class="math notranslate nohighlight">
+\[x_{l+1} = x_{l} + \mathcal{F}(x_{l},W_{i})\]</div>
+<img alt="../_images/block.jpg" class="align-center" src="../_images/block.jpg" />
+<p>在卷积网络中，
+<span class="math notranslate nohighlight">\(x_{l}\)</span> 可能和
+<span class="math notranslate nohighlight">\(x_{l+1}\)</span> 的Feature Map的数量不一致，这时候就需要用
+<span class="math notranslate nohighlight">\(1 \times 1\)</span> 卷积进行升维或降维。此时，残差块表示为：</p>
+<div class="math notranslate nohighlight">
+\[x_{l+1} = h(x_{l}) + \mathcal{F}(x_{l},W_{i})\]</div>
+<img alt="../_images/res_block.png" class="align-center" src="../_images/res_block.png" />
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p>其中
+<span class="math notranslate nohighlight">\(h(x_{l})\)</span> 表示对
+<span class="math notranslate nohighlight">\(x_{l}\)</span> 进行
+<span class="math notranslate nohighlight">\(1 \times 1\)</span> 卷积</p>
+<p>一般，这种版本的残差块叫做resnet_v1, keras代码实现如下：</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">res_block_v1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">input_filter</span><span class="p">,</span> <span class="n">output_filter</span><span class="p">):</span>
+        <span class="n">res_x</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">filters</span><span class="o">=</span><span class="n">output_filter</span><span class="p">,</span> <span class="n">stridess</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">res_x</span> <span class="o">=</span> <span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">res_x</span><span class="p">)</span>
+        <span class="n">res_x</span> <span class="o">=</span> <span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">res_x</span><span class="p">)</span>
+        <span class="n">res_x</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">filters</span><span class="o">=</span><span class="n">output_filter</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">res_x</span><span class="p">)</span>
+        <span class="n">res_x</span> <span class="o">=</span> <span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">res_x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">input_filter</span> <span class="o">==</span> <span class="n">output_filter</span><span class="p">:</span>
+                <span class="n">identity</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># 需要升维或降维</span>
+                <span class="n">identity</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">filters</span><span class="o">=</span><span class="n">output_filter</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">res_x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="n">identity</span><span class="p">,</span> <span class="n">res_x</span><span class="p">])</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>残差网络<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>残差网络的搭建分为两步：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>使用VGG搭建Plain VGG网络</p></li>
+<li><p>在Plain VGG卷积网络之间插入Identity Mapping</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resnet_v1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">filters</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">res_block_v1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">res_block_v1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;he_normal&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">outputs</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="res">
+<h2>Res解决网络退化<a class="headerlink" href="#res" title="永久链接至标题">¶</a></h2>
+<p>假设该层是冗余的，要想让该冗余层能够恒等映射，学习
+<span class="math notranslate nohighlight">\(h(x) = F(x)+x\)</span> 要比学习
+<span class="math notranslate nohighlight">\(h(x) = x\)</span> 要简单，前者只需学习残差项
+<span class="math notranslate nohighlight">\(F(x) = 0\)</span>, 因为每层网络中的参数初始化偏向于0，这项在相比于更新该网络层的参数来学习
+<span class="math notranslate nohighlight">\(h(x) = x\)</span> ，该冗余层学习
+<span class="math notranslate nohighlight">\(F(x) = 0\)</span> 的更新参数能更快收敛，如图所示 <a class="footnote-reference brackets" href="#id9" id="id4">2</a>：</p>
+<blockquote>
+<div><img alt="../_images/learn.jpg" class="align-center" src="../_images/learn.jpg" />
+</div></blockquote>
+<p>这样当网络自行决定了哪些层为冗余层后，通过学习残差
+<span class="math notranslate nohighlight">\(F(x) = 0\)</span> 来让该层网络恒等映射上一层的输入，使得有了这些冗余层的网络效果与没有这些冗余层的网络效果相同，
+这样很大程度上解决了网络退化问题。</p>
+</div>
+<div class="section" id="id5">
+<h2>Res解决梯度消失或爆炸<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>在深度网络中，由于参数初始化一般更靠近0，这样在训练过程中更新浅层网络参数时，很容易随着网络的深入导致梯度消失。</p>
+<blockquote>
+<div><img alt="../_images/grad.jpg" class="align-center" src="../_images/grad.jpg" />
+</div></blockquote>
+<p>可以看到，假设现在需要更新
+<span class="math notranslate nohighlight">\(b_{1}\)</span> ,
+<span class="math notranslate nohighlight">\(w_{2}, w_{3}, w_{4}\)</span> 参数因为随机初始化偏向于0，通过链式求导我们会发现，
+<span class="math notranslate nohighlight">\(w_{4}, w_{3}, w_{2}\)</span> 相乘会得到更接近于0的数，那么所求的
+<span class="math notranslate nohighlight">\(b_{1}\)</span> 的梯度就接近于0，也就产生了梯度消失的现象。</p>
+<p>ResNet最终更新某一个节点的参数时，由于
+<span class="math notranslate nohighlight">\(h(x) = F(x)+x\)</span> ，由于链式求导后的结果如图所是，不管括号内右边部分的求导参数有多小，因为左边1的存在，
+将原来链式求导中的连乘变成了连加状态，都能保证该节点参数更新不会发生梯度消失或梯度爆炸现象。</p>
+<blockquote>
+<div><img alt="../_images/grad1.jpg" class="align-center" src="../_images/grad1.jpg" />
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h2>参考文档<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets">1</span></dt>
+<dd><p><a class="reference external" href="https://zhuanlan.zhihu.com/p/42706477">详解残差网络</a></p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dd><p><a class="reference external" href="https://zhuanlan.zhihu.com/p/42410305">十分钟学会残差网络</a></p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">3</span></dt>
+<dd><p><a class="reference external" href="https://www.leiphone.com/news/201608/vhqwt5eWmUsLBcnv.html">深度残差网络</a></p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="YOLO/index.html" class="btn btn-neutral float-right" title="YOLO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fpn.html" class="btn btn-neutral float-left" title="FPN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -9,9 +9,24 @@ Welcome to hyun_docs's documentation!
 .. toctree::
    :maxdepth: 2
 
+   linux/index.rst
+   python/index.rst
+   C_Programming/index.rst
    pytorch/index.rst
+   paddlepaddle/index.rst
    opencv/index.rst
-   models/index.rst
+   network/index.rst
+   machine_learning/index.rst
+   image_segmentation/index.rst
+   ocr/index.rst
+   Deep_Learning_for_Computer_Vision/index.rst
+   docker/index.rst
+   tools/index.rst
+   nni/index.rst
+   Kubernetes/index.rst
+   Kubeflow/index.rst
+   Nvidia/index.rst
+
 
 
 

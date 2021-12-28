@@ -1,13 +1,13 @@
-pytorch_yolov5
+Pytorch_yolov5
 ===============
 **Created** : 2020/07/09
 
 环境部署
 --------
 | 1. 创建anaconda独立环境
-| ``$conda create -name pytorch_env_36 python=3.6``
+| ``$ conda create -name pytorch_env_38 python=3.8``
 | 2. 激活环境
-| ``$ conda activate pytorch_env_36``
+| ``$ conda activate pytorch_env_38``
 | 3. 下载yolov5版本库
 | ``$ git clone https://github.com/ultralytics/yolov5 # clone repo``
 
@@ -80,6 +80,16 @@ pytorch_yolov5
 | ``$ conda install -yc pytorch pytorch torchvision``
 | ``$ conda install -yc conda-forge protobuf numpy && pip install onnx==1.6.0``
 |
+| 5.若只推理，只需安装如下库
+| ``$ conda install -y opencv=4.4.0``
+| ``$ conda install -y pytorch=1.6.0``
+| ``$ conda install -y pillow``
+| ``$ conda install -y tqdm``
+| ``$ conda install -y matplotlib``
+| ``$ conda install -y pyyaml=5.3.1``
+| ``$ conda install -y scipy=1.5.2``
+| ``$ conda install -y torchvision=0.7.0``
+|
 
 准备数据集
 -----------
@@ -87,7 +97,7 @@ pytorch_yolov5
 
 	VOC
 	├── *2007_test.txt*              #生成的测试集名单
-	├── *2007_train.txt* 
+	├── *2007_train.txt*
 	├── *2007_val.txt*
 	├── combination_train_val.py
 	├── *train.txt*                  # 生成的训练集名单
@@ -137,7 +147,7 @@ pytorch_yolov5
 | 1. 创建data.yaml
 
  ::
-   
+
    # train and val datasets (image directory or *.txt file with image paths)
    train: ../darknet/light_train.txt #对应数据集中的train.txt(注意路径)
    val: ../darknet/light_test.txt    #对应数据集中的2007_test.txt
@@ -199,7 +209,7 @@ pytorch_yolov5
 
 | 3. 训练
 | 将data.yaml和custom_yolov5s.yaml上传到与yolov5同级目录
-| ``$ python3 train.py --img 640 --batch 16 --epochs 200 --data ./data.yaml``
+| ``$ python train.py --img 640 --batch 16 --epochs 200 --data ./data.yaml``
 | ``--cfg ./custom_yolov5s.yaml --weights ' '``
 |
 | 4. 训练完生成的权重在weights目录下best.pt和last.pt
@@ -211,13 +221,13 @@ pytorch_yolov5
 
 推理
 -----
-| ``$python3 detect.py --weights weights/best.pt --img 640 --conf 0.4 --source xxx.jpg``
+| ``$python detect.py --weights weights/best.pt --img 640 --conf 0.4 --source xxx.jpg``
 | 测试输出的图片在inference/output/下
 |
 
 Pytorch --> ONNX
 -----------------
- 将训练好的Pytorch YOLOV5 模型转换成 ONNX 格式 
+ 将训练好的Pytorch YOLOV5 模型转换成 ONNX 格式
 
 | ``$ pip install onnx``
 | ``$ cd yolov5``
@@ -226,6 +236,14 @@ Pytorch --> ONNX
 
  转换后的模型为weights/best.onnx
 
+代码解析
+---------
+
+yaml
+~~~~~
+
+
+
 参考文档
 --------
 
@@ -233,4 +251,4 @@ Pytorch --> ONNX
 | https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data
 
 
- 
+

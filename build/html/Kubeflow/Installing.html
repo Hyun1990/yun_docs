@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installing Kubeflow &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Introduction" href="Introduction.html" />
+    <link rel="prev" title="Kubeflow" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Kubeflow</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installing Kubeflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-microk8s">Install MicroK8s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-kubeflow">Install Kubeflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">常用命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Kubeflow</a> &raquo;</li>
+        
+      <li>Installing Kubeflow</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Kubeflow/Installing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installing-kubeflow">
+<h1>Installing Kubeflow<a class="headerlink" href="#installing-kubeflow" title="永久链接至标题">¶</a></h1>
+<p>本文使用MicroK8s在Linux上安装Kubeflow</p>
+<div class="section" id="install-microk8s">
+<h2>Install MicroK8s<a class="headerlink" href="#install-microk8s" title="永久链接至标题">¶</a></h2>
+<p>Microk8s 需要在安装了Docker的前提下使用</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sodu</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">docker.io</span></code></div>
+</div>
+<ol class="arabic simple">
+<li><p>Install MicroK8s on Linux</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">snap</span> <span class="pre">install</span> <span class="pre">microk8s</span> <span class="pre">--classic</span> <span class="pre">--channel=1.18/stable</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<div class="line-block">
+<div class="line">确保主机名称不包含下划线，通过如下命令修改主机名</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">vi</span> <span class="pre">/etc/hostname</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">vi</span> <span class="pre">/etc/hosts</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">reboot</span></code></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>添加路径</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;export</span> <span class="pre">PATH=$PATH:/snap/bin&quot;</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.bashrc</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>添加用户组</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">usermod</span> <span class="pre">-a</span> <span class="pre">-G</span> <span class="pre">microk8s</span> <span class="pre">$USER</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-f</span> <span class="pre">-R</span> <span class="pre">$USER</span> <span class="pre">~/.kube</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">su</span> <span class="pre">-</span> <span class="pre">$USER</span></code></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Check the status</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">microk8s</span> <span class="pre">status</span> <span class="pre">--wait-ready</span></code></div>
+</div>
+<p>配置microk8s内置docker的registry.mirrors</p>
+<p>编辑 /var/snap/microk8s/current/args/containerd-template.toml 文件，加入以下内容</p>
+<img alt="../_images/mirrors.png" src="../_images/mirrors.png" />
+<ol class="arabic simple" start="5">
+<li><p>启动相关的add-on</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">microk8s</span> <span class="pre">enable</span> <span class="pre">dashboard</span> <span class="pre">dns</span> <span class="pre">registry</span> <span class="pre">istio</span></code></div>
+</div>
+<p>可通过
+<code class="docutils literal notranslate"><span class="pre">microk8s</span> <span class="pre">enable</span> <span class="pre">--help</span></code> 命令查看可打开的服务</p>
+<ol class="arabic simple" start="6">
+<li><p>查看版本信息</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">snap</span> <span class="pre">alias</span> <span class="pre">microk8s.kubectl</span> <span class="pre">kubectl</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">version</span></code></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>查看pods</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">pods</span> <span class="pre">-n</span> <span class="pre">kube-system</span></code></div>
+<div class="line">或使用如下命令查看pods和services的运行情况</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">all</span> <span class="pre">--all-namespaces</span></code></div>
+</div>
+<img alt="../_images/get_pods.png" class="align-center" src="../_images/get_pods.png" />
+<p>正常情况下都处于running状态，否则需要根据NAME查看pods具体情况</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">describe</span> <span class="pre">pods</span> <span class="pre">heapster-v1.5.2-58fdbb6f4d-lxfht</span> <span class="pre">-n</span> <span class="pre">kube-system</span></code></div>
+</div>
+<img alt="../_images/pod_error.png" class="align-center" src="../_images/pod_error.png" />
+<p>可看到拉取镜像
+<code class="docutils literal notranslate"><span class="pre">k8s.gcr.io/heapster-amd64:v1.5.2</span></code> 拉取失败</p>
+<p><strong>手动拉取镜像</strong></p>
+<div class="line-block">
+<div class="line">下载docker hub上的镜像</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">registry.aliyuncs.com/google_containers/heapster-amd64:v1.5.2</span></code></div>
+<div class="line">修改镜像tag</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">docker</span> <span class="pre">tag</span> <span class="pre">registry.aliyuncs.com/google_containers/heapster-amd64:v1.5.2</span> <span class="pre">k8s.gcr.io/heapster-amd64:v1.5.2</span></code></div>
+<div class="line">保存镜像为tar文件</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">docker</span> <span class="pre">save</span> <span class="pre">k8s.gcr.io/heapster-amd64:v1.5.2</span> <span class="pre">&gt;</span> <span class="pre">pause.tar</span></code></div>
+<div class="line">将tar文件上传到microk8s的docker中</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">microk8s.ctr</span> <span class="pre">image</span> <span class="pre">import</span> <span class="pre">pause.tar</span></code></div>
+<div class="line">查看镜像</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">microk8s</span> <span class="pre">ctr</span> <span class="pre">image</span> <span class="pre">ls</span></code></div>
+</div>
+<p>查看pod是否运行成功</p>
+<img alt="../_images/pod_ok.png" class="align-center" src="../_images/pod_ok.png" />
+<ol class="arabic simple" start="8">
+<li><p>访问dashboard</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">microk8s</span> <span class="pre">dashboard-proxy</span></code></div>
+<div class="line">浏览器打开 <a class="reference external" href="https://127.0,0.1:10443">https://127.0,0.1:10443</a>, 输入token验证即可</div>
+</div>
+<p>或者:</p>
+<ol class="loweralpha simple">
+<li><p>获取访问ip和端口</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">describe</span> <span class="pre">service</span> <span class="pre">kubernetes-dashboard</span> <span class="pre">-n</span> <span class="pre">kube-system</span></code></p>
+<img alt="../_images/ip.png" src="../_images/ip.png" />
+<ol class="loweralpha simple" start="2">
+<li><p>浏览器输入ip地址</p></li>
+</ol>
+<img alt="../_images/view.png" src="../_images/view.png" />
+<ol class="loweralpha simple" start="3">
+<li><p>获取token</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d &quot; &quot; -f1)
+echo $token
+kubectl -n kube-system describe secret $token
+</pre></div>
+</div>
+<img alt="../_images/token.png" src="../_images/token.png" />
+<ol class="loweralpha simple" start="4">
+<li><p>输入token后就进入管理页面了</p></li>
+</ol>
+<img alt="../_images/browser.png" src="../_images/browser.png" />
+<p><strong>解决google打不开dashboard</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">key</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">key</span>
+<span class="c1">#生成证书</span>
+<span class="n">openssl</span> <span class="n">genrsa</span> <span class="o">-</span><span class="n">out</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">key</span> <span class="mi">2048</span>
+<span class="c1">#master ip 192.168.31.105</span>
+<span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">out</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">csr</span> <span class="o">-</span><span class="n">key</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">subj</span> <span class="s1">&#39;/CN=192.168.31.105&#39;</span>
+<span class="n">openssl</span> <span class="n">x509</span> <span class="o">-</span><span class="n">req</span> <span class="o">-</span><span class="ow">in</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">csr</span> <span class="o">-</span><span class="n">signkey</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">dashboard</span><span class="o">.</span><span class="n">crt</span>
+<span class="c1">#删除原有的证书secret</span>
+<span class="n">kubectl</span> <span class="n">delete</span> <span class="n">secret</span> <span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">certs</span> <span class="o">-</span><span class="n">n</span> <span class="n">kube</span><span class="o">-</span><span class="n">system</span>
+<span class="c1">#创建新的证书secret</span>
+<span class="n">kubectl</span> <span class="n">create</span> <span class="n">secret</span> <span class="n">generic</span> <span class="n">kubernetes</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">certs</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="n">dashboard</span><span class="o">.</span><span class="n">key</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="n">dashboard</span><span class="o">.</span><span class="n">crt</span> <span class="o">-</span><span class="n">n</span> <span class="n">kube</span><span class="o">-</span><span class="n">system</span>
+<span class="c1">#查看pod</span>
+<span class="n">kubectl</span> <span class="n">get</span> <span class="n">pod</span> <span class="o">-</span><span class="n">n</span> <span class="n">kube</span><span class="o">-</span><span class="n">system</span>
+<span class="c1">#删除pod</span>
+<span class="n">kubectl</span> <span class="n">delete</span> <span class="n">pod</span> <span class="o">&lt;</span><span class="n">pod</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">n</span> <span class="n">kube</span><span class="o">-</span><span class="n">system</span>
+<span class="c1">#重启</span>
+<span class="n">kubectl</span><span class="o">.</span><span class="n">stop</span>
+<span class="n">kubectl</span><span class="o">.</span><span class="n">start</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-kubeflow">
+<h2>Install Kubeflow<a class="headerlink" href="#install-kubeflow" title="永久链接至标题">¶</a></h2>
+<p>kubeflow 至少要求2CPUs，16Gb RAM，50Gb free disk。</p>
+<ol class="arabic simple">
+<li><p>install microk8s</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">microk8s.enable</span> <span class="pre">kubeflow</span></code></p></li>
+</ol>
+<p>安装失败原因总结：</p>
+<ul class="simple">
+<li><p>版本原因，microk8s 从1.17才开始支持kubeflow</p></li>
+<li><p>juju报错，Couldn't contact api.jujucharms.com</p></li>
+<li><p>Service snap.microk8s.daemon-apiserver is not running</p></li>
+<li><p>资源不够</p></li>
+</ul>
+<p><em>安装参考文档</em></p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://jaas.ai/kubeflow">https://jaas.ai/kubeflow</a></div>
+<div class="line"><a class="reference external" href="https://ubuntu.com/kubeflow/install#5-install-kubeflow-using-kfctl">https://ubuntu.com/kubeflow/install#5-install-kubeflow-using-kfctl</a></div>
+<div class="line"><a class="reference external" href="https://charmed-kubeflow.io/docs/install">https://charmed-kubeflow.io/docs/install</a></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>常用命令<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><strong>停止服务</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">microk8s.stop</span></code></p>
+<p><strong>启动服务</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">microk8s.start</span></code></p>
+<p><strong>卸载microk8s</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">snap</span> <span class="pre">remove</span> <span class="pre">microk8s</span></code></p>
+<p><strong>查看node</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">nodes</span></code></p>
+<p><strong>查看services</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">services</span></code></p>
+<p><strong>查看当前安装的版本</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">snap</span> <span class="pre">list</span></code></p>
+</div>
+<div class="section" id="id2">
+<h2>参考文档<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://www.kubeflow.org/docs/started/getting-started/">Installing Kubeflow</a></div>
+<div class="line"><a class="reference external" href="https://www.jianshu.com/p/6c5c69fce0f4">microk8s 安装istio</a></div>
+<div class="line"><a class="reference external" href="https://soulteary.com/2019/09/08/build-your-k8s-environment-with-microk8s.html">通过MicroK8s搭建K8s环境</a></div>
+<div class="line"><a class="reference external" href="https://www.codenong.com/cs105906909/">使用snap安装microk8s</a></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Kubeflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

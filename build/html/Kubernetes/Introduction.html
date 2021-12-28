@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Installing" href="Installing.html" />
+    <link rel="prev" title="Kubernetes" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nni/index.html">NNI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Kubernetes</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kubernetes">Kubernetes 组件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Kubernetes 基础</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Installing.html">Installing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Kubernetes</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Kubernetes/Introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="永久链接至标题">¶</a></h1>
+<p>Kubernetes是用于自动部署，管理和扩展容器化应用程序的开源系统。</p>
+<p>Kubernetes 提供：</p>
+<ul class="simple">
+<li><p>服务发现和负载均衡</p></li>
+<li><p>存储编排</p></li>
+<li><p>自动部署和回滚</p></li>
+<li><p>自动完成装箱计算</p></li>
+<li><p>自我修复</p></li>
+<li><p>密钥于管理配置</p></li>
+</ul>
+<div class="section" id="kubernetes">
+<h2>Kubernetes 组件<a class="headerlink" href="#kubernetes" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/comp.png" class="align-center" src="../_images/comp.png" />
+<p><strong>控制平面组件</strong></p>
+<p>对集群作出全局决策，检测及相应集群事件</p>
+<p><em>kube-apiserver</em></p>
+<p>该组件公开了Kubernetes API。API服务器时Kubernetes控制面的前端</p>
+<p><em>etcd</em></p>
+<p>集群数据的后台数据库</p>
+<p><em>kube-schedule</em></p>
+<p>监视新创建的未指定运行节点的Pod，并选择节点让Pod在上面运行</p>
+<p><em>kube-controller-mannager</em></p>
+<p>在主节点上运行控制器的组件</p>
+<p><em>cloud-controller-mannager</em></p>
+<p>嵌入特定云的控制逻辑的控制平面组件</p>
+<p><strong>Node组件</strong></p>
+<p>节点组件在每个节点上运行，维护运行的Pod并提供Kubernetes运行环境</p>
+<p><em>kubelet</em></p>
+<p>一个在集群中每个节点上运行的代理，保证容器都运行在Pod中</p>
+<p><em>kube-proxy</em></p>
+<p>集群中每个节点上运行的网络代理，实现Kubernetes service 概念的一部分</p>
+<p><em>容器运行时</em></p>
+<p>负责运行容器的软件</p>
+<p><strong>插件</strong></p>
+<p>插件适用Kubernetes资源(DaemonSet, Deployment)实现集群功能</p>
+<p><em>DNS</em></p>
+<p><em>Web界面</em></p>
+<p><em>容器资源监控</em></p>
+</div>
+<div class="section" id="id1">
+<h2>Kubernetes 基础<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><strong>1.创建集群</strong></p>
+<p>Master 负责管理整个集群，Node是一个虚拟机或物理机</p>
+<p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">start</span></code></p>
+<p>kubectl是Kubernetes的命令行工具</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">cluster-info</span></code> 查看集群信息</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">nodes</span></code> 显示所有节点</div>
+</div>
+<p><strong>2.部署应用</strong></p>
+<p>Delpoyment 指挥Kubernetes 如何创建和更新应用程序的实例</p>
+<p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">create</span> <span class="pre">deployment</span> <span class="pre">kubernetes-bootcamp</span> <span class="pre">--image=gcr.io/google-samples/kubernetes-bootcamp:v1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">deployments</span></code> 显示 deployments</p>
+<p><strong>3.了解应用</strong></p>
+<p><em>工作节点和Pod</em></p>
+<img alt="../_images/pod.png" class="align-center" src="../_images/pod.png" />
+<p>在创建Delpoyment时，Kubernetes添加了一个Pod来托管引用程序。Pod是抽象出来的表示
+一组一个或多个应用程序容器及以这些容器的一些共享资源。</p>
+<p>Pod是Kubernetes平台上的原子单元，每个Pod都与调度他的节点绑定，一个节点可以有多个Pod</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">pods</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">describe</span> <span class="pre">pods</span></code></div>
+</div>
+<p><strong>4.公开暴露应用</strong></p>
+<p>Kubernetes 中的Service是一种抽象概念，定义了Pod的逻辑辑和访问Pod的协议。
+Service 下的一组Pod通常由LabelSelector来标记，Service 将Pod暴露在集群外部以供访问。</p>
+<img alt="../_images/ser.png" class="align-center" src="../_images/ser.png" />
+<p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">sevices</span></code> 获取服务列表</p>
+<div class="line-block">
+<div class="line">创建一个新的服务并暴露</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">expose</span> <span class="pre">deployment/kubernetes-bootcamp</span> <span class="pre">--type=&quot;NodePort&quot;</span> <span class="pre">--port</span> <span class="pre">8080</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">获取服务详细信息</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">describe</span> <span class="pre">services/kubernetes-bootcamp</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">通过label来获取信息</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">services</span> <span class="pre">-l</span> <span class="pre">run=kubernetes-bootcamp</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">删除服务</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">services</span> <span class="pre">-l</span> <span class="pre">run=kubernetes-bootcamp</span></code></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>参考文档<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://kubernetes.io/zh/docs/concepts/overview/components/">Kubernetes 组件</a></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Installing.html" class="btn btn-neutral float-right" title="Installing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Kubernetes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

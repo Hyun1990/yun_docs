@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GoogLeNet &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="FPN" href="fpn.html" />
+    <link rel="prev" title="LeNet" href="lenet.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Network</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="CV方向综述.html">CV方向综述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lenet.html">LeNet</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GoogLeNet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">创新点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inception-v1">Inception V1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">GoogLeNet网络结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">网络可视化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fpn.html">FPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="res.html">ResNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YOLO/index.html">YOLO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nni/index.html">NNI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nvidia/index.html">Nvidia</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Network</a> &raquo;</li>
+        
+      <li>GoogLeNet</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/network/googlenet.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="googlenet">
+<h1>GoogLeNet<a class="headerlink" href="#googlenet" title="永久链接至标题">¶</a></h1>
+<p>论文地址：<a class="reference external" href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43022.pdf">Going Deeper with Convolutions</a></p>
+<p>GoogLeNet是谷歌研究出来的深度网络结构，获得了2014年ImageNet挑战赛第一名。
+其稀疏性，高计算性能的网络结构使得在内存或计算资源有限的情况下，是较好的选择。</p>
+<div class="section" id="id1">
+<h2>创新点<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>引入Inception结构，融合不同尺度的特征信息</p></li>
+<li><p>使用1*1卷积核进行降维</p></li>
+<li><p>添加两个辅助分类器帮助训练</p></li>
+<li><p>丢弃全连接层，使用平均池化，减少模型参数</p></li>
+</ul>
+</div>
+<div class="section" id="inception-v1">
+<h2>Inception V1<a class="headerlink" href="#inception-v1" title="永久链接至标题">¶</a></h2>
+<p>Inception V1 是构成GoogLeNet的基础，将特征矩阵同时输入到多个分支进行处理，
+并将输出的特征矩阵按深度进行拼接，得到最终输出。增加量网络深度减少了网络参数。</p>
+<blockquote>
+<div><img alt="../_images/inception.png" class="align-center" src="../_images/inception.png" />
+</div></blockquote>
+<ul class="simple">
+<li><p>尺寸不同的卷积核增加了网络宽度及对不同尺度的适应性</p></li>
+<li><p>池化层减少空间大小，降低过拟合</p></li>
+<li><p>在每个卷积层后进行ReLU操作，增加网络的非线性特在</p></li>
+<li><p>粉色
+<span class="math notranslate nohighlight">\(1 \times 1\)</span> 的卷积核减少维度，同时用于修正线性激活</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p><span class="math notranslate nohighlight">\(1 \times 1\)</span> 卷积核的作用</p>
+<p>假设previous layer为
+<span class="math notranslate nohighlight">\(100 \times 100 \times 128\)</span>，输出为
+<span class="math notranslate nohighlight">\(100 \times 100 \times 256\)</span>，若没有
+<span class="math notranslate nohighlight">\(1 \times 1\)</span> 卷积，直接进行
+<span class="math notranslate nohighlight">\(5 \times 5\)</span> 卷积，则卷积参数个数为
+<span class="math notranslate nohighlight">\(5 \times 5 \times 128 \times 256\)</span>，若先经过
+<span class="math notranslate nohighlight">\(1 \times 1\)</span> 卷积降低通道为32后再进行
+<span class="math notranslate nohighlight">\(5 \times 5\)</span> 卷积，则卷积参数个数为
+<span class="math notranslate nohighlight">\(1 \times 1 \times 128 \times 32 + 5 \times 5 \times 32 \times 256\)</span>，约减少4倍</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>GoogLeNet网络结构<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>网络共22层，包含9个inception模块，reduce表示卷积前使用了1*1的卷积</p>
+<blockquote>
+<div><img alt="../_images/struct.png" class="align-center" src="../_images/struct.png" />
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>网络可视化<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>图中的(V)和(S)表示如何进行padding，V=valid表示不进行padding，S=same表示保持同样尺寸进行
+zero padding</p>
+<ul>
+<li><p>为了避免梯度消失，网络额外增加了2个辅助的softmax用于分类。在training的过程中，
+将两个辅助分类器的损失乘以权重0.3加到网络的整体损失上，再进行反向传播；在推理过程中，不使用辅助分类器。</p>
+<blockquote>
+<div><img alt="../_images/googlenet.png" class="align-center" src="../_images/googlenet.png" />
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>参考文档<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://my.oschina.net/u/876354/blog/1637819">大话CNN经典模型GoogLeNet</a></div>
+<div class="line"><a class="reference external" href="https://blog.csdn.net/m0_37867091/article/details/107404735">GoogLeNet结构详解与模型的搭建</a></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fpn.html" class="btn btn-neutral float-right" title="FPN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lenet.html" class="btn btn-neutral float-left" title="LeNet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

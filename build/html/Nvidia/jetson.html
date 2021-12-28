@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Nvidia Jetson &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="GPU" href="gpu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nni/index.html">NNI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nvidia</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">GPU</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nvidia Jetson</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-jetson">What is Jetson?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jetson">Jetson 系列对比</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-roadmap">Hardware Roadmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jetson-software">Jetson Software</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#key-features-in-jetpack">Key Features in JetPack</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#jetson-benchmarks">Jetson Benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">应用场景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">参考文档</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Nvidia</a> &raquo;</li>
+        
+      <li>Nvidia Jetson</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Nvidia/jetson.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nvidia-jetson">
+<h1>Nvidia Jetson<a class="headerlink" href="#nvidia-jetson" title="永久链接至标题">¶</a></h1>
+<div class="section" id="what-is-jetson">
+<h2>What is Jetson?<a class="headerlink" href="#what-is-jetson" title="永久链接至标题">¶</a></h2>
+<p>Nvidia Jetson 是先进的AI边缘设备平台，面向移动嵌入式系统市场中的GPU加速并行处理。
+在深度学习和计算机视觉方面高性能，低能耗计算，使得Jetson成为计算密集型嵌入式项目的理想平台。</p>
+</div>
+<div class="section" id="jetson">
+<h2>Jetson 系列对比<a class="headerlink" href="#jetson" title="永久链接至标题">¶</a></h2>
+<p>目前Jetson产品线有四个系列的产品(TK1和TX1已经停产)，包括Jetson Nano, Jetson TX2,
+Xavier NX, AGX Xavier。</p>
+<p>四个产品的定位是不同的。Jetson Nano比较适合和体量较小的设备，定位入门级，售价99美元；
+Jetson TX2比Jetson Nano支持的摄像头数量更多，而且有专门的安全核心，售价249美元起；
+Xavier NX的尺寸最小，但性能却是Jetson Nano的50倍，并且Xavier NX可以与Jetson Nano的主板兼容，价格399美元；
+AGX Xavier是一个全功能平台，用户可通过AGX Xavier打造机器人，比如送货机器人，AGX Xavier可以实现自主驾驶。</p>
+<img alt="../_images/jetson.jpg" class="align-center" src="../_images/jetson.jpg" />
+</div>
+<div class="section" id="hardware-roadmap">
+<h2>Hardware Roadmap<a class="headerlink" href="#hardware-roadmap" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/roadmap.png" class="align-center" src="../_images/roadmap.png" />
+</div>
+<div class="section" id="jetson-software">
+<h2>Jetson Software<a class="headerlink" href="#jetson-software" title="永久链接至标题">¶</a></h2>
+<p>Nvidia Jetson 设备都由同一个Nvidia软件堆栈支持，使得一次开发可以部署到任意设备。
+JetPack SDK 是开发AI应用程序最完善的解决方案。它含最新的基于linux操作系统的驱动包(L4T)，CUDA-X加速库以及用于AI边缘
+应用开发的APIs。同时包括用于主机和开发套件的示例和文档及开发工具，并支持更高级别
+的SDK，如用于流视频分析的DeepStream和用于机器人的Isaac。</p>
+<img alt="../_images/software.png" class="align-center" src="../_images/software.png" />
+<div class="section" id="key-features-in-jetpack">
+<h3>Key Features in JetPack<a class="headerlink" href="#key-features-in-jetpack" title="永久链接至标题">¶</a></h3>
+<p><strong>OS</strong></p>
+<p>Nvidia L4T provides the bootloader, Linux kernel, necessary firmwares, NVIDIA drivers, sample filesystem, and more.</p>
+<p><strong>TensorRT</strong></p>
+<p>Nvidia TensorRT 是建立在CUDA之上，用于高性能深度学习推理的SDK。此SDK 包含深度学习推理优化器和运行时环境，可为深度学习推理应用提供低延迟和高吞吐量。</p>
+<p><strong>cuDNN</strong></p>
+<p>NVIDIA cuDNN是用于深度神经网络的GPU加速库。它强调性能、易用性和低内存开销。NVIDIA cuDNN可以集成到更高级别的机器学习框架中，如加州大学伯克利分校的流行CAFFE软件。简单的，插入式设计可以让开发人员专注于设计和实现神经网络模型，而不是调整性能，同时还可以在GPU上实现高性能现代并行计算。</p>
+<p><strong>CUDA</strong></p>
+<p>CUDA是一种由Nvidia推出的通用并行计算架构，为C和C++开发人员构建GPU加速的应用程序提供了全面的开发环境。该工具包包括用于NVIDIA GPU的编译器，数学库以及用于调试和优化应用程序性能的工具。</p>
+<p><strong>Multimedia API</strong></p>
+<p>提供的级别的API用于灵活的应用开发，如Camera application API，Sensor driver API。</p>
+<p><strong>Computer Vision</strong></p>
+<p>包括用于CV和图像处理的软件开发包VisionWorks，Opencv，VPI(Version Programing Interface)。</p>
+<p><strong>Developer Tools</strong></p>
+<p>The toolkit includes Nsight Eclipse Edition, debugging and profiling tools including Nsight Compute, and a toolchain for cross-compiling applications。</p>
+</div>
+</div>
+<div class="section" id="jetson-benchmarks">
+<h2>Jetson Benchmarks<a class="headerlink" href="#jetson-benchmarks" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/benchmark.png" class="align-center" src="../_images/benchmark.png" />
+</div>
+<div class="section" id="id1">
+<h2>应用场景<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line">* 机器人</div>
+<div class="line">让机器人和其他自主机器感知，导航和操纵周围的世界</div>
+<div class="line"><br /></div>
+<div class="line">* 机器视觉</div>
+<div class="line">使用AI通过自主光学检测(AOI)技术快速精确定位缺陷部位，确保产品最高品质</div>
+</div>
+<div class="line-block">
+<div class="line">* AIoT</div>
+<div class="line">AI为多种物联网网关和边缘设备带来强大功能，实现传感器和数据的区域处理</div>
+</div>
+<div class="line-block">
+<div class="line">* 智能视频分析</div>
+<div class="line">通过视频流分析获取实时，可行的决策信息</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>参考文档<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://developer.nvidia.com/EMBEDDED/develop">Jetson Develop</a></div>
+<div class="line"><a class="reference external" href="https://developer.nvidia.com/embedded/jetpack">JetPack SDK</a></div>
+<div class="line"><a class="reference external" href="https://docs.nvidia.com/jetson/l4t/">Nvidia L4T document</a></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="gpu.html" class="btn btn-neutral float-left" title="GPU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

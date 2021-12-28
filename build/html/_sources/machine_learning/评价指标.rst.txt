@@ -1,0 +1,10 @@
+评价指标
+=========
+
+
+
+参考文档
+---------
+
+| `评价指标整理 <https://www.cnblogs.com/shona/p/12239400.html>`_
+| `建立的机器学习模型有可能是错误的四种原因 <https://www.ideepwise.ai/html/gongsidongtai/nabudongtai/2017/0930/45.html>`_

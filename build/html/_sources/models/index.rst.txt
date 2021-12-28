@@ -7,6 +7,7 @@ Models
    yolov1
    yolov2
    yolov3
+   yolov4
    one-stage_detector
 
 

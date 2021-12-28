@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PP-YOLOV2 &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="OpenCV" href="../opencv/index.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PaddlePaddle</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PP-YOLOV2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">准备数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">上传数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">创建项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notebook">部署Notebook项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">修改配置文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">训练</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">评估</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">模型压缩，部署</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/index.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nni/index.html">NNI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nvidia/index.html">Nvidia</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">PaddlePaddle</a> &raquo;</li>
+        
+      <li>PP-YOLOV2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/paddlepaddle/ppyolov2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pp-yolov2">
+<h1>PP-YOLOV2<a class="headerlink" href="#pp-yolov2" title="永久链接至标题">¶</a></h1>
+<p>论文地址： <a class="reference external" href="https://arxiv.org/abs/2104.10419">PP-YOLOv2: A Practical Object Detector</a></p>
+<p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection">PaddleDetection</a></p>
+<p>该文档记录了在Baidu AI Studio上使用PP-YOLOV2</p>
+<div class="section" id="id1">
+<h2>准备数据集<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>参考百度文档 <a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection/blob/release/2.1/docs/tutorials/PrepareDataSet.md">数据准备</a></p>
+<p>使用VOC数据集，需要的数据集结果如下：</p>
+<blockquote>
+<div><img alt="../_images/data.png" src="../_images/data.png" />
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>annotations</strong> xml标注文件</p></li>
+<li><p><strong>images</strong> 图片文件夹</p></li>
+<li><p><strong>label_list.txt</strong> 标签名</p></li>
+<li><p><strong>valid.txt</strong> 验证集文件, 格式如图右侧显示</p></li>
+<li><p><strong>train.txt</strong> 测试集文件，格式如图右侧显示</p></li>
+</ul>
+<div class="line-block">
+<div class="line">如何生成train.txt格式的文件：</div>
+<div class="line"><br /></div>
+<div class="line">1. annotations 中的文件按行写入到a.txt</div>
+<div class="line"><br /></div>
+<div class="line">2. copy a.txt 为 b.txt 并将xml后缀修改成jpg</div>
+<div class="line"><br /></div>
+<div class="line">3. 按行合并a.txt 和 b.txt 为c.txt</div>
+<div class="line"><br /></div>
+<div class="line">4. 按训练集和测试集比例划分c.txt为train.txt和valid.txt</div>
+</div>
+<p>将上述文件打包成img.zip</p>
+</div>
+<div class="section" id="id3">
+<h2>上传数据集<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>打开 <a class="reference external" href="https://aistudio.baidu.com/aistudio/datasetoverview">PP AI Studio</a></p></li>
+<li><p>登陆并创建数据集，将img_weld.zip上传上去</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>创建项目<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>参考百度文档 <a class="reference external" href="https://ai.baidu.com/ai-doc/AISTUDIO/0k3e2tfzm">项目概述</a> 中的创建并运行一个项目</p>
+<ul class="simple">
+<li><p>打开 <a class="reference external" href="https://ai.baidu.com/ai-doc/AISTUDIO/0k3e2tfzm">创建项目页面</a></p></li>
+<li><p>创建Notebook项目</p></li>
+<li><p>添加数据集</p></li>
+</ul>
+</div>
+<div class="section" id="notebook">
+<h2>部署Notebook项目<a class="headerlink" href="#notebook" title="永久链接至标题">¶</a></h2>
+<p>参考百度文档 <a class="reference external" href="https://ai.baidu.com/ai-doc/AISTUDIO/sk3e2z8sb">Notebook环境使用说明</a></p>
+<div class="line-block">
+<div class="line">1. 打开已创建的项目，点击进入</div>
+<div class="line"><br /></div>
+<div class="line">2. 按照官方指导挂载数据集，进行持久化安装</div>
+<div class="line"><br /></div>
+<div class="line">3. 解压数据集</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!unzip</span> <span class="pre">~/data/data86830/img_weld.zip</span></code></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">4. <a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection/blob/release/2.1/docs/tutorials/INSTALL_cn.md">安装PaddlePaddleDetection</a></div>
+<div class="line-block">
+<div class="line">* 安装PaddlePaddle</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">paddlepaddle-gpu==2.1.0.post101</span> <span class="pre">-f</span> <span class="pre">https://paddlepaddle.org.cn/whl/mkl/stable.html</span></code></div>
+<div class="line">* 安装PaddleDetection</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!git</span> <span class="pre">clone</span> <span class="pre">https://github.com/PaddlePaddle/PaddleDetection.git</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">%cd</span> <span class="pre">~/PaddleDetection/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></div>
+<div class="line">* 确认是否安装成功</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!python</span> <span class="pre">ppdet/modeling/tests/test_architectures.py</span></code></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>修改配置文件<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>参考 <a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection/blob/release/2.1/docs/tutorials/GETTING_STARTED_cn.md">配置文件说明</a> 和 <a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection/blob/release/2.1/docs/tutorials/config_annotation/ppyolo_r50vd_dcn_1x_coco_annotation.md">YOLO参数配置教程</a></p>
+<div class="line-block">
+<div class="line">1. 将data目录下的数据集copy到PaddleDetection下</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!cp</span> <span class="pre">~/data/data86830/img_weld</span> <span class="pre">~/PaddleDetection/dataset/</span></code></div>
+<div class="line"><br /></div>
+<div class="line">2. 我们选择configs/ppyolo/ppyolov2_r50vd_dcn_365e_coco.yml配置进行训练。PaddleDetection 2.0 采用了模块解耦设计，如下图所示，依赖其他配置文件</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/total.png"><img alt="../_images/total.png" src="../_images/total.png" style="width: 450px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">3. 根据自定义的模型修改对应的配置文件</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">* 我们采用VOC数据集，因此将上述配置文件修改成</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">'../datasets/voc.yml'</span></code></div>
+</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/new_total.png"><img alt="../_images/new_total.png" src="../_images/new_total.png" style="width: 450px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">* 根据数据集修改 <code class="docutils literal notranslate"><span class="pre">voc.yml``中的</span> <span class="pre">``num_class</span></code>, <code class="docutils literal notranslate"><span class="pre">dataset_dir</span></code>, <code class="docutils literal notranslate"><span class="pre">anno_path</span></code></div>
+</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/voc.png"><img alt="../_images/voc.png" src="../_images/voc.png" style="width: 500px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">* 根据需要修改 <code class="docutils literal notranslate"><span class="pre">runtime.yml</span></code></div>
+</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/runtime.png"><img alt="../_images/runtime.png" src="../_images/runtime.png" style="width: 250px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">* 根据需要修改 <code class="docutils literal notranslate"><span class="pre">ppyolov2_r50vd_dcn.yml</span></code></div>
+<div class="line-block">
+<div class="line">anchors 可根据数据集计算出来</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!python</span> <span class="pre">tools/anchor_cluster.py</span> <span class="pre">-c</span> <span class="pre">configs/ppyolo/ppyolov2_r50vd_dcn_365e_coco.yml</span> <span class="pre">-n</span> <span class="pre">9</span> <span class="pre">-s</span> <span class="pre">640</span> <span class="pre">-m</span> <span class="pre">v2</span> <span class="pre">-i</span> <span class="pre">1000</span></code></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/dcn.png"><img alt="../_images/dcn.png" src="../_images/dcn.png" style="width: 800px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">* 根据需要修改 <code class="docutils literal notranslate"><span class="pre">optimizer_365e.yml</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">epoch</span></code> 等</div>
+</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/optimizer.png"><img alt="../_images/optimizer.png" src="../_images/optimizer.png" style="width: 300px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">* 根据需要修改 <code class="docutils literal notranslate"><span class="pre">ppyolov2_reader.yml</span></code></div>
+</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/reader.png"><img alt="../_images/reader.png" src="../_images/reader.png" style="width: 800px;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>训练<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>参考百度文档 <a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection/blob/release/2.1/docs/tutorials/GETTING_STARTED_cn.md">快速开始</a></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">%cd</span> <span class="pre">~/PaddleDetection/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!CUDA_VISIBLE_DEVICES=0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!python</span> <span class="pre">tools/train.py</span> <span class="pre">-c</span> <span class="pre">configs/yolo/ppyolov2_r50vd_dcn_365e_coco.yml</span></code></div>
+</div>
+<p>恢复训练</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">%cd</span> <span class="pre">~/PaddleDetection/</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!CUDA_VISIBLE_DEVICES=0</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!python</span> <span class="pre">tools/train.py</span> <span class="pre">-c</span> <span class="pre">configs/yolo/ppyolov2_r50vd_dcn_365e_coco.yml</span> <span class="pre">-r</span> <span class="pre">output/ppyolov2_r50vd_dcn_365e_coco/20</span></code></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>评估<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>默认训练生成的模型保存在当前 <code class="docutils literal notranslate"><span class="pre">output</span></code> 文件夹下</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!python</span> <span class="pre">tools/eval.py</span> <span class="pre">-c</span> <span class="pre">configs/yolo/ppyolov2_r50vd_dcn_365e_coco.yml</span> <span class="pre">-o</span> <span class="pre">weights=output/yolo/ppyolov2_r50vd_dcn_365e_coco/model_final.pdparams</span></code></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>eval.py 会报错，把 <code class="docutils literal notranslate"><span class="pre">ppyolov2_reader.yml</span></code> batch_size设置成1</p>
+</div>
+</div>
+<div class="section" id="id13">
+<h2>预测<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!python</span> <span class="pre">tools/infer.py</span> <span class="pre">-c</span> <span class="pre">configs/yolo/ppyolov2_r50vd_dcn_365e_coco.yml</span> <span class="pre">--infer_img=demo/000001.jpg</span> <span class="pre">-o</span> <span class="pre">weights=output/yolo/ppyolov2_r50vd_dcn_365e_coco/model_final.pdparams</span></code></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>模型压缩，部署<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<p>参考百度文档 <a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection">进阶教程</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../opencv/index.html" class="btn btn-neutral float-right" title="OpenCV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

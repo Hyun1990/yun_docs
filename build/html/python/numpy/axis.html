@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Array Basic Attributes &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="C_Programming" href="../../C_Programming/index.html" />
+    <link rel="prev" title="Numpy" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../linux/index.html">Linux</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Numpy</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Array Basic Attributes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#index">Index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dimensions">Dimensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shape">Shape</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#axis">Axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Python</a> &raquo;</li>
+        
+          <li><a href="index.html">Numpy</a> &raquo;</li>
+        
+      <li>Array Basic Attributes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/python/numpy/axis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="array-basic-attributes">
+<h1>Array Basic Attributes<a class="headerlink" href="#array-basic-attributes" title="永久链接至标题">¶</a></h1>
+<p>Basic attributes of the ndarray class</p>
+<img alt="../../_images/att.png" class="align-center" src="../../_images/att.png" />
+<div class="section" id="index">
+<h2>Index<a class="headerlink" href="#index" title="永久链接至标题">¶</a></h2>
+<p>用于获取 array 中的单个元素，array 中的每个元素都有一个地址，这个地址就是一个 “index”</p>
+<p><strong>index values start at zero</strong></p>
+<img alt="../../_images/index.jpeg" class="align-center" src="../../_images/index.jpeg" />
+<div class="section" id="slicing-2-d-arrays">
+<h3>Slicing 2-D arrays<a class="headerlink" href="#slicing-2-d-arrays" title="永久链接至标题">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span>
+<span class="n">squre_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">square_array</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<img alt="../../_images/2_index.png" class="align-center" src="../../_images/2_index.png" />
+</div>
+</div>
+<div class="section" id="dimensions">
+<h2>Dimensions<a class="headerlink" href="#dimensions" title="永久链接至标题">¶</a></h2>
+<p>&quot;Dimension of an Array&quot; is the number of indices, or subscripts, that you need in order to specify an individual element of the array.</p>
+<p>简而言之，维度就是获取array中单个元素所需的下标数。</p>
+<div class="section" id="zero-dimensional-data">
+<h3>Zero Dimensional data<a class="headerlink" href="#zero-dimensional-data" title="永久链接至标题">¶</a></h3>
+<p>Scaler, has no dimensions or axis.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="one-dimensional-data">
+<h3>One Dimensional data<a class="headerlink" href="#one-dimensional-data" title="永久链接至标题">¶</a></h3>
+<p>A Vector is one-dimensional data. Vector is a collection of Scalars.
+Vector has a shape(N,), where N is the number of scalars in it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="two-dimensional-data">
+<h3>Two Dimensional data<a class="headerlink" href="#two-dimensional-data" title="永久链接至标题">¶</a></h3>
+<p>A Matrix is a example of two-dimensional data. Matrix is a collection of
+vectors and has a shape of (N,M), where N is the number of vectors in it
+and M is the numbers of scalers in each vector.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="three-dimensional-data">
+<h3>Three Dimensional data<a class="headerlink" href="#three-dimensional-data" title="永久链接至标题">¶</a></h3>
+<p>3D array is a collection of 2D data-points(matrix). The shape of 3D
+data would be (N,M,P). There would be matrices of shape(M,P).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]],</span>
+
+ <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generalizing-the-concept">
+<h3>Generalizing the Concept<a class="headerlink" href="#generalizing-the-concept" title="永久链接至标题">¶</a></h3>
+<p>A data with <code class="docutils literal notranslate"><span class="pre">n</span></code> dimension would have be having the following shape.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">N3</span><span class="p">,</span> <span class="n">N4</span><span class="p">,</span> <span class="o">......</span> <span class="n">Nn</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>There are <code class="docutils literal notranslate"><span class="pre">N1</span></code> data-points with shape <code class="docutils literal notranslate"><span class="pre">(N2,</span> <span class="pre">N3,</span> <span class="pre">N4,</span> <span class="pre">..</span> <span class="pre">Nn)</span></code></p></li>
+<li><p>Each data-point will have <code class="docutils literal notranslate"><span class="pre">N2</span></code> data-points of shape <code class="docutils literal notranslate"><span class="pre">(N3,</span> <span class="pre">N4,</span> <span class="pre">..</span> <span class="pre">Nn)</span></code></p></li>
+<li><p>Similary, it goes on</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="shape">
+<h2>Shape<a class="headerlink" href="#shape" title="永久链接至标题">¶</a></h2>
+<p>The “shape” of array is a tuple with the number of elements per dimension.</p>
+<p>我们可以通过 shape 来获取每个维度的元素数, 以下是一个2D array。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="axis">
+<h2>Axis<a class="headerlink" href="#axis" title="永久链接至标题">¶</a></h2>
+<p>In Numpy, dimensions are called axes.For example,the 2-D array has 2 axis.</p>
+<p><strong>Array axes in Numpy are numbered, and starting with 0.</strong></p>
+<p>类似笛卡尔坐标系一样，Numpy axes 也可以用坐标系的方法来表示，对于一个
+2-dimensional Numpy array 来说，axis就是沿着 Row 和 Column 的方向。</p>
+<img alt="../../_images/coordinate.png" class="align-center" src="../../_images/coordinate.png" />
+<ul class="simple">
+<li><p>Axis 0 is the direction along the rows</p></li>
+<li><p>Axis 1 is the direction along the columns</p></li>
+</ul>
+<img alt="../../_images/coord.jpg" class="align-center" src="../../_images/coord.jpg" />
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="永久链接至标题">¶</a></h3>
+<p><strong>我们需要理解axis对于不同函数的作用是不同的</strong></p>
+<div class="section" id="numpy-sum">
+<h4>Numpy Sum<a class="headerlink" href="#numpy-sum" title="永久链接至标题">¶</a></h4>
+<p>沿着axis的方向聚合数据，注意Rows/Columns 和 Rows/Columns的方向是两个概念。</p>
+<p>In np.sum( ), the axis parameter controls which axis will be aggregated or collapsed.
+Remember, functions like sum( ), mean( ), min( ), median( ), and other statistical functions aggregate your data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">np_array_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np_array_ad</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p><strong>sum axis=0</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np_array_2d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="../../_images/axis0.png" class="align-center" src="../../_images/axis0.png" />
+<p><strong>sum axis=1</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np_array_2d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="../../_images/axis1.png" class="align-center" src="../../_images/axis1.png" />
+<p><strong>Numpy Aggregation Array Function</strong></p>
+<img alt="../../_images/agg.png" class="align-center" src="../../_images/agg.png" />
+</div>
+<div class="section" id="numpy-concatenate">
+<h4>Numpy Concatenate<a class="headerlink" href="#numpy-concatenate" title="永久链接至标题">¶</a></h4>
+<p>When we use the axis parameter with the np.concatenate( ) function,
+the axis defines the axis along which we stack the arrays.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np_array_1s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">np_array_9s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">array</span><span class="p">([[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p><strong>concatenate axis=0</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np_array_1s</span><span class="p">,</span> <span class="n">np_array_9s</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+</pre></div>
+</div>
+<img alt="../../_images/concat0.png" class="align-center" src="../../_images/concat0.png" />
+<p><strong>concatenate axis=1</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np_array_1s</span><span class="p">,</span> <span class="n">np_array_9s</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+      <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="../../_images/concat1.png" class="align-center" src="../../_images/concat1.png" />
+</div>
+</div>
+<div class="section" id="warning-1-dimensional-arrays">
+<h3>Warning:1-Dimensional arrays<a class="headerlink" href="#warning-1-dimensional-arrays" title="永久链接至标题">¶</a></h3>
+<p>1-Dimensional Numpy arrays only have one axis.</p>
+<img alt="../../_images/dimension1.png" class="align-center" src="../../_images/dimension1.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np_array_1s_1dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">np_array_9s_1dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">9</span> <span class="mi">9</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np_array_1s_1dim</span><span class="p">,</span> <span class="n">np_array_9s_1dim</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://towardsdatascience.com/understanding-axes-and-dimensions-numpy-pandas-606407a5f950">Understanding Axes and Dimensions</a></div>
+<div class="line"><a class="reference external" href="https://www.sharpsightlabs.com/blog/numpy-axes-explained/">NUMPY AXES EXPLAINED</a></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../C_Programming/index.html" class="btn btn-neutral float-right" title="C_Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Numpy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

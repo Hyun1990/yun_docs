@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Use NNI on Google Colab &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Kubernetes" href="../Kubernetes/index.html" />
+    <link rel="prev" title="Introduction" href="Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">NNI</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Use NNI on Google Colab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">NNI</a> &raquo;</li>
+        
+      <li>Use NNI on Google Colab</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/nni/google_colab_nni.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="use-nni-on-google-colab">
+<h1>Use NNI on Google Colab<a class="headerlink" href="#use-nni-on-google-colab" title="永久链接至标题">¶</a></h1>
+<p><strong>1. 挂载google drive</strong></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">google.colab</span> <span class="pre">import</span> <span class="pre">drive</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">drive.mount('/content/drive')</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">%cd</span> <span class="pre">/content/drive/My</span> <span class="pre">Drive</span></code></div>
+</div>
+<p><strong>2. 安装需要的软件和包</strong></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">nni</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!wget</span> <span class="pre">https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!unzip</span> <span class="pre">ngrok-stable-linux-amd64.zip</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!mkdir</span> <span class="pre">-p</span> <span class="pre">nni_repo</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!git</span> <span class="pre">clone</span> <span class="pre">https://github.com/microsoft/nni.git</span> <span class="pre">nni_repo/nni</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">urllib3==1.25.10</span></code></div>
+</div>
+<p><strong>3. 安装pytorch</strong></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">torch==1.7.1+cu101</span> <span class="pre">torchvision==0.8.2+cu101</span> <span class="pre">torchaudio==0.7.2</span> <span class="pre">-f</span> <span class="pre">https://download.pytorch.org/whl/torch_stable.html</span></code></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>注册 <a class="reference external" href="https://dashboard.ngrok.com/get-started/setup">ngrok账号</a></p></li>
+</ol>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!./ngrok</span> <span class="pre">authtoken</span> <span class="pre">1ldBaxJzGipGJver4y8lTc4IOJ9_4u3bnKohRgZRegvJA2AfF</span></code></div>
+</div>
+<p><strong>5. 上传数据集和代码</strong></p>
+<p>本文档以旋扭开关为例</p>
+<p><strong>6. 生成训练集和测试集</strong></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">%cd</span> <span class="pre">/content/drive/MyDrive/nni/knob</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!python3</span> <span class="pre">create_txt.py</span></code></div>
+</div>
+<p><strong>7. 在大于1024的端口号上启动NNI，之后在相同的端口上启动ngrok</strong></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!nnictl</span> <span class="pre">create</span> <span class="pre">--config</span> <span class="pre">/content/drive/MyDrive/nni/knob/knob_pytorch/config.yml</span> <span class="pre">--port</span> <span class="pre">5000</span> <span class="pre">&amp;</span> <span class="pre">get_ipython().system_raw('./ngrok</span> <span class="pre">http</span> <span class="pre">5000</span> <span class="pre">&amp;</span></code></div>
+</div>
+<p><strong>8. 查看公网ip</strong></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">!curl</span> <span class="pre">-s</span> <span class="pre">http://localhost:4040/api/tunnels</span></code></div>
+</div>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://nni.readthedocs.io/en/stable/CommunitySharings/NNI_colab_support.html">Use NNI on Google Colab</a></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Kubernetes/index.html" class="btn btn-neutral float-right" title="Kubernetes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

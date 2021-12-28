@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Kubernetes" href="../Kubernetes/index.html" />
+    <link rel="prev" title="NNI" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">NNI</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">体系结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nnitrial">如何实现NNI的Trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">内置训练平台</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">参考文档</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubernetes/index.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kubeflow/index.html">Kubeflow</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">NNI</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/nni/Introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="永久链接至标题">¶</a></h1>
+<p>NNI(Neural Network Intelligence)是一个能帮助用户自动进行特征工程，
+神经网络架构搜索，超参调优及模型压缩的工具包。</p>
+<p>官网：<a class="reference external" href="https://nni.readthedocs.io/zh/stable/index.html">https://nni.readthedocs.io/zh/stable/index.html</a></p>
+<div class="section" id="id1">
+<h2>体系结构<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/cons.png" class="align-center" src="../_images/cons.png" />
+<ul class="simple">
+<li><p>Experiment : 表示一次用于寻找模型最佳超参组合或神经网络架构的任务</p></li>
+<li><p>搜索空间：模型的调优范围</p></li>
+<li><p>Configuration：来自搜索空间的实例，每个超参由特定的值</p></li>
+<li><p>Trial：使用某组配置的一次独立尝试</p></li>
+<li><p>Tuner：一个AntoML算法，会生成新的配置给下一次trial</p></li>
+<li><p>Assessor：分析Trail的中间结果，来确定Trial是否该提前终止</p></li>
+<li><p>训练平台：Trial的执行环境，根据Experiment的配置，可以是本机，远程服务器组或其他大规模训练平台(如 OpenPAI，Kubernetes)</p></li>
+</ul>
+<p>Experiment 过程：Tuner接收搜索空间并生成配置提交到训练平台，执行的性能结果返回给Tuner，再生成新的配置。</p>
+</div>
+<div class="section" id="id2">
+<h2>安装<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>pip 安装 <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">nni</span></code></p>
+<p>install in docker <a class="footnote-reference brackets" href="#id6" id="id3">1</a> <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">msranni/nni:latest</span></code></p>
+<p><em>验证安装</em></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">-b</span> <span class="pre">v1.9</span> <span class="pre">https://github.com/Microsoft/nni.git</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">nnictl</span> <span class="pre">create</span> <span class="pre">--config</span> <span class="pre">nni/examples/trials/mnist-tfv1/config.yml</span></code></div>
+</div>
+</div>
+<div class="section" id="nnitrial">
+<h2>如何实现NNI的Trial<a class="headerlink" href="#nnitrial" title="永久链接至标题">¶</a></h2>
+<p><strong>通过NNI API</strong></p>
+<ol class="arabic simple">
+<li><p>准备搜索空间参数.json文件</p></li>
+<li><p>在模型代码中加入NNI相关API</p></li>
+<li><p>定义一个.yml文件使能NNI API</p></li>
+</ol>
+<p><strong>通过NNI Annotation</strong></p>
+<p>另一种方式是通过NNI的python的语法来实现</p>
+</div>
+<div class="section" id="id4">
+<h2>内置训练平台<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>NNI 提供的训练平台包括本机，远程计算机，以及集群的OpenPAI，Kubeflow等。</p>
+<p><em>kubeflow</em></p>
+<p>NNI支持在Kubeflow上运行，需要一台配置好kubeconfig的Ubuntu计算机连接到此Kubernetes集群。
+在Kubeflow模式下，每个Trial程序会在集群中作为一个Kubeflow作业来运行</p>
+<img alt="../_images/train.png" class="align-center" src="../_images/train.png" />
+</div>
+<div class="section" id="id5">
+<h2>参考文档<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p><a class="reference external" href="https://nni.readthedocs.io/en/stable/Tutorial/HowToUseDocker.html">How to Use Docker in NNI</a></p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Kubernetes/index.html" class="btn btn-neutral float-right" title="Kubernetes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="NNI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

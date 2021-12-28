@@ -37,7 +37,7 @@
         <link rel="search" title="搜索" href="../search.html"/>
     <link rel="top" title="hyun_docs 1.0 文档" href="../index.html"/>
         <link rel="up" title="Models" href="index.html"/>
-        <link rel="next" title="one-stage detector" href="one-stage_detector.html"/>
+        <link rel="next" title="yolo_v4" href="yolov4.html"/>
         <link rel="prev" title="yolo_v2" href="yolov2.html"/> 
 
   
@@ -94,18 +94,24 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="yolov1.html">yolo_v1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="yolov2.html">yolo_v2</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">yolo_v3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">网络结构图</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backbone">Backbone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output">Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#training">Training</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">参考文档</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="yolov4.html">yolo_v4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="one-stage_detector.html">one-stage detector</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
 </ul>
 
             
@@ -203,6 +209,89 @@
 </div>
 </div></blockquote>
 </div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div>YOLOv3是在(13*13,26*26,52*52)三个不同尺度的特征图上进行预测的，一个特征图上每个grid cell预测3个bounding box，每个box有(x,y,w,h,confidence)和每个类别概率预测值。假设特征图的大小为N，对于COCO数据集，则每个特征图的输出张量为
+<span class="math">\(N \times N \times [4 + 1 + 80]\)</span> 。</div></blockquote>
+<p><strong>Anchor box (bounding box prior)</strong></p>
+<blockquote>
+<div><p>YOLOv1中，网络直接检测框的宽、高。YOLOv2中改为基于先验框的变化值，对于预测对象的尺度进行了约束，降低网络学习难度。YOLOv3为每种FPN预测特征图设定3种 anchor box，共聚类出9种尺寸的anchor box。</p>
+<p>分配上，在最小的13*13特征图上由于其感受野最大故应用最大的anchor box (116x90)，(156x198)，(373x326)，（这几个坐标是针对416*416下的，当然要除以32把尺度缩放到13*13下），适合检测较大的目标。中等的26*26特征图上由于其具有中等感受野故应用中等的anchor box (30x61)，(62x45)，(59x119)，适合检测中等大小的目标。较大的52*52特征图上由于其具有较小的感受野故应用最小的anchor box(10x13)，(16x30)，(33x23)，适合检测较小的目标。</p>
+<p>YOLOv3中取消了YOLOv2每个grid cell只负责预测一个对象的限制，v3中的3个bounding box都可以预测对象，当然他们都对应不同的ground truth。</p>
+</div></blockquote>
+<p><strong>Bounding Box Prediction</strong></p>
+<blockquote>
+<div><p>网络为每个检测框预测4个坐标，
+<span class="math">\(t_{x},t_{y},t_{w},t_{h}\)</span></p>
+<div class="math">
+\[\begin{split}b_{x} = \sigma(t_{x})\ + \ c_{x}\\
+b_{y} = \sigma(t_{y})\ + \ c_{y}\\
+b_{w} = p_{w}e^{t_{w}}\\
+b_{h} = p_{h}e^{t_{h}}\\\end{split}\]</div>
+<p>如下图所示，
+<span class="math">\(\sigma(t_{x}), \sigma(t_{y})\)</span> 是矩形框中心点相对于该grid cell 左上角坐标
+<span class="math">\(c_{x},c_{y}\)</span> 的偏移量，
+<span class="math">\(p_{w}, p_{h}\)</span> 是先验框的宽和高。通过上述公式，计算出实际预测框的宽高。</p>
+<a class="reference internal image-reference" href="../_images/xy.png"><img alt="../_images/xy.png" class="align-center" src="../_images/xy.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><strong>Confidence</strong></p>
+<blockquote>
+<div><div class="math">
+\[Pr(object)*IOU(b,object) = \sigma(t_{o})\]</div>
+<p>YOLOv3只会对1个prior进行操作，也就是那个最佳prior。而logistic回归用于对anchor包围的部分进行一个目标性评分，从9个anchor priors中找到objectness score(目标存在可能性得分)最高的一个。</p>
+</div></blockquote>
+<p><strong>Class Prediction</strong></p>
+<blockquote>
+<div>不使用YOLOv2的softmax，YOLOv3使用独立的逻辑分类器，对图像中检测到的对象执行多标签分类。使用二元交叉熵损失来进行类别预测。</div></blockquote>
+</div>
+<div class="section" id="training">
+<h2>Training<a class="headerlink" href="#training" title="永久链接至标题">¶</a></h2>
+<p><strong>Loss</strong></p>
+<blockquote>
+<div><div class="math">
+\[\begin{split}loss(object) = \lambda_{coord}\sum_{i=0}^{K \times K}\sum_{j=0}^{M}\mathbb{1}_{ij}^{obj}(2-w_{i} \times h_{i})[(x_{i} - \hat{x}_{i})^2 + (y_{i} - \hat{y}_{i})^2]\\
++ \ \lambda_{coord}\sum_{i=0}^{K \times K}\sum_{j=0}^{M}\mathbb{1}_{ij}^{obj}(2-w_{i} \times h_{i})[(w_{i} - \hat{w}_{i})^2 + (h_{i} - \hat{h}_{i})^2]\\
+- \sum_{i=0}^{K \times K}\sum_{j=0}^{M}\mathbb{1}_{ij}^{obj}[\hat{C}_{i}log(C_{i}) + (1 - \hat{C}_{i})log(1-C_{i})]\\
+- \ \lambda_{noobj}\sum_{i=0}^{K \times K}\sum_{j=0}^{M}\mathbb{1}_{ij}^{noobj}[\hat{C}_{i}log(C_{i}) + (1 - \hat{C}_{i})log(1-C_{i})]\\
+- \sum_{i=0}^{K \times K}\mathbb{1}_{ij}^{obj}\sum_{c \ \in \ classes}[\hat{p}_{i}(c)log(p_{i}(c)) + (1-\hat{p}_{i}(c))log(1-p_{i}(c))]\end{split}\]</div>
+</div></blockquote>
+<p><strong>Which bounding box</strong></p>
+<blockquote>
+<div><p>如何在训练中确定哪个bounding box负责某个某个ground truth呢？方法是求出每个grid cell中每个anchor box与ground truth box的IOU(交并比)，IOU最大的anchor box对应的bounding box就负责预测该ground truth。</p>
+<p>我们训练输出的是
+<span class="math">\(t_{x},t_{y},t_{w},t_{h}\)</span> ，那么在计算误差时，也是利用真实框的
+<span class="math">\(\hat{t}_{x},\hat{t}_{y},\hat{t}_{w},\hat{t}_{h}\)</span> 这几个值计算误差。</p>
+<div class="math">
+\[\begin{split}g_{x} = \sigma(t_{x})\ + \ c_{x}\\
+g_{y} = \sigma(t_{y})\ + \ c_{y}\\
+g_{w} = p_{w}e^{t_{w}}\\
+g_{h} = p_{h}e^{t_{h}}\\\end{split}\]</div>
+<p>可以根据真实框的
+<span class="math">\(g_{x}、g_{y}、g_{w}、g_{h}\)</span> 求出真实框的
+<span class="math">\(\hat{t}_{x},\hat{t}_{y},\hat{t}_{w},\hat{t}_{h}\)</span></p>
+<div class="math">
+\[\begin{split}\sigma(\hat{t}_{x}) = g_{x} - c_{x}\\
+\sigma(\hat{t}_{y}) = g_{y} - c_{y}\\
+\hat{t}_{w} = log(g_{w}/a_{w})\\
+\hat{t}_{h} = log(g_{h}/a_{h})\end{split}\]</div>
+</div></blockquote>
+<p><strong>Confidence</strong></p>
+<blockquote>
+<div><div class="math">
+\[C_{i}^{j} = Pr(object)*IOU(b,object)\]</div>
+<p>其中
+<span class="math">\(C_{i}^{j}\)</span> 表示第 i 个grid cell 的第 j 个 bounding box 的置信度。训练中
+<span class="math">\(\hat{C}_{i}^{j}\)</span> 表示真实值，
+<span class="math">\(\hat{C}_{i}^{j}\)</span> 的取值是由grid cell的bounding box是否负责预测某个对象决定的。如果负责，
+<span class="math">\(\hat{C}_{i}^{j} = 1\)</span>，否则
+<span class="math">\(\hat{C}_{i}^{j} = 0\)</span>。</p>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">如何确定某个grid cell的bounding box是否负责预测该grid cell中的对象？该grid cell的所有anchor box 与某个 ground truth 的IOU最大的那个anchor box 对应的bounding box 负责预测该对象。</p>
+</div>
+</div></blockquote>
+</div>
 <div class="section" id="id2">
 <h2>参考文档<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <blockquote>
@@ -210,6 +299,18 @@
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[1]</td><td><a class="reference external" href="https://blog.csdn.net/leviopku/article/details/82660381">YOLOv3 深度解析</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><a class="reference external" href="https://blog.csdn.net/qq_34199326/article/details/84109828">YOLOv3 边框预测</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><a class="reference external" href="https://www.jianshu.com/p/86b8208f634f">YOLOv3 的一些细节</a></td></tr>
 </tbody>
 </table>
 </div></blockquote>
@@ -226,7 +327,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="one-stage_detector.html" class="btn btn-neutral float-right" title="one-stage detector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="yolov4.html" class="btn btn-neutral float-right" title="yolo_v4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="yolov2.html" class="btn btn-neutral" title="yolo_v2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

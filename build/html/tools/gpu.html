@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GPU &mdash; hyun_docs 1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="Vim" href="vim.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> hyun_docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C_Programming/index.html">C_Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytorch/index.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../paddlepaddle/index.html">PaddlePaddle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../opencv/index.html">OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/index.html">Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_segmentation/index.html">Image_segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ocr/index.html">OCR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deep_Learning_for_Computer_Vision/index.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Docker</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vim.html">Vim</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GPU</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-a-gpu">what is a gpu?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-vs-cpu">GPU vs CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">GPU 参数解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">为什么深度学习需要GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">和深度学习相关的GPU指标</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">神经网络的显存占用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">多GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linuxnivdia-gpu">Linux中管理Nivdia GPU卡</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">参考文档</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hyun_docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tools</a> &raquo;</li>
+        
+      <li>GPU</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tools/gpu.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gpu">
+<h1>GPU<a class="headerlink" href="#gpu" title="永久链接至标题">¶</a></h1>
+<div class="section" id="what-is-a-gpu">
+<h2>what is a gpu?<a class="headerlink" href="#what-is-a-gpu" title="永久链接至标题">¶</a></h2>
+<p>GPU(Graphic Processing Unit) 是一种最初用于加速图形渲染的专用微处理器。
+不同于CPU的通用功能，GPU在并行处理大型数据上有着高效的性能。目前也用于
+以下领域：</p>
+<ul class="simple">
+<li><p>游戏领域</p></li>
+<li><p>人工智能</p></li>
+<li><p>自动驾驶</p></li>
+</ul>
+</div>
+<div class="section" id="gpu-vs-cpu">
+<h2>GPU vs CPU<a class="headerlink" href="#gpu-vs-cpu" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/gpu_cpu.png" class="align-center" src="../_images/gpu_cpu.png" />
+</div>
+<div class="section" id="id1">
+<h2>GPU 参数解析<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/1080ti.jpg"><img alt="../_images/1080ti.jpg" src="../_images/1080ti.jpg" style="width: 450px;" /></a>
+<p><strong>架构</strong></p>
+<p>和CPU代号类似，新架构的显卡性能更强，工艺更先进</p>
+<p><strong>CUDA 核心数量</strong></p>
+<p>相同架构下，GPU核心越多，性能越好</p>
+<p><strong>基本频率</strong></p>
+<p>GPU基本频率又称时钟频率，是指处理器晶体管打开和关闭的速率，
+单位为GHz或MHz，意思是GPU每秒跑几十亿次或几百万次，基本频率越高，
+执行的速度就越快。</p>
+<p>More Cores/Lower Clock Or Fewer Cores/Higher Clock is a common debate.
+If GPU 1 has 1500 cores operating at 1.5GHz, and GPU 2 has 2000 cores operating at 1.3GHz, GPU 2 would still perform better</p>
+<p><strong>加速频率</strong></p>
+<p>表示在环境嗯允许GPU进入超频模式时，可以达到的最高频率。当开启加速后，
+GPU会根据当前的任务量自动调整GPU频率。</p>
+<p><strong>显存速率</strong></p>
+<p>现存速度越快，单位时间内交换的数据量也越大，在同等情况下显卡的性能会得到明显的提升</p>
+<p><strong>标准显存配置</strong></p>
+<p>即显存容量，显存越大，能加载的网络也越大。
+显存类型数字越大越先进，GDDR6&gt;GDDR5X&gt; GDDR5</p>
+<p><strong>显存位宽</strong></p>
+<p>位宽就是显存一次能传输的数据量。位宽越大，一次性能传输的数据就越多</p>
+<p><strong>显存带宽(GB/秒)</strong></p>
+<p>数据传输速度，带宽越大越好</p>
+</div>
+<div class="section" id="id2">
+<h2>为什么深度学习需要GPU<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>相比CPU，GPU拥有更高的带宽，高效并行处理大型数据的能力大大降低了延时，寄存器易于编程。
+显然GPU更适合深度学习中的大型模型及卷积运算。</p>
+</div>
+<div class="section" id="id3">
+<h2>和深度学习相关的GPU指标<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p><strong>内存带宽</strong></p>
+<p>GPU 处理大量数据的能力，是最重要的性能指标</p>
+<p><strong>处理能力</strong></p>
+<p>表示 GPU 处理数据的速度，我们将其量化为 CUDA 核心数量和每一个核心的频率的乘积</p>
+<p><strong>显存大小</strong></p>
+<p>一次性加载到显卡上的数据量。运行计算机视觉模型时，显存越大越好</p>
+</div>
+<div class="section" id="id4">
+<h2>神经网络的显存占用<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>多GPU<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>选择多GPU有两个理由：</p>
+<ul class="simple">
+<li><p>并行训练多个模型，考察参数对模型的影响</p></li>
+<li><p>对单个模型进行分布式训练</p></li>
+</ul>
+</div>
+<div class="section" id="linuxnivdia-gpu">
+<h2>Linux中管理Nivdia GPU卡<a class="headerlink" href="#linuxnivdia-gpu" title="永久链接至标题">¶</a></h2>
+<p><strong>查看显存及GPU使用情况</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code></p>
+<img alt="../_images/smi.png" class="align-center" src="../_images/smi.png" />
+<p>参数解释</p>
+<p><strong>Fan</strong> 显示风扇转速，数值在0到100%之间，是计算机的期望转速，如果计算机不是通过风扇冷却或者风扇坏了，显示出来就是N/A</p>
+<p><strong>Temp</strong> 显卡内部温度，单位为摄氏度</p>
+<p><strong>Perf</strong> 表征性能状态，从P0到P12，P0表示最大性能，P12表示状态最小性能</p>
+<p><strong>Pwr</strong> 能耗表示</p>
+<p><strong>Bus-id</strong> 涉及GPU总线的相关信息</p>
+<p><strong>Disp.A</strong> 是Display Active的意思，表示GPU的显示是否初始化</p>
+<p><strong>Memory Usage</strong> 显存的使用率</p>
+<p><strong>Volatile GPU-Util</strong> 浮动的GPU利用率</p>
+<p><strong>Compute M</strong> 计算模式</p>
+<p><strong>周期性的输出显卡的使用情况</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">-n</span> <span class="pre">5</span> <span class="pre">nvidia</span></code> 每隔5s显示一次</p>
+<img alt="../_images/fre.png" class="align-center" src="../_images/fre.png" />
+<p><strong>列出所有可用的Nvidia设备</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span> <span class="pre">-L</span></code></p>
+<img alt="../_images/all.png" class="align-center" src="../_images/all.png" />
+<p><strong>列出每个GPU卡的详细信息</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span> <span class="pre">--query-gpu=index,name,uuid,serial</span> <span class="pre">--format=csv</span></code></p>
+<img alt="../_images/one.png" class="align-center" src="../_images/one.png" />
+<p><strong>查询某个GPU卡的详细信息</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span> <span class="pre">-i</span> <span class="pre">0</span> <span class="pre">-q</span></code> id 为0的GPU卡</p>
+<img alt="../_images/spec.png" class="align-center" src="../_images/spec.png" />
+<p><strong>以1s的间隔更新GPU的总体使用情况</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span> <span class="pre">dmon</span></code></p>
+<img alt="../_images/use_all.png" class="align-center" src="../_images/use_all.png" />
+<p><strong>以1秒的更新间隔监视每个进程的GPU使用情况</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span> <span class="pre">pmon</span></code></p>
+<img alt="../_images/use_one.png" class="align-center" src="../_images/use_one.png" />
+<p><strong>加上-r参数可以重启某个GPU卡</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span> <span class="pre">-r</span> <span class="pre">-i</span> <span class="pre">0</span></code></p>
+</div>
+<div class="section" id="id6">
+<h2>参考文档<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://cloud.tencent.com/developer/article/1486194">Linux中如何管理Nvidia GPU卡</a></div>
+<div class="line"><a class="reference external" href="https://medium.com/&#64;shachishah.ce/do-we-really-need-gpu-for-deep-learning-47042c02efe2">Do we really need GPU for Deep Learning? - CPU vs GPU</a></div>
+<div class="line"><a class="reference external" href="https://www.vice.com/en/article/kznnnn/why-machine-learning-needs-gpus">Why Machine Learning Needs GPUs</a></div>
+<div class="line"><a class="reference external" href="https://blog.csdn.net/qq_38906523/article/details/78730158">教你如何挑选深度学习GPU</a></div>
+<div class="line"><a class="reference external" href="https://zhuanlan.zhihu.com/p/31558973">深度学习中GPU和显存分析</a></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="vim.html" class="btn btn-neutral float-left" title="Vim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, hyun
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
